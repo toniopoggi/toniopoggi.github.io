@@ -3,9 +3,30 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#f4f0e7" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#111614" media="(prefers-color-scheme: dark)">
+    <meta id="theme-color" name="theme-color" content="#f4f0e7">
     <meta name="color-scheme" content="light dark">
+    <script>
+      (() => {
+        let savedTheme = null;
+        try {
+          savedTheme = localStorage.getItem("antonio-theme");
+        } catch (error) {
+          savedTheme = null;
+        }
+
+        if (savedTheme !== "light" && savedTheme !== "dark") {
+          savedTheme = null;
+        }
+
+        if (savedTheme === "light" || savedTheme === "dark") {
+          document.documentElement.dataset.theme = savedTheme;
+        }
+
+        const darkTheme = savedTheme === "dark" ||
+          (!savedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches);
+        document.querySelector("#theme-color").content = darkTheme ? "#111614" : "#f4f0e7";
+      })();
+    </script>
 
     {% assign page_title = page.title | default: site.title %}
     {% if page.url == '/' %}

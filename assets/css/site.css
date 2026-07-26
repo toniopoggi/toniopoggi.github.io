@@ -27,7 +27,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --paper: #111614;
     --paper-deep: #1c2420;
     --ink: #ece9df;
@@ -50,6 +50,35 @@
     --code-ink: #e9ece6;
     --shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
   }
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #111614;
+  --paper-deep: #1c2420;
+  --ink: #ece9df;
+  --soft-ink: #d4d8d2;
+  --muted: #a8b0aa;
+  --line: #3b4640;
+  --accent: #65d1b4;
+  --accent-dark: #8ae3ca;
+  --signal: #c3d95b;
+  --warm: #ee8a68;
+  --white: #171d1a;
+  --header-bg: rgba(17, 22, 20, 0.94);
+  --grid-line: rgba(236, 233, 223, 0.055);
+  --orb-line: rgba(236, 233, 223, 0.17);
+  --inverse-bg: #080c0a;
+  --inverse-ink: #f0eee7;
+  --inverse-muted: #b9c0bb;
+  --inverse-line: #3f4944;
+  --code-bg: #080c0a;
+  --code-ink: #e9ece6;
+  --shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
 }
 
 * {
@@ -135,6 +164,64 @@ summary {
   align-items: center;
   justify-content: space-between;
   gap: 24px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.theme-toggle {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+  color: var(--ink);
+  background: transparent;
+  cursor: pointer;
+  transition: color 160ms ease, background 160ms ease, transform 160ms ease;
+}
+
+.theme-toggle:hover {
+  color: var(--paper);
+  background: var(--ink);
+  transform: translateY(-1px);
+}
+
+.theme-toggle:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.theme-icon {
+  font-size: 19px;
+  line-height: 1;
+}
+
+.theme-icon-dark {
+  display: none;
+}
+
+:root[data-theme="dark"] .theme-icon-light {
+  display: none;
+}
+
+:root[data-theme="dark"] .theme-icon-dark {
+  display: inline;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-icon-light {
+    display: none;
+  }
+
+  :root:not([data-theme="light"]) .theme-icon-dark {
+    display: inline;
+  }
 }
 
 .brand {
