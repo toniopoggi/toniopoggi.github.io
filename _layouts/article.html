@@ -1,0 +1,58 @@
+---
+layout: default
+section: writing
+body_class: article-page
+---
+<article>
+  <header class="article-hero">
+    <div class="shell article-heading">
+      <a class="back-link" href="{{ '/writing/' | relative_url }}">← All writing</a>
+      <p class="eyebrow">{{ page.eyebrow | default: 'Essay' }}</p>
+      <h1>{{ page.title }}</h1>
+      {% if page.subtitle %}<p class="article-subtitle">{{ page.subtitle }}</p>{% endif %}
+      <div class="article-meta">
+        <span>{{ page.date | date: "%-d %B %Y" }}</span>
+        {% if page.read_time %}<span>{{ page.read_time }} read</span>{% endif %}
+        {% if page.series %}<span>{{ page.series }}</span>{% endif %}
+      </div>
+    </div>
+    {% if page.image %}
+      <figure class="shell article-lead-image">
+        <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | escape }}" width="1600" height="900" fetchpriority="high">
+        {% if page.image_caption %}<figcaption>{{ page.image_caption }}</figcaption>{% endif %}
+      </figure>
+    {% endif %}
+  </header>
+
+  <div class="shell article-grid">
+    <aside class="article-rail">
+      <p class="kicker">Written by</p>
+      <p><strong>Antonio Poggi</strong><br>COO at Visokio</p>
+      <div class="rail-rule"></div>
+      <p class="kicker">Share</p>
+      <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url | url_encode }}">LinkedIn ↗</a>
+      <button class="copy-link" type="button" data-copy-url="{{ page.url | absolute_url }}">Copy link</button>
+    </aside>
+    <div class="prose">
+      {{ content }}
+    </div>
+  </div>
+
+  <aside class="shell article-next">
+    <p class="eyebrow">Continue exploring</p>
+    {% if page.next_url %}
+      <a class="next-card" href="{{ page.next_url | relative_url }}">
+        <span>{{ page.next_label | default: 'Next' }}</span>
+        <strong>{{ page.next_title }}</strong>
+        <span aria-hidden="true">↗</span>
+      </a>
+    {% else %}
+      <a class="next-card" href="{{ '/air-quality/' | relative_url }}">
+        <span>Project archive</span>
+        <strong>Explore the Air Quality timeline</strong>
+        <span aria-hidden="true">↗</span>
+      </a>
+    {% endif %}
+  </aside>
+</article>
+

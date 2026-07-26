@@ -1,0 +1,28 @@
+title: Antonio Poggi
+description: COO at Visokio. Projects and writing on Omniscope, data analytics, AI, citizen science and air-quality monitoring.
+url: https://antoniopoggi.com
+baseurl: ""
+og_image: /assets/images/og-card.jpg
+lang: en
+timezone: Europe/London
+
+collections:
+  articles:
+    output: true
+    permalink: /writing/:name/
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+  - scope:
+      path: ""
+      type: articles
+    values:
+      layout: article
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock

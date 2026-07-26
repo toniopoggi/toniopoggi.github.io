@@ -1,0 +1,20 @@
+<header class="site-header">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="shell nav-shell">
+    <a class="brand" href="{{ '/' | relative_url }}" aria-label="Antonio Poggi — home">
+      <span class="brand-mark" aria-hidden="true">AP</span>
+      <span class="brand-name">Antonio Poggi</span>
+    </a>
+
+    <details class="nav-menu">
+      <summary aria-label="Open navigation"><span></span><span></span></summary>
+      <nav aria-label="Primary navigation">
+        <a href="{{ '/visokio/' | relative_url }}" {% if page.section == 'visokio' %}aria-current="page"{% endif %}>Visokio</a>
+        <a href="{{ '/air-quality/' | relative_url }}" {% if page.section == 'air-quality' %}aria-current="page"{% endif %}>Air Quality</a>
+        <a href="{{ '/writing/' | relative_url }}" {% if page.section == 'writing' %}aria-current="page"{% endif %}>Writing</a>
+        <a href="{{ '/about/' | relative_url }}" {% if page.section == 'about' %}aria-current="page"{% endif %}>About</a>
+      </nav>
+    </details>
+  </div>
+</header>
+
