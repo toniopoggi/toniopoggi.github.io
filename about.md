@@ -14,7 +14,7 @@ description: About Antonio Poggi, COO at Visokio, and his work across Omniscope,
 <section class="section">
   <div class="shell bio-grid">
     <div class="bio-copy">
-      <p>I’m Antonio Poggi, COO at Visokio, where I help build Omniscope—an end-to-end platform for working with data.</p>
+      <p>I’m Antonio Poggi, COO at Visokio, where I help build Omniscope. It is one workspace for the whole data journey: connecting, preparing, analysing and visualising data, then delivering trusted outputs without stitching separate tools together.</p>
       <p>My work sits across product, software, analytics, AI and communication. I like the point where an ambitious idea meets all the awkward details required to make it useful.</p>
       <p>I grew up in Taranto, Italy, and live in London. The air-quality work documented here began as a way to apply the skills and software I had helped develop to a public problem I cared about. It has since become a long-running experiment in data democratisation, civic evidence and citizen-owned monitoring.</p>
       <p>This site is a curated record of the things I have helped build, the ideas behind them and the public work I want to preserve beyond a social-media feed.</p>

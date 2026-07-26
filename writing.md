@@ -9,7 +9,7 @@ description: Selected writing by Antonio Poggi about Omniscope, product, data, A
     <div>
       <p class="eyebrow">Writing</p>
       <h1>Ideas worth keeping.</h1>
-      <p class="lead">Selected essays and articles from my own site and the places where I have written over the years. This is a curated index—not a mirror of every social post.</p>
+      <p class="lead">Selected essays and articles from my own site and the places where I have written over the years. This is a curated index, not a mirror of every social post.</p>
     </div>
     <aside class="intro-aside">
       <p>For current experiments, product progress and shorter observations, follow me on <a href="https://www.linkedin.com/in/antoniopoggi">LinkedIn</a>.</p>
@@ -65,4 +65,3 @@ description: Selected writing by Antonio Poggi about Omniscope, product, data, A
     </div>
   </div>
 </section>
-

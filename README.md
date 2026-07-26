@@ -5,9 +5,9 @@ Omniscope, data analytics, AI, open software and citizen-led air-quality
 monitoring.
 
 I am COO of [Visokio](https://visokio.com), the team behind
-[Omniscope](https://visokio.com/omniscope). For more than two decades we have
-worked on a demanding idea: enabling people to move from complex, fragmented
-data to analysis, decisions and communication in one coherent environment.
+[Omniscope](https://visokio.com/omniscope). Omniscope is one workspace for the
+whole data journey. It lets people connect, prepare, analyse and visualise
+data, then deliver trusted outputs without stitching separate tools together.
 
 ## Visokio and Omniscope
 

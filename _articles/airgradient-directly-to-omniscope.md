@@ -1,6 +1,6 @@
 ---
 title: "AirGradient Directly to Omniscope"
-subtitle: "Building a private air-quality pipeline with an Android app, custom ESP32-C3 firmware—and no middleware."
+subtitle: "Building a private air-quality pipeline with an Android app, custom ESP32-C3 firmware and no middleware."
 date: 2026-07-26
 eyebrow: "Technical build · Open source"
 series: "Taranto to the sensor"
@@ -197,7 +197,7 @@ The firmware adds six configuration properties:
 These fields can be updated through the Android interface or directly through
 `PUT /config`.
 
-The complete endpoint is configurable—not merely the host. The workflow block
+The complete endpoint is configurable, not merely the host. The workflow block
 and parameter name are configurable too. Moving the Omniscope project,
 renaming the receiving block or changing the parameter does not require
 another firmware build.
@@ -326,8 +326,8 @@ The receiving workflow:
 Adding time on the server gives every accepted measurement a consistent UTC
 reference independent of the device clock.
 
-Retaining the complete payload—or at least the fields not yet used in the
-first report—also protects against premature data modelling. Questions change.
+Retaining the complete payload, or at least the fields not yet used in the
+first report, also protects against premature data modelling. Questions change.
 It is useful to preserve enough information to answer tomorrow’s questions
 without redesigning the device request.
 
@@ -356,8 +356,8 @@ and the device log. The monitor serial number is covered by an opaque
 redaction.*
 
 The workflow can write to a file or another durable source appropriate to the
-deployment. It should also use a device serial number and UTC timestamp—or an
-equivalent server-side key—if duplicate protection is required.
+deployment. It should also use a device serial number and UTC timestamp, or an
+equivalent server-side key, if duplicate protection is required.
 
 ## The first version crashed
 
@@ -391,7 +391,7 @@ Omniscope: workflow submitted (HTTP 2xx)
 
 The workflow executed and a new point appeared in the report.
 
-This was the least abstract—and most satisfying—test of the architecture.
+This was the least abstract and most satisfying test of the architecture.
 
 ![Omniscope report showing AirGradient particulate matter, VOC and NOx measurements](/assets/images/omniscope-report-pm-voc-nox.png)
 
@@ -558,5 +558,5 @@ The complete path is now:
 > Sense locally. Configure locally. Push privately. Process and explore in
 > Omniscope.
 
-No mystery cloud in the middle—and just enough firmware debugging to make it
+No mystery cloud in the middle, and just enough firmware debugging to make it
 fun.

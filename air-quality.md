@@ -2,7 +2,7 @@
 title: Air Quality
 permalink: /air-quality/
 section: air-quality
-description: Antonio Poggi’s air-quality citizen-science work—from public monitoring dashboards and benzene alerts in Taranto to an open sensor connected directly to Omniscope.
+description: Antonio Poggi’s air-quality citizen-science work, from public monitoring dashboards and benzene alerts in Taranto to an open sensor connected directly to Omniscope.
 image: /assets/images/x-2025-benzene-peak-42-54.jpg
 ---
 <header class="page-intro">
@@ -10,10 +10,10 @@ image: /assets/images/x-2025-benzene-peak-42-54.jpg
     <div>
       <p class="eyebrow">Air quality · Citizen science</p>
       <h1>From public data to citizen-owned instruments.</h1>
-      <p class="lead">A long-running effort to make environmental measurements around Taranto easier to understand, investigate and use—and a new experiment that brings the same philosophy all the way to the physical sensor.</p>
+      <p class="lead">A long-running effort to make environmental measurements around Taranto easier to understand, investigate and use, followed by a new experiment that brings the same philosophy all the way to the physical sensor.</p>
     </div>
     <aside class="intro-aside">
-      <p><strong>Taranto, Puglia.</strong><br>A beautiful city living beside one of Europe’s largest industrial sites—and the place where I grew up.</p>
+      <p><strong>Taranto, Puglia.</strong><br>A beautiful city living beside one of Europe’s largest industrial sites, and the place where I grew up.</p>
     </aside>
   </div>
 </header>
@@ -46,7 +46,7 @@ image: /assets/images/x-2025-benzene-peak-42-54.jpg
         <div class="timeline-year">2026</div>
         <div class="timeline-content">
           <h3>Democratise the instrument</h3>
-          <p>I customise an open AirGradient monitor so it can send measurements directly and privately to an Omniscope workflow—no vendor cloud, middleware, home server or inbound router port.</p>
+          <p>I customise an open AirGradient monitor so it can send measurements directly and privately to an Omniscope workflow, with no vendor cloud, middleware, home server or inbound router port.</p>
         </div>
       </div>
     </div>

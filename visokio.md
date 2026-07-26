@@ -2,7 +2,7 @@
 title: Visokio
 permalink: /visokio/
 section: visokio
-description: Antonio Poggi’s work at Visokio—building Omniscope, exploring the future of analytics and turning difficult data problems into usable products.
+description: Antonio Poggi’s work at Visokio, building Omniscope, exploring the future of analytics and turning difficult data problems into usable products.
 ---
 <header class="page-intro">
   <div class="shell page-intro-grid">
@@ -22,7 +22,7 @@ description: Antonio Poggi’s work at Visokio—building Omniscope, exploring t
 
 <section class="statement">
   <div class="shell">
-    <blockquote>From raw data to decisions—without stitching together a different tool for every step.</blockquote>
+    <blockquote>From raw data to decisions you own, without stitching separate tools together.</blockquote>
     <cite>THE PRODUCT IDEA BEHIND OMNISCOPE</cite>
   </div>
 </section>
@@ -31,13 +31,13 @@ description: Antonio Poggi’s work at Visokio—building Omniscope, exploring t
   <div class="shell split-content">
     <h2>What I do there</h2>
     <div class="body-copy">
-      <p>Omniscope is difficult to reduce to one software category because its purpose is to keep an entire piece of data work coherent: connecting sources, preparing information, analysing it, building reports, automating workflows, publishing outputs and extending the system when necessary.</p>
+      <p>Omniscope brings data preparation, transformation, visualisation and delivery together. Raw or fragmented data becomes trusted reports, self-service analytics and automated outputs.</p>
       <p>That breadth shapes my work. I move between customer conversations and product decisions, between explaining the platform and using it to build something new. I care about the final experience, but also about whether the architecture underneath gives people control of their data and a way to verify the result.</p>
 
       <h3>Stay close to the product</h3>
       <p>I believe leadership in a technical product benefits from remaining close to the actual tool. I prototype, test, build examples, investigate customer problems and communicate what we are learning. The result is a loop between strategy and direct experience.</p>
 
-      <h3>AI as an interface—not an excuse to hide the work</h3>
+      <h3>AI as an interface, without hiding the work</h3>
       <p>Much of my recent work explores how language models can help operate an analytics environment while Omniscope retains the deterministic execution, visible query logic and reusable artefacts. The aim is not merely to make AI answer a question, but to make the answer checkable.</p>
     </div>
   </div>
@@ -68,7 +68,7 @@ description: Antonio Poggi’s work at Visokio—building Omniscope, exploring t
         <span class="tag">Engineering · AI</span>
         <div>
           <h3>We let AI write our software</h3>
-          <p>The discipline is in how we keep control—and keep the freedom to change models and tools.</p>
+          <p>The discipline is in how we keep control while retaining the freedom to change models and tools.</p>
         </div>
       </a>
       <a class="work-card" href="https://visokio.com/author/antonio17b4b024ad/">

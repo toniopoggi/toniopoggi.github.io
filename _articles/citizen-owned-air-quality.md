@@ -1,6 +1,6 @@
 ---
 title: "From Monitoring Taranto to Building Citizen-Owned Air-Quality Instruments"
-subtitle: "Seven years of dashboards, public alerts, civic evidence—and one very geeky new experiment."
+subtitle: "Seven years of dashboards, public alerts, civic evidence and one very geeky new experiment."
 date: 2026-07-26
 eyebrow: "Citizen science · Air quality"
 series: "Taranto to the sensor"
@@ -312,11 +312,11 @@ workflow on a Linux VM and watch a new point appear in a chart.
 I am publishing the implementation so others can inspect it, reproduce it and
 adapt it:
 
-- [AirGradient Omniscope firmware](https://github.com/toniopoggi/airgradient-omniscope)
-  — customised firmware, build instructions, Workflow API integration,
+- [AirGradient Omniscope firmware](https://github.com/toniopoggi/airgradient-omniscope):
+  customised firmware, build instructions, Workflow API integration,
   browser-based installer and stock-firmware recovery.
-- [AirGradient Omniscope for Android](https://github.com/toniopoggi/airgradient-omniscope-android)
-  — local controller, source code, build instructions and APK.
+- [AirGradient Omniscope for Android](https://github.com/toniopoggi/airgradient-omniscope-android):
+  local controller, source code, build instructions and APK.
 
 I am also creating a public repository that will document the complete
 timeline of my air-quality work: the original Taranto dashboard, the automated
@@ -349,7 +349,7 @@ But the principle remains clear:
 
 **Sense locally. Control locally. Push privately. Explore openly.**
 
-For science—and, inevitably, for the geeky pleasure of making the whole chain
+For science and, inevitably, for the geeky pleasure of making the whole chain
 work.
 
 ---
