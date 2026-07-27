@@ -11,11 +11,15 @@ data, then deliver trusted outputs without stitching separate tools together.
 
 ## Visokio and Omniscope
 
-My work spans the evolution of Omniscope itself and the practical problems it
-is built to solve: connecting and preparing data, visual exploration,
-interactive reporting, automation, publishing and applied AI.
+My work spans the evolution of Omniscope from integrated visual analytics to a
+complete operational platform for data preparation, analysis, reporting,
+automation, data applications and verifiable AI.
 
 - [Visokio and Omniscope](https://antoniopoggi.com/visokio/)
+- [The Omniscope timeline](https://antoniopoggi.com/visokio/timeline/)
+- [The whole data journey](https://antoniopoggi.com/visokio/whole-data-journey/)
+- [Data applications](https://antoniopoggi.com/visokio/data-apps/)
+- [Verifiable AI analytics](https://antoniopoggi.com/visokio/verifiable-ai/)
 - [Writing at Visokio](https://visokio.com/author/antonio17b4b024ad/)
 
 ## Air quality and citizen science

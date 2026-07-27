@@ -5,6 +5,10 @@ layout: null
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>{{ '/' | absolute_url }}</loc></url>
   <url><loc>{{ '/visokio/' | absolute_url }}</loc></url>
+  <url><loc>{{ '/visokio/timeline/' | absolute_url }}</loc></url>
+  <url><loc>{{ '/visokio/whole-data-journey/' | absolute_url }}</loc></url>
+  <url><loc>{{ '/visokio/data-apps/' | absolute_url }}</loc></url>
+  <url><loc>{{ '/visokio/verifiable-ai/' | absolute_url }}</loc></url>
   <url><loc>{{ '/air-quality/' | absolute_url }}</loc></url>
   <url><loc>{{ '/writing/' | absolute_url }}</loc></url>
   <url><loc>{{ '/about/' | absolute_url }}</loc></url>
@@ -15,4 +19,3 @@ layout: null
   </url>
   {% endfor %}
 </urlset>
-

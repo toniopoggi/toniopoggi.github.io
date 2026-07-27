@@ -39,7 +39,7 @@ image: /assets/images/x-2025-benzene-peak-42-54.jpg
         <div class="timeline-year">2023</div>
         <div class="timeline-content">
           <h3>Automate the complete path to a public alert</h3>
-          <p>Omniscope performs the data extraction, processing, analysis, reporting, screenshot generation and threshold alert as one automated workflow. <a href="https://www.linkedin.com/posts/antoniopoggi_omniscope-data-alerts-bot-on-twitter-activity-7027376994170380288-axNZ">See the automated workflow in action ↗</a></p>
+          <p>Omniscope performs the data extraction, processing, analysis, reporting, screenshot generation and threshold alert as one automated workflow. <a href="https://visokio.com/2023/12/04/how-to-create-a-twitter-x-bot-posting-data-driven-content-with-charts/">Read the complete implementation tutorial ↗</a> or <a href="https://www.linkedin.com/posts/antoniopoggi_omniscope-data-alerts-bot-on-twitter-activity-7027376994170380288-axNZ">see it in action on LinkedIn ↗</a>.</p>
         </div>
       </div>
       <div class="timeline-item">
@@ -180,8 +180,8 @@ image: /assets/images/x-2025-benzene-peak-42-54.jpg
 <section class="section">
   <div class="shell">
     <div class="archive-note">
-      <p class="kicker">Archive in progress</p>
-      <p>I am assembling the fuller record: public posts and alerts, work supporting Alessandro Marescotti, PeaceLink and citizens of Taranto and Tamburi, exchanges with scientists and doctors including Annamaria Moschetti, and the Senate hearing where analysis produced in Omniscope was presented. This first edition establishes the spine; the documented archive will deepen it.</p>
+      <p class="kicker">A continuing public record</p>
+      <p>The project has developed through public posts and alerts, work supporting Alessandro Marescotti, PeaceLink and citizens of Taranto and Tamburi, exchanges with scientists and doctors including Annamaria Moschetti, and the Senate hearing where analysis produced in Omniscope was presented. I am preserving that record here as source material is organised, including the longer history across LinkedIn, X and Facebook.</p>
     </div>
   </div>
 </section>
