@@ -22,40 +22,101 @@ image: /assets/images/x-2025-benzene-peak-42-54.jpg
   <div class="shell">
     <div class="timeline">
       <div class="timeline-item">
-        <div class="timeline-year">2019</div>
+        <div class="timeline-year">Jan 2019</div>
         <div class="timeline-content">
-          <h3>Turn public files into a public instrument</h3>
-          <p>I use Omniscope to combine and visualise ARPA Puglia measurements, publishing an interactive dashboard where citizens can compare pollutants, stations, periods and the underlying observations. <a href="https://www.linkedin.com/posts/antoniopoggi_air-pollution-looking-after-my-hometown-activity-6492131517387677696-Vak2">See the original 2019 post ↗</a></p>
+          <h3>Offer Taranto an open analytical instrument</h3>
+          <p>I publish an automatically updated Omniscope report using ARPA Puglia measurements and invite citizens to explore the data and build something useful together. The stated purpose is to make the information accessible and democratic. <a href="https://www.facebook.com/antonio.poggi.7/posts/pfbid02B6QiLXkBh5uxVgz5QBq2CSBYbmwcmdkeR6gxkwNdR5BX8Eivw4A88KQrYkgyotcKl">Read the original public Facebook post ↗</a></p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">Feb 2019</div>
+        <div class="timeline-content">
+          <h3>Make the report useful to its intended audience</h3>
+          <p>The history is extended back to 2016, new comparison views are added, and an Italian version removes a language barrier for citizens of Taranto and the surrounding province. <a href="https://www.facebook.com/antonio.poggi.7/posts/pfbid02zVEBXgRYkghrh2PDZAXkxV9mM145G2kY5bQA3zSgQjSovj6fyAhBeZ4K1iB8CSM1l">See the historical comparison update ↗</a> <a href="https://www.facebook.com/antonio.poggi.7/posts/pfbid0pkHXBjifZvvh9GhoeCAX6nTi93e5idFzJyDQB6Mm3jxvSeoc1EnNZ7DKwJG6PuqGl">See the Italian release ↗</a></p>
         </div>
       </div>
       <div class="timeline-item">
         <div class="timeline-year">2020</div>
         <div class="timeline-content">
           <h3>Turn the dashboard into a sentinel</h3>
-          <p>The project begins publishing real-time alerts when pollution measurements are high. Several months later, a city committee is using the report daily to monitor pollution and raise awareness. <a href="https://www.linkedin.com/posts/antoniopoggi_build-a-twitter-bot-posting-data-alerts-activity-6594598864131633152-FsG5">See the alert-bot post ↗</a> <a href="https://www.linkedin.com/posts/antoniopoggi_air-pollution-looking-after-my-hometown-activity-6699265348731969536-b6yh">See the report in civic use ↗</a></p>
+          <p>The project begins publishing alerts when pollution measurements are high. The public record documents the highest benzene value then measured by the ARPA stations, followed by 14 further peaks around Via Orsini in two months. <a href="https://www.facebook.com/antonio.poggi.7/posts/pfbid02VyTbigUNT7RNDYaweXinsckzuDtxV13wR3AgvMDZSYe1yxEaaFJh5KCarpaBH68fl">See the November record ↗</a> <a href="https://www.facebook.com/antonio.poggi.7/posts/pfbid077ye689tG7Zx37VCrJiBdB2dmWTUP6ao6v6giBG5jUDXy7Wcy1jB9rHYjVYwj5Vrl">See the two-month alert record ↗</a></p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2021</div>
+        <div class="timeline-content">
+          <h3>Use the data to expose events and gaps</h3>
+          <p>Posts document repeated sulphur-dioxide exceedances, a severe combination of pollutants, a failed Tamburi monitoring station, and another benzene record. The work is not only identifying peaks. It is asking public bodies to investigate and making missing monitoring visible. <a href="https://www.facebook.com/antonio.poggi.7/posts/pfbid092cAsRhahh6zScoVyPFkSszzLpdyFRF8CgXgb1sa6PvLADCnbG5NCPVxyTaWLEmql">See the SO₂ warning ↗</a> <a href="https://www.facebook.com/antonio.poggi.7/posts/pfbid02JGVzFvvccoW9bB7Wpp5reFyc1pBxMSMvLRmsWeQcY1dBwXgSBKD7tmrRP1Tn47Fkl">See the request concerning missing monitoring ↗</a> <a href="https://www.facebook.com/antonio.poggi.7/posts/pfbid02nJrfYpoG4FwKnAapDcGC3xkUT7TnzpC9ap2ieCNcG6CF9GRh1kDB7CiQrBc1TNerl">See the December benzene record ↗</a></p>
         </div>
       </div>
       <div class="timeline-item">
         <div class="timeline-year">2023</div>
         <div class="timeline-content">
-          <h3>Automate the complete path to a public alert</h3>
-          <p>Omniscope performs the data extraction, processing, analysis, reporting, screenshot generation and threshold alert as one automated workflow. <a href="https://visokio.com/2023/12/04/how-to-create-a-twitter-x-bot-posting-data-driven-content-with-charts/">Read the complete implementation tutorial ↗</a> or <a href="https://www.linkedin.com/posts/antoniopoggi_omniscope-data-alerts-bot-on-twitter-activity-7027376994170380288-axNZ">see it in action on LinkedIn ↗</a>.</p>
+          <h3>Join automation to a citizen network</h3>
+          <p>Omniscope performs the extraction, analysis, reporting, screenshot generation and threshold alert as one workflow. Alessandro Marescotti describes receiving my benzene graphs from London and relaying the warnings through PeaceLink’s local network. It captures the real system: automation supplies timely evidence, while people give it civic reach. <a href="https://www.facebook.com/antonio.poggi.7/posts/pfbid0UZLMKVp1kUsSMtknVQ4vDQp1jVaYYfaDq7pbAs669Dmq9MXKy2CWmvEaLV3wo8Kpl">Read Marescotti’s account ↗</a> <a href="https://visokio.com/2023/12/04/how-to-create-a-twitter-x-bot-posting-data-driven-content-with-charts/">Read the implementation tutorial ↗</a></p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">Feb 2024</div>
+        <div class="timeline-content">
+          <h3>Carry the analysis into the institutional record</h3>
+          <p>Work with PeaceLink develops into an analysis of more than 80,000 hourly benzene measurements. Alessandro Marescotti presents the evidence during an Italian Senate hearing on ILVA, and the official slides credit my data analysis and processing with Omniscope. <a href="https://www.facebook.com/antonio.poggi.7/posts/pfbid02LJzabpp5u9StwKmJzZx5xWUoABoDY5cQiRShaYnKgNpWG3kohKMTENnVNH4dhfU7l">See my public record of the presentation ↗</a> <a href="https://www.senato.it/application/xmanager/projects/leg19/attachments/documento_evento_procedura_commissione/files/000/429/055/2024_02_06_PeaceLink_slides.pdf">Open the official Senate slides ↗</a></p>
         </div>
       </div>
       <div class="timeline-item">
         <div class="timeline-year">2024–25</div>
         <div class="timeline-content">
-          <h3>Support civic analysis</h3>
-          <p>Work with PeaceLink and local advocates develops into longer historical analyses, including more than 80,000 hourly benzene measurements and evidence presented during an Italian Senate hearing. The report is used to monitor trends and communicate worrying observations publicly. <a href="https://www.linkedin.com/posts/antoniopoggi_airpollution-dataanalytics-datademocratization-activity-7150864697590792192-LqFl">Read the five-year reflection ↗</a></p>
+          <h3>Move from isolated peaks to structural patterns</h3>
+          <p>The analysis links hourly peaks with wind direction, compares PM10 in Tamburi and Talsano across 2017–2025, and examines the reduction in benzene alongside falling steel production. The findings preserve necessary caution: an observed relationship is evidence to investigate, not automatic proof of one cause. <a href="https://www.facebook.com/antonio.poggi.7/posts/pfbid02pj5nWHWyvY8AjtKciDAiu4H7unwLuxDYtsLF1yt2NtzHSwLQ4Wxxtp8Rfyw5LL7Tl">See the wind-direction analysis ↗</a> <a href="https://www.facebook.com/antonio.poggi.7/posts/pfbid02GaRs4hXu715EVSw5QxbbTzyVDHG6EP768JRcHWEV9mcYjMQN9qESZnA678xos77Dl">See the long-term PM10 comparison ↗</a> <a href="https://www.facebook.com/antonio.poggi.7/posts/pfbid02owDQHvtYAkHvUsm8CdXVirfZLTAch6wyXvBbCJNuny9SgWou4d33eBpCrX5Ay1Hfl">See the benzene and production analysis ↗</a></p>
         </div>
       </div>
       <div class="timeline-item">
         <div class="timeline-year">2026</div>
         <div class="timeline-content">
-          <h3>Democratise the instrument</h3>
-          <p>I customise an open AirGradient monitor so it can send measurements directly and privately to an Omniscope workflow, with no vendor cloud, middleware, home server or inbound router port.</p>
+          <h3>Move the alerts to Facebook and democratise the instrument</h3>
+          <p><a href="https://www.facebook.com/people/Aria-Taranto/61592438068219/">Aria Taranto</a> becomes the current public channel for hourly benzene monitoring and links every alert back to live Omniscope reports. The earlier <a href="https://x.com/OmniscopeBot">OmniscopeBot account on X</a> remains the historical alert archive. In parallel, I customise an open AirGradient monitor so it can send measurements directly and privately to an Omniscope workflow, with no vendor cloud, middleware, home server or inbound router port.</p>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="shell">
+    <div class="section-heading">
+      <p class="eyebrow">Live public resources</p>
+      <h2>Follow the alert, then inspect the evidence.</h2>
+      <p class="lead">The social channel provides immediacy. The Omniscope reports provide the measurements, context and history behind the post.</p>
+    </div>
+    <div class="work-grid">
+      <a class="work-card" href="https://www.facebook.com/people/Aria-Taranto/61592438068219/">
+        <span class="tag">Current alerts · Facebook</span>
+        <div>
+          <h3>Aria Taranto</h3>
+          <p>Current public alerts generated from the Omniscope workflow, focused on hourly benzene measurements around Taranto.</p>
+        </div>
+      </a>
+      <a class="work-card" href="https://x.com/OmniscopeBot">
+        <span class="tag">Historical alerts · X</span>
+        <div>
+          <h3>OmniscopeBot archive</h3>
+          <p>The earlier automated alert channel, preserving the history before publication moved to Facebook.</p>
+        </div>
+      </a>
+      <a class="work-card" href="https://omniscope.app/Air+Pollution/Italy/Taranto.iox/r/Aria+Taranto/">
+        <span class="tag">Interactive report · Omniscope</span>
+        <div>
+          <h3>Aria Taranto report</h3>
+          <p>Explore the current measurements and the analytical context linked from the Facebook alerts.</p>
+        </div>
+      </a>
+      <a class="work-card" href="https://omniscope.app/Air+Pollution/Italy/Taranto.iox/r/Benzene/">
+        <span class="tag">Historical analysis · Omniscope</span>
+        <div>
+          <h3>Benzene report</h3>
+          <p>Investigate benzene measurements, peaks and longer-term patterns through the public interactive report.</p>
+        </div>
+      </a>
     </div>
   </div>
 </section>
@@ -181,7 +242,7 @@ image: /assets/images/x-2025-benzene-peak-42-54.jpg
   <div class="shell">
     <div class="archive-note">
       <p class="kicker">A continuing public record</p>
-      <p>The project has developed through public posts and alerts, work supporting Alessandro Marescotti, PeaceLink and citizens of Taranto and Tamburi, exchanges with scientists and doctors including Annamaria Moschetti, and the Senate hearing where analysis produced in Omniscope was presented. I am preserving that record here as source material is organised, including the longer history across LinkedIn, X and Facebook.</p>
+      <p>The project has developed through public posts and alerts, work supporting Alessandro Marescotti, PeaceLink and citizens of Taranto and Tamburi, exchanges with scientists and doctors including Annamaria Moschetti, and the Senate hearing where analysis produced in Omniscope was presented. The linked Facebook posts now preserve key moments from the project’s origin, public warnings, calls for institutional action, civic collaboration and longer-term analysis.</p>
     </div>
   </div>
 </section>

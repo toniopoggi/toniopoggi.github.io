@@ -41,6 +41,10 @@ workflow, without a vendor cloud, middleware service, always-on computer or
 inbound router port.
 
 - [The air-quality work](https://antoniopoggi.com/air-quality/)
+- [Current hourly benzene alerts on Facebook](https://www.facebook.com/people/Aria-Taranto/61592438068219/)
+- [Historical alert archive on X](https://x.com/OmniscopeBot)
+- [Public Aria Taranto report](https://omniscope.app/Air+Pollution/Italy/Taranto.iox/r/Aria+Taranto/)
+- [Public benzene report](https://omniscope.app/Air+Pollution/Italy/Taranto.iox/r/Benzene/)
 - [From an open sensor to Omniscope](https://antoniopoggi.com/writing/airgradient-directly-to-omniscope/)
 - [AirGradient to Omniscope firmware](https://github.com/toniopoggi/airgradient-omniscope)
 - [Android controller](https://github.com/toniopoggi/airgradient-omniscope-android)

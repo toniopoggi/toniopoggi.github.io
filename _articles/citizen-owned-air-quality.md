@@ -60,8 +60,17 @@ allowed people to:
 - filter and drill into the underlying observations;
 - access the raw data behind the visualisations.
 
+In the
+[public post that launched the project](https://www.facebook.com/antonio.poggi.7/posts/pfbid02B6QiLXkBh5uxVgz5QBq2CSBYbmwcmdkeR6gxkwNdR5BX8Eivw4A88KQrYkgyotcKl),
+I described it as something placed at everyone’s disposal: a report for
+citizens to explore, question and potentially build on together.
+
 I later extended the history back to January 2016 and published an Italian
-version so the report would be useful to the people it was intended for.
+version so the report would be useful to the people it was intended for. The
+[historical comparison update](https://www.facebook.com/antonio.poggi.7/posts/pfbid02zVEBXgRYkghrh2PDZAXkxV9mM145G2kY5bQA3zSgQjSovj6fyAhBeZ4K1iB8CSM1l)
+and
+[Italian release](https://www.facebook.com/antonio.poggi.7/posts/pfbid0pkHXBjifZvvh9GhoeCAX6nTi93e5idFzJyDQB6Mm3jxvSeoc1EnNZ7DKwJG6PuqGl)
+remain part of the public record.
 
 This was my practical interpretation of data democratisation: not merely
 releasing a file, but making the information understandable, explorable and
@@ -99,13 +108,21 @@ The alert included the measurement, a screenshot and a link to the interactive
 Omniscope report. Anyone seeing the warning could move from the social post to
 the underlying evidence and explore it.
 
-The public channel has changed over time. The original automation posted on X;
-more recently I moved the alerts to Facebook. The purpose has not changed:
+The public channel has changed over time. The original automation posted
+through [OmniscopeBot on X](https://x.com/OmniscopeBot). The current alerts are
+published through the
+[Aria Taranto Facebook page](https://www.facebook.com/people/Aria-Taranto/61592438068219/).
+The purpose has not changed:
 
 > Do not leave an important measurement buried in a dataset, waiting for
 > somebody to go looking for it.
 
 An alert creates attention. The interactive report provides context.
+
+Two public Omniscope views sit behind the current channel:
+
+- the [Aria Taranto report](https://omniscope.app/Air+Pollution/Italy/Taranto.iox/r/Aria+Taranto/);
+- the [historical benzene report](https://omniscope.app/Air+Pollution/Italy/Taranto.iox/r/Benzene/).
 
 This distinction matters. A screenshot alone can be dramatic but static. A
 report allows people to examine the preceding hours, compare stations, inspect
@@ -129,6 +146,13 @@ Omniscope dashboard to monitor trends, investigate worrying events and
 communicate environmental data. PeaceLink described the work as an experiment
 in environmental data democratisation and citizen-led monitoring.
 
+One public account captures the collaboration particularly well. In 2023,
+[Alessandro Marescotti described receiving my graphs of benzene peaks from
+London](https://www.facebook.com/antonio.poggi.7/posts/pfbid0UZLMKVp1kUsSMtknVQ4vDQp1jVaYYfaDq7pbAs669Dmq9MXKy2CWmvEaLV3wo8Kpl)
+while local “ecosentinels” supplied observations from the ground and PeaceLink
+relayed the warning. That combination of automation, remote analysis and local
+citizen presence is the real instrument.
+
 The collaboration eventually led to a historical analysis of more than 80,000
 hourly benzene measurements from the Via Machiavelli station between 2013 and
 2023.
@@ -144,7 +168,9 @@ concerning ILVA. The
 credit me for the data analysis and its processing with Omniscope, alongside
 the wider group that contributed to the work. The results were also reported by
 [ISDE](https://www.isdenews.it/?p=30644) and other environmental and news
-organisations.
+organisations. My
+[contemporaneous public post](https://www.facebook.com/antonio.poggi.7/posts/pfbid02LJzabpp5u9StwKmJzZx5xWUoABoDY5cQiRShaYnKgNpWG3kohKMTENnVNH4dhfU7l)
+links the analytical work directly to Marescotti’s presentation.
 
 I am careful not to overstate what a dashboard can achieve. Software does not
 remove pollution, make policy or replace scientific and institutional
@@ -165,6 +191,13 @@ Recent reports have compared PM10 concentrations in Tamburi and Talsano,
 examined the relationship between falling steel production and benzene levels,
 and followed changes between 2023 and 2025 across Cokeria, Meteo Parchi, Via
 Orsini and Via Machiavelli.
+
+The public record includes the
+[2017–2025 PM10 comparison between Tamburi and
+Talsano](https://www.facebook.com/antonio.poggi.7/posts/pfbid02GaRs4hXu715EVSw5QxbbTzyVDHG6EP768JRcHWEV9mcYjMQN9qESZnA678xos77Dl)
+and the
+[analysis of falling benzene alongside lower steel
+production](https://www.facebook.com/antonio.poggi.7/posts/pfbid02owDQHvtYAkHvUsm8CdXVirfZLTAch6wyXvBbCJNuny9SgWou4d33eBpCrX5Ay1Hfl).
 
 These analyses show why history matters.
 
