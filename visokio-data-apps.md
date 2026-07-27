@@ -75,7 +75,7 @@ description: How Omniscope turns data workflows into internal tools, branded ana
       <p class="lead">Public measurements enter a workflow, are prepared and analysed, update an interactive report, trigger threshold logic and produce a public alert. In 2026, a customised AirGradient monitor began calling an Omniscope workflow directly. No middleware service sits between the physical instrument and the analytical application.</p>
     </div>
     <figure class="feature-image">
-      <img src="{{ '/assets/images/omniscope-workflow-ingestion.png' | relative_url }}" alt="Omniscope workflow receiving and processing measurements from an AirGradient monitor" width="1920" height="1080" loading="lazy">
+      <img src="{{ '/assets/images/omniscope-workflow-ingestion.png' | relative_url }}" alt="Omniscope workflow receiving and processing measurements from an AirGradient monitor" width="1039" height="229" loading="lazy">
       <figcaption>A sensor, a parameterised Workflow Execution API call and a complete Omniscope project. <a href="{{ '/writing/airgradient-directly-to-omniscope/' | relative_url }}">Read the end-to-end build ↗</a></figcaption>
     </figure>
   </div>

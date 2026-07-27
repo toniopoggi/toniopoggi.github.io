@@ -65,19 +65,34 @@ body_class: home
 <section class="section">
   <div class="shell">
     <div class="section-heading">
-      <p class="eyebrow">Selected writing</p>
-      <h2>Longer ideas, built from the work.</h2>
+      <p class="eyebrow">Three article series</p>
+      <h2>Fifteen field guides, built from the work.</h2>
     </div>
     <div class="article-list">
-      {% assign sorted_articles = site.articles | sort: 'date' | reverse %}
-      {% for article in sorted_articles limit: 3 %}
+      {% assign ai_articles = site.articles | where: 'cluster', 'ai' | sort: 'article_order' %}
+      {% assign product_articles = site.articles | where: 'cluster', 'products' | sort: 'article_order' %}
+      {% assign citizen_articles = site.articles | where: 'cluster', 'citizen' | sort: 'article_order' %}
+      {% assign article = ai_articles | first %}
+      <a class="article-row" href="{{ article.url | relative_url }}">
+        <span class="article-index">01</span>
+        <h3>{{ article.title }}</h3>
+        <p>{{ article.description }}</p>
+        <span class="arrow" aria-hidden="true">↗</span>
+      </a>
+      {% assign article = product_articles | first %}
+      <a class="article-row" href="{{ article.url | relative_url }}">
+        <span class="article-index">02</span>
+        <h3>{{ article.title }}</h3>
+        <p>{{ article.description }}</p>
+        <span class="arrow" aria-hidden="true">↗</span>
+      </a>
+      {% assign article = citizen_articles | first %}
         <a class="article-row" href="{{ article.url | relative_url }}">
-          <time datetime="{{ article.date | date_to_xmlschema }}">{{ article.date | date: "%Y" }}</time>
+          <span class="article-index">03</span>
           <h3>{{ article.title }}</h3>
           <p>{{ article.description }}</p>
           <span class="arrow" aria-hidden="true">↗</span>
         </a>
-      {% endfor %}
     </div>
     <div class="button-row">
       <a class="button" href="{{ '/writing/' | relative_url }}">All writing</a>

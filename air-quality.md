@@ -142,7 +142,7 @@ image: /assets/images/x-2025-benzene-peak-42-54.jpg
     </div>
     <div class="metric">
       <strong>63</strong>
-      <span>Observations over the project’s 27 µg/m³ acute reference level.</span>
+      <span>Observations over 27 µg/m³ in the February 2024 Senate dataset snapshot; later final reporting revised the 2023 count.</span>
     </div>
     <div class="metric">
       <strong>1 min</strong>
@@ -183,13 +183,14 @@ image: /assets/images/x-2025-benzene-peak-42-54.jpg
   <div class="shell">
     <div class="section-heading">
       <p class="eyebrow">Read the story</p>
-      <h2>From seven years of monitoring to one very geeky sensor.</h2>
+      <h2>Five field guides from public files to citizen-owned instruments.</h2>
+      <p class="lead">The implementation, the 80,000-measurement analysis, public accessibility, evidence-preserving alerts and the responsibilities that come with owning the complete monitoring path.</p>
     </div>
     <div class="article-list">
-      {% assign sorted_articles = site.articles | sort: 'date' %}
-      {% for article in sorted_articles %}
+      {% assign citizen_articles = site.articles | where: 'cluster', 'citizen' | sort: 'article_order' %}
+      {% for article in citizen_articles %}
         <a class="article-row" href="{{ article.url | relative_url }}">
-          <time datetime="{{ article.date | date_to_xmlschema }}">{{ article.date | date: "%Y" }}</time>
+          <span class="article-index">0{{ article.article_order }}</span>
           <h3>{{ article.title }}</h3>
           <p>{{ article.description }}</p>
           <span class="arrow" aria-hidden="true">↗</span>
@@ -224,7 +225,7 @@ image: /assets/images/x-2025-benzene-peak-42-54.jpg
         <span class="tag">Historical analysis · 2013–2023</span>
         <div>
           <h3>Eleven years of benzene measurements</h3>
-          <p>More than 80,000 hourly observations reveal that 32 of the 63 readings over 27 µg/m³ occurred in 2023 alone.</p>
+          <p>The February 2024 dataset snapshot contained 63 readings over 27 µg/m³, including 32 in 2023. ARPA’s later final report recorded 47 for 2023, making the snapshot date part of the evidence.</p>
         </div>
       </a>
       <a class="work-card" href="https://www.peacelink.it/citizenscience/a/50007.html">

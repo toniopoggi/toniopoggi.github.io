@@ -31,7 +31,7 @@ description: The evolution of Visokio and Omniscope from visual data exploration
         <div class="timeline-year">2005</div>
         <div class="timeline-content">
           <h3>Omniscope 1.0</h3>
-          <p>The first release brings multiple coordinated visualisations into one desktop application. Selections in one view flow through the others, turning data exploration into an interactive process. <a href="https://archives.visokio.com/kb/kb.visokio.com/contact.html">See the archived official history ↗</a></p>
+          <p>The first release brings multiple coordinated visualisations into one desktop application. Selections in one view flow through the others, turning data exploration into an interactive process. <a href="https://web.archive.org/web/20230401230919/http://archives.visokio.com/kb/kb.visokio.com/contact.html">See the archived official history ↗</a></p>
         </div>
       </div>
       <div class="timeline-item">
@@ -42,11 +42,11 @@ description: The evolution of Visokio and Omniscope from visual data exploration
         </div>
       </div>
       <div class="timeline-item">
-        <div class="timeline-year">2016-19</div>
+        <div class="timeline-year">2015-18</div>
         <div class="timeline-content">
           <h3>The platform is rebuilt for the web</h3>
-          <p>A multi-year engineering programme creates a new generation of Omniscope. Its web-based report architecture, workflow system and extension model provide the foundation for server deployment, collaboration and a much wider class of data applications.</p>
-          <p><a href="https://www.linkedin.com/posts/antoniopoggi_omniscope-is-activity-6467892735952199680-SZDG">Read my 2019 release post ↗</a></p>
+          <p>A three-year engineering programme creates a new generation of Omniscope, publicly released on 12 November 2018. Its web-based report architecture, workflow system and extension model provide the foundation for server deployment, collaboration and a much wider class of data applications.</p>
+          <p><a href="https://www.linkedin.com/posts/antoniopoggi_omniscope-is-activity-6467892735952199680-SZDG">Read my release reflection ↗</a></p>
         </div>
       </div>
       <div class="timeline-item">

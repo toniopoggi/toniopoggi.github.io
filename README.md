@@ -52,5 +52,6 @@ inbound router port.
 ## Writing and public work
 
 - [Articles and notes](https://antoniopoggi.com/writing/)
+- [Search all articles and site guides](https://antoniopoggi.com/directory/)
 - [LinkedIn](https://www.linkedin.com/in/antoniopoggi)
 - [GitHub](https://github.com/toniopoggi)

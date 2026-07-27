@@ -116,10 +116,10 @@ description: Antonio Poggi’s work at Visokio and the evolution of Omniscope fr
         </div>
       </div>
       <div class="timeline-item">
-        <div class="timeline-year">2019</div>
+        <div class="timeline-year">2018</div>
         <div class="timeline-content">
-          <h3>A rebuilt Omniscope arrives</h3>
-          <p>After a multi-year engineering effort, the new web-based generation establishes the foundation for workflows, reports, extensibility and deployment at a much wider scale.</p>
+          <h3>The rebuilt Omniscope is released</h3>
+          <p>After a multi-year engineering effort, the new web-based generation is publicly released on 12 November, establishing the foundation for workflows, reports, extensibility and deployment at a much wider scale.</p>
         </div>
       </div>
       <div class="timeline-item">
@@ -215,6 +215,32 @@ description: Antonio Poggi’s work at Visokio and the evolution of Omniscope fr
         <div>
           <h3>Verifiable AI analytics</h3>
           <p>What changes when models can operate a mature analytics platform without hiding the work.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="shell">
+    <div class="section-heading">
+      <p class="eyebrow">New field guides</p>
+      <h2>From AI questions to complete data products.</h2>
+      <p class="lead">Ten original articles turn the product record into practical architecture: how models operate governed tools, how evidence remains inspectable, and how a prototype becomes something people can depend on.</p>
+    </div>
+    <div class="work-grid">
+      <a class="work-card" href="{{ '/writing/#verifiable-ai' | relative_url }}">
+        <span class="tag">5 articles · AI and verification</span>
+        <div>
+          <h3>Verifiable and private AI analytics</h3>
+          <p>LLMs as planners, governed tool use, local deployment and the route from a question to an inspectable artefact.</p>
+        </div>
+      </a>
+      <a class="work-card" href="{{ '/writing/#data-products' | relative_url }}">
+        <span class="tag">5 articles · Product and operations</span>
+        <div>
+          <h3>Building complete data products</h3>
+          <p>Integrated preparation, analytics and reporting; operational maturity; internal products; and the boundary between blocks and code.</p>
         </div>
       </a>
     </div>

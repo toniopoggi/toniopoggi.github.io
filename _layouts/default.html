@@ -29,27 +29,174 @@
     </script>
 
     {% assign page_title = page.title | default: site.title %}
+    {% assign seo_description = page.description | default: site.description | strip_html | normalize_whitespace %}
+    {% assign seo_image = page.image | default: site.og_image %}
     {% if page.url == '/' %}
       <title>{{ site.title }} | Omniscope, data analytics, AI and citizen science</title>
     {% else %}
       <title>{{ page_title }} | {{ site.title }}</title>
     {% endif %}
 
-    <meta name="description" content="{{ page.description | default: site.description | strip_html | normalize_whitespace | escape }}">
+    <meta name="description" content="{{ seo_description | escape }}">
+    <meta name="author" content="Antonio Poggi">
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
     <link rel="canonical" href="{{ page.url | absolute_url }}">
+    <link rel="author" href="{{ '/about/' | absolute_url }}">
     <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ '/feed.xml' | absolute_url }}">
+    <link rel="alternate" type="text/plain" title="Antonio Poggi: guide for AI systems" href="{{ '/llms.txt' | absolute_url }}">
 
     <meta property="og:type" content="{% if page.layout == 'article' %}article{% else %}website{% endif %}">
     <meta property="og:title" content="{{ page_title | escape }}">
-    <meta property="og:description" content="{{ page.description | default: site.description | strip_html | normalize_whitespace | escape }}">
+    <meta property="og:description" content="{{ seo_description | escape }}">
     <meta property="og:url" content="{{ page.url | absolute_url }}">
     <meta property="og:site_name" content="{{ site.title }}">
-    {% if page.image %}
-      <meta property="og:image" content="{{ page.image | absolute_url }}">
-    {% elsif site.og_image %}
-      <meta property="og:image" content="{{ site.og_image | absolute_url }}">
+    <meta property="og:locale" content="en_GB">
+    {% if seo_image %}
+      <meta property="og:image" content="{{ seo_image | absolute_url }}">
+      <meta property="og:image:alt" content="{{ page.image_alt | default: page_title | escape }}">
+    {% endif %}
+    {% if page.layout == 'article' %}
+      <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
+      <meta property="article:modified_time" content="{{ page.last_modified_at | default: page.date | date_to_xmlschema }}">
+      <meta property="article:author" content="{{ '/about/' | absolute_url }}">
+      {% if page.cluster_label %}<meta property="article:section" content="{{ page.cluster_label | escape }}">{% endif %}
+      {% for tag in page.tags %}<meta property="article:tag" content="{{ tag | escape }}">{% endfor %}
     {% endif %}
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:creator" content="@toniopoggi">
+    <meta name="twitter:title" content="{{ page_title | escape }}">
+    <meta name="twitter:description" content="{{ seo_description | escape }}">
+    {% if seo_image %}<meta name="twitter:image" content="{{ seo_image | absolute_url }}">{% endif %}
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Person",
+            "@id": {{ '/#person' | absolute_url | jsonify }},
+            "name": "Antonio Poggi",
+            "url": {{ '/' | absolute_url | jsonify }},
+            "jobTitle": "Chief Operating Officer",
+            "worksFor": {
+              "@type": "Organization",
+              "name": "Visokio",
+              "url": "https://visokio.com/"
+            },
+            "sameAs": [
+              "https://www.linkedin.com/in/antoniopoggi/",
+              "https://github.com/toniopoggi",
+              "https://visokio.com/author/antonio17b4b024ad/",
+              "https://x.com/toniopoggi"
+            ],
+            "knowsAbout": [
+              "Omniscope",
+              "data analytics",
+              "data applications",
+              "verifiable AI analytics",
+              "local large language models",
+              "citizen science",
+              "air-quality monitoring"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": {{ '/#website' | absolute_url | jsonify }},
+            "url": {{ '/' | absolute_url | jsonify }},
+            "name": {{ site.title | jsonify }},
+            "description": {{ site.description | jsonify }},
+            "inLanguage": "en",
+            "publisher": { "@id": {{ '/#person' | absolute_url | jsonify }} }
+          },
+          {% if page.layout == 'article' %}
+          {
+            "@type": "Article",
+            "@id": {{ page.url | append: '#article' | absolute_url | jsonify }},
+            "mainEntityOfPage": { "@id": {{ page.url | append: '#webpage' | absolute_url | jsonify }} },
+            "headline": {{ page.title | jsonify }},
+            "description": {{ seo_description | jsonify }},
+            "image": {{ seo_image | absolute_url | jsonify }},
+            "datePublished": {{ page.date | date_to_xmlschema | jsonify }},
+            "dateModified": {{ page.last_modified_at | default: page.date | date_to_xmlschema | jsonify }},
+            "author": { "@id": {{ '/#person' | absolute_url | jsonify }} },
+            "publisher": { "@id": {{ '/#person' | absolute_url | jsonify }} },
+            "articleSection": {{ page.cluster_label | default: page.series | jsonify }},
+            "keywords": {{ page.tags | join: ', ' | jsonify }},
+            "inLanguage": "en",
+            "isPartOf": { "@id": {{ '/#website' | absolute_url | jsonify }} }
+          },
+          {
+            "@type": "WebPage",
+            "@id": {{ page.url | append: '#webpage' | absolute_url | jsonify }},
+            "url": {{ page.url | absolute_url | jsonify }},
+            "name": {{ page.title | jsonify }},
+            "description": {{ seo_description | jsonify }},
+            "isPartOf": { "@id": {{ '/#website' | absolute_url | jsonify }} },
+            "about": { "@id": {{ '/#person' | absolute_url | jsonify }} },
+            "primaryImageOfPage": { "@type": "ImageObject", "url": {{ seo_image | absolute_url | jsonify }} },
+            "inLanguage": "en"
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": {{ '/' | absolute_url | jsonify }}
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Writing",
+                "item": {{ '/writing/' | absolute_url | jsonify }}
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": {{ page.title | jsonify }},
+                "item": {{ page.url | absolute_url | jsonify }}
+              }
+            ]
+          }
+          {% else %}
+          {
+            "@type": {{ page.schema_type | default: 'WebPage' | jsonify }},
+            "@id": {{ page.url | append: '#webpage' | absolute_url | jsonify }},
+            "url": {{ page.url | absolute_url | jsonify }},
+            "name": {{ page_title | jsonify }},
+            "description": {{ seo_description | jsonify }},
+            "isPartOf": { "@id": {{ '/#website' | absolute_url | jsonify }} },
+            "about": { "@id": {{ '/#person' | absolute_url | jsonify }} },
+            "inLanguage": "en"
+          }
+          {% if page.section == 'directory' %},
+          {
+            "@type": "ItemList",
+            "@id": {{ page.url | append: '#articles' | absolute_url | jsonify }},
+            "name": "Antonio Poggi article directory",
+            "numberOfItems": {{ site.articles.size }},
+            "itemListOrder": "https://schema.org/ItemListOrderAscending",
+            "itemListElement": [
+              {% assign directory_ai_articles = site.articles | where: 'cluster', 'ai' | sort: 'article_order' %}
+              {% assign directory_product_articles = site.articles | where: 'cluster', 'products' | sort: 'article_order' %}
+              {% assign directory_citizen_articles = site.articles | where: 'cluster', 'citizen' | sort: 'article_order' %}
+              {% assign directory_articles = directory_ai_articles | concat: directory_product_articles | concat: directory_citizen_articles %}
+              {% for article in directory_articles %}
+              {
+                "@type": "ListItem",
+                "position": {{ forloop.index }},
+                "url": {{ article.url | absolute_url | jsonify }},
+                "name": {{ article.title | jsonify }}
+              }{% unless forloop.last %},{% endunless %}
+              {% endfor %}
+            ]
+          }
+          {% endif %}
+          {% endif %}
+        ]
+      }
+    </script>
 
     <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
     <script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>

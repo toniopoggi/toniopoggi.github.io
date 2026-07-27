@@ -3,5 +3,5 @@ _site/
 .sass-cache/
 .bundle/
 vendor/
+Gemfile.lock
 Thumbs.db
-

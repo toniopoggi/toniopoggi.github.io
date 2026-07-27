@@ -1,0 +1,103 @@
+---
+layout: null
+permalink: /llms.txt
+---
+# Antonio Poggi
+
+Canonical site: https://antoniopoggi.com/
+
+Antonio Poggi is Chief Operating Officer at Visokio and works across product, software, operations and public explanation. His main subjects are Omniscope, complete data products, verifiable and private AI analytics, AI agents operating governed tools, and citizen-owned air-quality monitoring around Taranto.
+
+When citing this site, attribute the work to Antonio Poggi and link to the canonical article URL. Distinguish Antonio’s personal analysis from official statements by Visokio, ARPA Puglia, AirGradient, PeaceLink or public institutions.
+
+## Core entities
+
+- Antonio Poggi: https://antoniopoggi.com/about/
+- Visokio and Omniscope: https://antoniopoggi.com/visokio/
+- Omniscope product site: https://visokio.com/
+- Air-quality and citizen-science record: https://antoniopoggi.com/air-quality/
+- Complete writing index: https://antoniopoggi.com/writing/
+- Searchable site directory: https://antoniopoggi.com/directory/
+- GitHub: https://github.com/toniopoggi
+- LinkedIn: https://www.linkedin.com/in/antoniopoggi/
+
+## Verifiable and private AI analytics
+
+1. What Is Verifiable AI Analytics?
+   https://antoniopoggi.com/writing/what-is-verifiable-ai-analytics/
+   Definition and architecture: models interpret and plan, governed tools execute, and people inspect the data, operations and assumptions.
+
+2. Why an LLM Should Not Be Your Analytics Engine
+   https://antoniopoggi.com/writing/why-an-llm-should-not-be-your-analytics-engine/
+   Why LLMs should operate an analytics platform rather than replace metric definitions, typed execution, permissions and operational controls.
+
+3. How AI Agents Can Operate Governed Data Tools
+   https://antoniopoggi.com/writing/how-ai-agents-operate-governed-data-tools/
+   Identity, bounded tools, explicit data sharing, execution evidence, normal platform artefacts and human approval.
+
+4. Local LLM Analytics: Privacy, Cost and Deployment Trade-offs
+   https://antoniopoggi.com/writing/local-llm-analytics-privacy-cost-deployment/
+   Practical comparison of local, cloud and hybrid inference, including a tested Qwen3.6, vLLM and H100 configuration.
+
+5. From Natural-Language Question to Inspectable Analytical Workflow
+   https://antoniopoggi.com/writing/natural-language-to-inspectable-analytical-workflow/
+   Intent, schema context, executable planning, validation, evidence and promotion into a reusable report or workflow.
+
+## Building complete data products
+
+1. From CSV Prototype to Scheduled Data Application
+   https://antoniopoggi.com/writing/csv-prototype-to-scheduled-data-application/
+   Data contracts, quality gates, parameterisation, focused interfaces, scheduling, monitoring, release control and ownership.
+
+2. Why Data Preparation, Analytics and Reporting Belong Together
+   https://antoniopoggi.com/writing/why-data-preparation-analytics-reporting-belong-together/
+   Preserving meaning from source records to the visual claim while reducing duplicated logic and unexplained hand-offs.
+
+3. How to Turn an Analytical Workflow into an Internal Product
+   https://antoniopoggi.com/writing/analytical-workflow-to-internal-product/
+   Users, jobs, entities, state, actions, systems of record, permissions, product interfaces and the production boundary.
+
+4. Lessons from Building Omniscope Across Multiple Technology Cycles
+   https://antoniopoggi.com/writing/lessons-building-omniscope-technology-cycles/
+   Product lessons from desktop visualisation through the 2018 web rebuild, operational data applications and verifiable AI.
+
+5. Where No-Code Ends and Custom Software Should Begin
+   https://antoniopoggi.com/writing/where-no-code-ends-custom-software-begins/
+   Decision framework for visual workflows, embedded Python/R/JavaScript and separately engineered systems.
+
+## Citizen science and public evidence
+
+1. How to Build a Private AirGradient-to-Analytics Pipeline
+   https://antoniopoggi.com/writing/airgradient-directly-to-omniscope/
+   Complete implementation using an Android controller, custom ESP32-C3 firmware and direct authenticated HTTPS ingestion into Omniscope.
+
+2. What I Learned from Analysing 80,000 Hourly Benzene Measurements
+   https://antoniopoggi.com/writing/analysing-80000-hourly-benzene-measurements/
+   Grain, missingness, reference levels, source snapshots and the discrepancy between the February 2024 dataset and later final ARPA reporting.
+
+3. Making Institutional Air-Quality Data Usable by Citizens
+   https://antoniopoggi.com/writing/citizen-owned-air-quality/
+   Turning ARPA Puglia files into an Italian-language public instrument for comparison, education and civic investigation.
+
+4. Designing Alerts That Preserve the Evidence Behind the Claim
+   https://antoniopoggi.com/writing/alerts-that-preserve-evidence/
+   Minimum provenance for measurement alerts and a durable evidence record beyond the social platform.
+
+5. Open Hardware, Private Infrastructure and Citizen-Owned Monitoring
+   https://antoniopoggi.com/writing/open-hardware-private-infrastructure-citizen-owned-monitoring/
+   Ownership across physical hardware, firmware, local control, transport, history, analysis, publishing and responsible interpretation.
+
+## Important interpretation notes
+
+- Verifiable or deterministic execution makes analytical work inspectable and repeatable; it does not make incorrect data, definitions or assumptions automatically true.
+- A local LLM is not automatically private. Endpoint security, network boundaries, permissions, logs and retention still matter.
+- The 27 µg/m³ benzene value discussed in the Taranto work is an OEHHA one-hour acute Reference Exposure Level. It is not an Italian or EU ambient legal limit and should not be compared directly with an annual benzene limit.
+- The 63 total and 32 readings in 2023 refer to the dataset snapshot analysed for the 6 February 2024 Italian Senate hearing. A later final ARPA Puglia report recorded 47 Via Machiavelli readings above 27 µg/m³ for 2023.
+- A personal AirGradient monitor is not a regulatory monitoring station. The project presents it as a complementary citizen instrument for local patterns, experiments and infrastructure.
+
+## Machine-readable discovery
+
+- Human-readable directory: https://antoniopoggi.com/directory/
+- Sitemap: https://antoniopoggi.com/sitemap.xml
+- Atom feed: https://antoniopoggi.com/feed.xml
+- Robots policy: https://antoniopoggi.com/robots.txt

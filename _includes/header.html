@@ -7,6 +7,10 @@
     </a>
 
     <div class="header-actions">
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        {% include nav-links.html %}
+      </nav>
+
       <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode" aria-pressed="false">
         <span class="theme-icon theme-icon-light" aria-hidden="true">☀︎</span>
         <span class="theme-icon theme-icon-dark" aria-hidden="true">☾</span>
@@ -15,10 +19,7 @@
       <details class="nav-menu">
         <summary aria-label="Open navigation"><span></span><span></span></summary>
         <nav aria-label="Primary navigation">
-          <a href="{{ '/visokio/' | relative_url }}" {% if page.section == 'visokio' %}aria-current="page"{% endif %}>Visokio</a>
-          <a href="{{ '/air-quality/' | relative_url }}" {% if page.section == 'air-quality' %}aria-current="page"{% endif %}>Air Quality</a>
-          <a href="{{ '/writing/' | relative_url }}" {% if page.section == 'writing' %}aria-current="page"{% endif %}>Writing</a>
-          <a href="{{ '/about/' | relative_url }}" {% if page.section == 'about' %}aria-current="page"{% endif %}>About</a>
+          {% include nav-links.html %}
         </nav>
       </details>
     </div>

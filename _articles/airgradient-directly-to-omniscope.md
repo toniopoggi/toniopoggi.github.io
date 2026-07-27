@@ -1,17 +1,33 @@
 ---
-title: "AirGradient Directly to Omniscope"
-subtitle: "Building a private air-quality pipeline with an Android app, custom ESP32-C3 firmware and no middleware."
-date: 2026-07-26
-eyebrow: "Technical build · Open source"
-series: "Taranto to the sensor"
-read_time: "13 min"
-description: "The complete build: an Android controller, custom AirGradient firmware and a direct authenticated HTTPS pipeline into an Omniscope workflow."
+title: "How to Build a Private AirGradient-to-Analytics Pipeline"
+subtitle: "An Android controller, custom ESP32-C3 firmware and one direct, authenticated path from an open monitor to Omniscope."
+date: 2026-07-27 00:11:00 +0100
+last_modified_at: 2026-07-27 21:25:00 +0100
+eyebrow: "Citizen science · Technical build"
+series: "Citizen science and public evidence"
+cluster: citizen
+cluster_label: "Citizen science and public evidence"
+article_order: 1
+read_time: "12 min"
+description: "Build a private AirGradient analytics pipeline using custom ESP32-C3 firmware, local Android control and direct HTTPS ingestion into Omniscope."
 image: /assets/images/omniscope-report-overview.png
 image_alt: "Interactive Omniscope report populated directly by an AirGradient ONE monitor"
+image_width: 793
+image_height: 465
 image_caption: "The finished result: particulate matter, VOC, NOx, temperature, humidity and CO₂ measurements sent directly from the AirGradient ONE."
-next_url: /air-quality/
-next_label: "Project timeline"
-next_title: "From public data to citizen-owned instruments"
+tags:
+  - AirGradient
+  - private air-quality monitoring
+  - ESP32-C3
+  - citizen science
+  - Omniscope Workflow API
+takeaways:
+  - "The monitor sends one complete measurement directly to a private Omniscope workflow every minute; no vendor cloud, collector, broker or inbound router port sits in the data path."
+  - "Local control and remote analytics coexist: the Android app stays on the LAN while the device makes an outbound authenticated HTTPS request."
+  - "The minimal design accepts visible gaps instead of hiding a flash-backed retry queue, and it still needs least-privilege credentials, TLS validation and recovery."
+next_url: /writing/analysing-80000-hourly-benzene-measurements/
+next_label: "Next in the series"
+next_title: "What I learned from analysing 80,000 hourly benzene measurements"
 ---
 
 I bought an AirGradient ONE to monitor the air in my room.
@@ -73,7 +89,7 @@ http://airgradient_SERIAL.local
 
 or the monitor’s numeric private IP address.
 
-![AirGradient current measurement JSON with serial number and obsolete firmware value redacted](/assets/images/airgradient-json-redacted-wide.png)
+<img src="{{ '/assets/images/airgradient-json-redacted-wide.png' | relative_url }}" alt="AirGradient current measurement JSON with serial number and obsolete firmware value redacted" width="951" height="1654" loading="lazy">
 
 *A real `/measures/current` payload from the I-9PSL. The device serial number
 and obsolete pre-fix firmware version are deliberately blacked out.*
@@ -161,7 +177,7 @@ general-purpose route to public hosts.
 The app has no account, advertising, analytics SDK, cloud API or third-party
 runtime library.
 
-![Download page for the private AirGradient Omniscope Android controller](/assets/images/android-download-page.png)
+<img src="{{ '/assets/images/android-download-page.png' | relative_url }}" alt="Download page for the private AirGradient Omniscope Android controller" width="791" height="728" loading="lazy">
 
 *The companion Android controller is distributed as a directly installable APK
 with its source and checksum. It operates only on the local network and uses no
@@ -200,7 +216,10 @@ These fields can be updated through the Android interface or directly through
 The complete endpoint is configurable, not merely the host. The workflow block
 and parameter name are configurable too. Moving the Omniscope project,
 renaming the receiving block or changing the parameter does not require
-another firmware build.
+another firmware build **within the current certificate trust boundary**. This
+release embeds the Sectigo E46 trust anchor used by `*.omniscope.me`; moving to
+a host whose certificate chains to another root requires a firmware and
+trust-anchor change.
 
 The integration can also be enabled or disabled without reflashing.
 
@@ -231,6 +250,10 @@ Omniscope exposes a
 [Workflow REST API](https://help.visokio.com/support/solutions/articles/42000073133-workflow-rest-api).
 A `POST` to a project’s `/w/execute` endpoint can set parameters and execute
 named workflow blocks.
+
+Workflow API execution is disabled by default. The receiving project and
+dedicated device account must be granted only the execution permission this
+integration requires.
 
 Once every 60 seconds, the firmware:
 
@@ -279,9 +302,14 @@ Basic authentication is acceptable here only because it is protected by TLS.
 The endpoint must use `https://`; the firmware rejects ordinary HTTP
 destinations.
 
-The firmware contains the public root certificate needed to validate the
-current `*.omniscope.me` certificate chain. It does **not** contain the
-wildcard certificate, its private key or any private server material.
+The connection and response timeouts are both 15 seconds. Any HTTP `2xx`
+response is treated as success; other responses and transport failures are
+logged.
+
+The firmware contains the Sectigo E46 public trust anchor needed to validate
+the current `*.omniscope.me` certificate chain. It does **not** contain the
+wildcard certificate, its private key or any private server material. A host
+that chains to another root needs a firmware change.
 
 The private key remains on the Omniscope server where it belongs.
 
@@ -331,7 +359,7 @@ first report, also protects against premature data modelling. Questions change.
 It is useful to preserve enough information to answer tomorrow’s questions
 without redesigning the device request.
 
-![Omniscope workflow from HTTP input through schema and field organisation to historical data and the report](/assets/images/omniscope-workflow-ingestion.png)
+<img src="{{ '/assets/images/omniscope-workflow-ingestion.png' | relative_url }}" alt="Omniscope workflow from HTTP input through schema and field organisation to historical data and the report" width="1039" height="229" loading="lazy">
 
 *The receiving workflow. The complete device payload enters through HTTP,
 passes through schema and field organisation, is appended to the historical
@@ -349,7 +377,7 @@ The report can then expose:
 - repeated daily or weekly patterns;
 - event-level exploration.
 
-![AirGradient measurements visible simultaneously in the Omniscope report and device log, with the serial number redacted](/assets/images/report-and-device-logs-redacted.png)
+<img src="{{ '/assets/images/report-and-device-logs-redacted.png' | relative_url }}" alt="AirGradient measurements visible simultaneously in the Omniscope report and device log, with the serial number redacted" width="1672" height="941" loading="lazy">
 
 *The same live stream seen at both ends: measurements in the Omniscope report
 and the device log. The monitor serial number is covered by an opaque
@@ -375,7 +403,7 @@ Stack overflow
 The original networking task had a 4096-byte stack. Establishing TLS and
 constructing the request needed more working memory than that.
 
-![ESP32-C3 serial console showing a networking-task stack overflow, with device configuration and identifiers redacted](/assets/images/firmware-stack-overflow-redacted.png)
+<img src="{{ '/assets/images/firmware-stack-overflow-redacted.png' | relative_url }}" alt="ESP32-C3 serial console showing a networking-task stack overflow, with device configuration and identifiers redacted" width="1660" height="948" loading="lazy">
 
 *The first TLS attempt failed with a stack overflow. The device serial number,
 private configuration object and obsolete firmware version have been blacked
@@ -393,7 +421,7 @@ The workflow executed and a new point appeared in the report.
 
 This was the least abstract and most satisfying test of the architecture.
 
-![Omniscope report showing AirGradient particulate matter, VOC and NOx measurements](/assets/images/omniscope-report-pm-voc-nox.png)
+<img src="{{ '/assets/images/omniscope-report-pm-voc-nox.png' | relative_url }}" alt="Omniscope report showing AirGradient particulate matter, VOC and NOx measurements" width="1244" height="546" loading="lazy">
 
 *The practical success condition: the workflow has accepted the requests and
 the incoming PM, VOC and NOₓ observations are visible in the report.*
@@ -437,7 +465,7 @@ Using desktop Chrome, Edge or another compatible Chromium browser:
 
 The page can also restore stock firmware.
 
-![AirGradient to Omniscope browser firmware installer with obsolete version number redacted](/assets/images/firmware-installer-redacted.png)
+<img src="{{ '/assets/images/firmware-installer-redacted.png' | relative_url }}" alt="AirGradient to Omniscope browser firmware installer with obsolete version number redacted" width="1188" height="1324" loading="lazy">
 
 *The Chrome/Edge USB installer. This earlier screenshot shows the final
 interface, but its obsolete pre-fix version number is deliberately hidden.*
@@ -553,10 +581,10 @@ The complete implementation is public:
 - [Omniscope Workflow REST API](https://help.visokio.com/support/solutions/articles/42000073133-workflow-rest-api)
 - [Omniscope live API explorer](https://public.omniscope.me/_global_/api/)
 
-The complete path is now:
-
-> Sense locally. Configure locally. Push privately. Process and explore in
-> Omniscope.
+When the first point appeared in the Omniscope report, the architecture stopped
+being a diagram. The monitor was reading its sensors, using configuration I
+could inspect and adding its own measurement to history without an intermediary
+cloud.
 
 No mystery cloud in the middle, and just enough firmware debugging to make it
 fun.

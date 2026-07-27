@@ -18,7 +18,7 @@ body_class: article-page
     </div>
     {% if page.image %}
       <figure class="shell article-lead-image">
-        <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | escape }}" width="1600" height="900" fetchpriority="high">
+        <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | escape }}" width="{{ page.image_width | default: 1600 }}" height="{{ page.image_height | default: 900 }}" fetchpriority="high">
         {% if page.image_caption %}<figcaption>{{ page.image_caption }}</figcaption>{% endif %}
       </figure>
     {% endif %}
@@ -34,9 +34,43 @@ body_class: article-page
       <button class="copy-link" type="button" data-copy-url="{{ page.url | absolute_url }}">Copy link</button>
     </aside>
     <div class="prose">
+      {% if page.takeaways %}
+        <aside class="article-summary" aria-labelledby="article-summary-title">
+          <p class="kicker" id="article-summary-title">In brief</p>
+          <ul>
+            {% for takeaway in page.takeaways %}
+              <li>{{ takeaway }}</li>
+            {% endfor %}
+          </ul>
+        </aside>
+      {% endif %}
       {{ content }}
     </div>
   </div>
+
+  {% assign series_articles = site.articles | where: "cluster", page.cluster | sort: "article_order" %}
+  {% if series_articles.size > 1 %}
+    <nav class="shell article-series-nav" aria-labelledby="article-series-title">
+      <div class="article-series-heading">
+        <p class="eyebrow">In this series</p>
+        <h2 id="article-series-title">{{ page.series }}</h2>
+      </div>
+      <ol class="article-series-list">
+        {% for article in series_articles %}
+          <li{% if article.url == page.url %} class="is-current"{% endif %}>
+            <span>{{ article.article_order | prepend: '0' | slice: -2, 2 }}</span>
+            {% if article.url == page.url %}
+              <strong aria-current="page">{{ article.title }}</strong>
+              <small>Current article</small>
+            {% else %}
+              <a href="{{ article.url | relative_url }}">{{ article.title }}</a>
+              <span aria-hidden="true">↗</span>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ol>
+    </nav>
+  {% endif %}
 
   <aside class="shell article-next">
     <p class="eyebrow">Continue exploring</p>
@@ -55,4 +89,3 @@ body_class: article-page
     {% endif %}
   </aside>
 </article>
-
