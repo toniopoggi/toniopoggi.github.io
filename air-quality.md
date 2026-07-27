@@ -22,24 +22,31 @@ image: /assets/images/x-2025-benzene-peak-42-54.jpg
   <div class="shell">
     <div class="timeline">
       <div class="timeline-item">
-        <div class="timeline-year">2018–19</div>
+        <div class="timeline-year">2019</div>
         <div class="timeline-content">
           <h3>Turn public files into a public instrument</h3>
-          <p>I use Omniscope to combine and visualise ARPA Puglia measurements, publishing an interactive dashboard where citizens can compare pollutants, stations, periods and the underlying observations.</p>
+          <p>I use Omniscope to combine and visualise ARPA Puglia measurements, publishing an interactive dashboard where citizens can compare pollutants, stations, periods and the underlying observations. <a href="https://www.linkedin.com/posts/antoniopoggi_air-pollution-looking-after-my-hometown-activity-6492131517387677696-Vak2">See the original 2019 post ↗</a></p>
         </div>
       </div>
       <div class="timeline-item">
-        <div class="timeline-year">2019–24</div>
+        <div class="timeline-year">2020</div>
         <div class="timeline-content">
-          <h3>Make monitoring operational</h3>
-          <p>The history expands, an Italian edition is added, and the project grows into hourly benzene monitoring with automated public alerts linking back to interactive evidence.</p>
+          <h3>Turn the dashboard into a sentinel</h3>
+          <p>The project begins publishing real-time alerts when pollution measurements are high. Several months later, a city committee is using the report daily to monitor pollution and raise awareness. <a href="https://www.linkedin.com/posts/antoniopoggi_build-a-twitter-bot-posting-data-alerts-activity-6594598864131633152-FsG5">See the alert-bot post ↗</a> <a href="https://www.linkedin.com/posts/antoniopoggi_air-pollution-looking-after-my-hometown-activity-6699265348731969536-b6yh">See the report in civic use ↗</a></p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2023</div>
+        <div class="timeline-content">
+          <h3>Automate the complete path to a public alert</h3>
+          <p>Omniscope performs the data extraction, processing, analysis, reporting, screenshot generation and threshold alert as one automated workflow. <a href="https://www.linkedin.com/posts/antoniopoggi_omniscope-data-alerts-bot-on-twitter-activity-7027376994170380288-axNZ">See the automated workflow in action ↗</a></p>
         </div>
       </div>
       <div class="timeline-item">
         <div class="timeline-year">2024–25</div>
         <div class="timeline-content">
           <h3>Support civic analysis</h3>
-          <p>Work with PeaceLink and local advocates develops into longer historical analyses, including more than 80,000 hourly benzene measurements and evidence presented during an Italian Senate hearing.</p>
+          <p>Work with PeaceLink and local advocates develops into longer historical analyses, including more than 80,000 hourly benzene measurements and evidence presented during an Italian Senate hearing. The report is used to monitor trends and communicate worrying observations publicly. <a href="https://www.linkedin.com/posts/antoniopoggi_airpollution-dataanalytics-datademocratization-activity-7150864697590792192-LqFl">Read the five-year reflection ↗</a></p>
         </div>
       </div>
       <div class="timeline-item">
@@ -49,6 +56,19 @@ image: /assets/images/x-2025-benzene-peak-42-54.jpg
           <p>I customise an open AirGradient monitor so it can send measurements directly and privately to an Omniscope workflow, with no vendor cloud, middleware, home server or inbound router port.</p>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="shell">
+    <div class="section-heading">
+      <p class="eyebrow">From data to public action</p>
+      <h2>The dashboard became an operational civic instrument.</h2>
+      <p class="lead">An important measurement does not remain buried in a file. The system refreshes the public data, detects a threshold event, creates the evidence and publishes an alert that links people back to the interactive report.</p>
+    </div>
+    <div class="statement">
+      <blockquote>Public measurements → Omniscope workflow → historical report → threshold detection → screenshot and alert → interactive evidence</blockquote>
     </div>
   </div>
 </section>
@@ -73,12 +93,27 @@ image: /assets/images/x-2025-benzene-peak-42-54.jpg
 <section class="section">
   <div class="shell">
     <div class="section-heading">
-      <p class="eyebrow">The evidence</p>
-      <h2>Peaks need attention. History gives them meaning.</h2>
+      <p class="eyebrow">The 2023–2025 record</p>
+      <h2>The first visible reversal since monitoring began.</h2>
+      <p class="lead">The public data shows fewer daily benzene peaks and falling average values, particularly around Tamburi. The change coincides with reduced production and emissions from the former ILVA site. It is a relationship worth examining, not proof of a single cause.</p>
     </div>
     <figure class="feature-image">
-      <img src="{{ '/assets/images/x-2025-benzene-trend-2023-2025.jpg' | relative_url }}" alt="Omniscope report comparing benzene peaks and averages across Taranto monitoring stations" width="1008" height="1402" loading="lazy">
-      <figcaption>Benzene peaks and average concentrations across Cokeria, Meteo Parchi, Via Orsini and Via Machiavelli, 2023–2025.</figcaption>
+      <img src="{{ '/assets/images/benzene-trend-linkedin-2023-2025.jpg' | relative_url }}" alt="Omniscope report showing the number and average of benzene peaks across four Taranto monitoring stations from 2023 to 2025" width="800" height="1112" loading="lazy">
+      <figcaption>Benzene peaks and average concentrations across Cokeria, Meteo Parchi, Tamburi Via Orsini and Taranto Via Machiavelli, 2023–2025. <a href="https://www.linkedin.com/posts/antoniopoggi_benzene-taranto-datademocratisation-activity-7406674550211629057-qY1t">Read the original analysis in Italian ↗</a></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="section">
+  <div class="shell">
+    <div class="section-heading">
+      <p class="eyebrow">Analytical discipline</p>
+      <h2>A relationship in the data is not automatically an explanation.</h2>
+      <p class="lead">An earlier analysis found lower black-carbon readings when stronger winds blew from the north. That could reflect pollution being dispersed, limitations in the monitors under particular conditions, or another factor. The report makes the pattern inspectable. It does not turn correlation into proof.</p>
+    </div>
+    <figure class="feature-image">
+      <img src="{{ '/assets/images/air-quality-wind-black-carbon.jpg' | relative_url }}" alt="Omniscope analysis comparing wind direction and speed with black-carbon readings around Taranto" width="800" height="425" loading="lazy">
+      <figcaption>Exploring wind conditions alongside black-carbon measurements. <a href="https://www.linkedin.com/posts/antoniopoggi_airpollution-dataviz-omniscope-activity-6612327702907228160-afWw">Read the original methodological note ↗</a></figcaption>
     </figure>
   </div>
 </section>
