@@ -24,7 +24,7 @@ description: The evolution of Visokio and Omniscope from visual data exploration
         <div class="timeline-year">2002</div>
         <div class="timeline-content">
           <h3>Visokio is founded</h3>
-          <p>Visokio is founded in London; Omniscope 1.0 follows in 2005. <a href="https://visokio.com/">See the current company history ↗</a></p>
+          <p>Visokio is founded in London; Omniscope 1.0 follows in 2005. Its name combines “vis”, from visualisation, with “okio”, echoing “occhio”, the Italian word for eye. The aim is still to help people see and understand their data. <a href="https://visokio.com/">See the current company history ↗</a></p>
         </div>
       </div>
       <div class="timeline-item">

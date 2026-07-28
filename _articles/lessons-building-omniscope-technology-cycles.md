@@ -1,6 +1,6 @@
 ---
 title: "Lessons from Building Omniscope Across Multiple Technology Cycles"
-subtitle: "What survived desktop, web, cloud, no-code and AI—and what I would do differently after more than twenty years building Omniscope."
+subtitle: "What survived desktop, web, cloud, no-code and AI—and what I would do differently after fifteen years building Omniscope with the Visokio team."
 date: 2026-07-27 00:09:00 +0100
 last_modified_at: 2026-07-28 12:11:00 +0100
 eyebrow: "Product history · Engineering"
@@ -137,6 +137,11 @@ could own the complete data path, and we could continue developing one
 integrated product instead of splitting every capability into a separately
 funded category.
 
+Direct support has been part of that independence. Customers work with people
+who can change the product, whether they need application support, technical
+help or data-solutions engineering. That contact solves the immediate problem
+and can also shape the next improvement in Omniscope.
+
 It also made Omniscope harder to describe. In February 2026, a customer and a
 prospect independently told me the same thing on the same day: the website had
 not made the product clear, but after seeing it they wondered why everybody was
@@ -223,6 +228,6 @@ investigate and build, and turn the useful result into something others can
 operate. We want customers to keep control of the data and logic while using
 new models where they genuinely help.
 
-More than twenty years after starting this work, I am still involved in the
-engineering, still experimenting and still trying to explain the thing we have
-built. Apparently I meant it when I said I would never stop being a developer.
+Fifteen years after joining Visokio, I am still involved in the engineering,
+still experimenting and still trying to explain the thing we have built.
+Apparently I meant it when I said I would never stop being a developer.

@@ -105,7 +105,7 @@ description: Antonio Poggi’s work at Visokio and the evolution of Omniscope fr
         <div class="timeline-year">2002</div>
         <div class="timeline-content">
           <h3>Visokio is founded in London</h3>
-          <p>An independent software company begins with the aim of making complex data easier to work with visually.</p>
+          <p>An independent software company begins with the aim of making complex data easier to work with visually. Its name combines “vis”, from visualisation, with “okio”, echoing “occhio”, the Italian word for eye. The aim is still to help people see and understand their data.</p>
         </div>
       </div>
       <div class="timeline-item">
@@ -172,7 +172,7 @@ description: Antonio Poggi’s work at Visokio and the evolution of Omniscope fr
     <div class="section-heading">
       <p class="eyebrow">My work</p>
       <h2>My role crosses operations, product and engineering.</h2>
-      <p class="lead">I run the operations at Visokio and stay close to the product and engineering. Depending on the week, that can mean a customer problem, a prototype, a release, a commercial decision, an AI experiment or trying—again—to explain a product that does rather more than one easily named thing.</p>
+      <p class="lead">I run operations at Visokio, stay close to product and engineering, and support customers directly when real workflows need expert help. Depending on the week, that can mean investigating a problem, building a prototype, preparing a release, making a commercial decision or testing where AI is genuinely useful.</p>
     </div>
     <div class="archive-note">
       <p class="kicker">A personal constant</p>

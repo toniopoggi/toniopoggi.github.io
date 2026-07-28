@@ -22,7 +22,7 @@ description: How Omniscope turns data workflows into internal tools, branded ana
     <h2>From general platform to focused experience</h2>
     <div class="body-copy">
       <p>Omniscope gives the builder a broad environment for working with data, but the person using the finished application may need only a file upload, a few controls and the result. The Data Quality Inspector is a small example: drop in a CSV or Excel file and the application runs the Omniscope workflow, profiles the data and returns a focused report on missing values, duplicates and outliers.</p>
-      <p>In a recent customer-success prototype, the boundary was different. SQLite held customers, deals, renewals and activities as the transactional system of record, while Omniscope handled the visible application, preparation, validation, editing and reporting. The useful interface came from combining the two deliberately, not from pretending one component should do every job.</p>
+      <p>In a recent internal prototype for a customer-success application, the boundary was different. SQLite held customers, deals, renewals and activities as the transactional system of record, while Omniscope handled the visible application, preparation, validation, editing and reporting. The useful interface came from combining the two deliberately, not from pretending one component should do every job.</p>
       <p><a href="https://visokio.com/2022/05/31/no-code-development-platform-omniscope-build-data-web-apps/">Read the original data web applications article ↗</a></p>
     </div>
   </div>

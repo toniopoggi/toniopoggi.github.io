@@ -14,7 +14,7 @@ description: About Antonio Poggi, COO at Visokio, and his work across Omniscope,
 <section class="section">
   <div class="shell bio-grid">
     <div class="bio-copy">
-      <p>I’m Antonio Poggi. I grew up in Taranto, live in London and am COO at Visokio, where I have spent more than twenty years helping to build Omniscope.</p>
+      <p>I’m Antonio Poggi. I grew up in Taranto, live in London and am COO at Visokio, where I have worked on Omniscope for about fifteen years.</p>
       <p>My work moves between product direction, software, analytics, customer problems, releases and communication. I still like getting close to the implementation: build a prototype, follow the data, find the awkward failure, fix it and get the complete thing running. Omniscope comes from that same instinct. It connects data, preparation, analysis, reporting and automation in one workspace, so the logic does not disappear between a collection of separate tools.</p>
       <p>The air-quality work documented here began as a way to apply the skills and software I had helped develop to a public problem I care about in Taranto. It has grown into public reports, automated benzene alerts and a privately operated AirGradient monitor.</p>
       <p>This site brings together the things I have helped build, the experiments I run because I am curious, and the public work I want to preserve somewhere more useful than a social-media feed.</p>
