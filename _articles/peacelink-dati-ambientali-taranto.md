@@ -2,7 +2,7 @@
 title: "Il lavoro con PeaceLink sui dati ambientali di Taranto"
 subtitle: "Dalle prime verifiche sui dati pubblici ai report automatici, agli avvisi sul benzene e alle analisi portate nelle sedi istituzionali."
 date: 2026-07-28 00:20:00 +0100
-last_modified_at: 2026-07-28 17:15:08 +0100
+last_modified_at: 2026-07-28 17:45:42 +0100
 lang: it
 locale: it_IT
 permalink: /it/scritti/peacelink-dati-ambientali-taranto/
@@ -18,6 +18,11 @@ image_alt: "Grafico delle misurazioni orarie di benzene superiori a 27 microgram
 image_width: 1600
 image_height: 900
 image_caption: "La fotografia del dataset usato nel febbraio 2024: 32 misurazioni sopra il riferimento nel 2023, contro 31 nei dieci anni precedenti. Fonte: documentazione presentata da PeaceLink al Senato."
+social_image: /assets/images/x-2025-benzene-peak-42-54.jpg
+social_image_alt: "Report Omniscope con le medie orarie del benzene in via Machiavelli, i picchi sopra il riferimento e una mappa di Taranto"
+social_image_width: 1920
+social_image_height: 1080
+social_image_type: image/jpeg
 tags:
   - PeaceLink
   - Taranto
