@@ -144,6 +144,11 @@ e
 [Benzene](https://omniscope.app/Air+Pollution/Italy/Taranto.iox/r/Benzene/)
 permettono ancora oggi di passare dall'avviso all'analisi che lo ha generato.
 
+<figure>
+  <img src="{{ '/assets/images/articles/benzene-monitoring-taranto-january-2023.jpg' | relative_url }}" alt="Report Omniscope del 15 gennaio 2023 con le medie orarie del benzene nelle centraline Adige, CISI e via Machiavelli e la loro posizione sulla mappa di Taranto" width="2048" height="1023" loading="lazy">
+  <figcaption>Il monitoraggio del 15 gennaio 2023 confrontava le medie orarie del benzene in tre centraline e manteneva visibile il contesto geografico. <a href="https://x.com/toniopoggi/status/1614616366610268160">Apri il post originale su X ↗</a></figcaption>
+</figure>
+
 Nel febbraio 2023 Alessandro raccontò questo modo di lavorare a modo suo, con
 parecchia ironia, in
 [“Antonio e i picchi del benzene”](https://www.peacelink.it/lds/a/49359.html).
@@ -177,6 +182,11 @@ preparare comunicati e fornire materiale a giornalisti e gruppi di lavoro. Nel
 e da altre testate. Prima di alcuni interventi preparavo grafici aggiornati,
 controllavo l'orario dei picchi, la direzione del vento, le lacune nei dati e
 l'eventuale presenza dello stesso fenomeno in più centraline.
+
+<figure>
+  <img src="{{ '/assets/images/articles/benzene-via-machiavelli-april-2024.jpg' | relative_url }}" alt="Grafico Omniscope delle medie orarie e della media mobile su otto ore del benzene in via Machiavelli dal 23 al 29 aprile 2024, con i riferimenti dichiarati nel report" width="1433" height="1213" loading="lazy">
+  <figcaption>Una settimana di monitoraggio in via Machiavelli, dal 23 al 29 aprile 2024: il report affiancava alle medie orarie la media mobile su otto ore e i riferimenti usati per interpretarle. <a href="https://x.com/toniopoggi/status/1785003707244912891">Apri il post originale su X ↗</a></figcaption>
+</figure>
 
 Nel suo
 [racconto del progetto come esperienza di citizen science](https://www.peacelink.it/citizenscience/a/50007.html),
