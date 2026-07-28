@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ site.lang | default: 'en' }}">
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -50,7 +50,7 @@
     <meta property="og:description" content="{{ seo_description | escape }}">
     <meta property="og:url" content="{{ page.url | absolute_url }}">
     <meta property="og:site_name" content="{{ site.title }}">
-    <meta property="og:locale" content="en_GB">
+    <meta property="og:locale" content="{{ page.locale | default: 'en_GB' }}">
     {% if seo_image %}
       <meta property="og:image" content="{{ seo_image | absolute_url }}">
       <meta property="og:image:alt" content="{{ page.image_alt | default: page_title | escape }}">
@@ -105,7 +105,7 @@
             "url": {{ '/' | absolute_url | jsonify }},
             "name": {{ site.title | jsonify }},
             "description": {{ site.description | jsonify }},
-            "inLanguage": "en",
+            "inLanguage": {{ site.lang | default: 'en' | jsonify }},
             "publisher": { "@id": {{ '/#person' | absolute_url | jsonify }} }
           },
           {% if page.layout == 'article' %}
@@ -122,7 +122,7 @@
             "publisher": { "@id": {{ '/#person' | absolute_url | jsonify }} },
             "articleSection": {{ page.cluster_label | default: page.series | jsonify }},
             "keywords": {{ page.tags | join: ', ' | jsonify }},
-            "inLanguage": "en",
+            "inLanguage": {{ page.lang | default: site.lang | default: 'en' | jsonify }},
             "isPartOf": { "@id": {{ '/#website' | absolute_url | jsonify }} }
           },
           {
@@ -134,7 +134,7 @@
             "isPartOf": { "@id": {{ '/#website' | absolute_url | jsonify }} },
             "about": { "@id": {{ '/#person' | absolute_url | jsonify }} },
             "primaryImageOfPage": { "@type": "ImageObject", "url": {{ seo_image | absolute_url | jsonify }} },
-            "inLanguage": "en"
+            "inLanguage": {{ page.lang | default: site.lang | default: 'en' | jsonify }}
           },
           {
             "@type": "BreadcrumbList",
@@ -168,7 +168,7 @@
             "description": {{ seo_description | jsonify }},
             "isPartOf": { "@id": {{ '/#website' | absolute_url | jsonify }} },
             "about": { "@id": {{ '/#person' | absolute_url | jsonify }} },
-            "inLanguage": "en"
+            "inLanguage": {{ page.lang | default: site.lang | default: 'en' | jsonify }}
           }
           {% if page.section == 'directory' %},
           {
