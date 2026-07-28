@@ -8,7 +8,7 @@ description: Antonio Poggi’s work at Visokio and the evolution of Omniscope fr
   <div class="shell page-intro-grid">
     <div>
       <p class="eyebrow">Visokio · Omniscope</p>
-      <h1>I have spent more than twenty years helping to build Omniscope.</h1>
+      <h1>Over twenty years of real-world data experience, built into one product.</h1>
       <p class="lead">I’m COO at Visokio, the independent company behind Omniscope. The product has grown through several generations, but the job has stayed recognisable: help people get from raw data to a useful result without losing control of the logic along the way.</p>
     </div>
     <aside class="intro-aside">
