@@ -2,7 +2,7 @@
 title: "Il lavoro con PeaceLink sui dati ambientali di Taranto"
 subtitle: "Dalle prime verifiche sui dati pubblici ai report automatici, agli avvisi sul benzene e alle analisi portate nelle sedi istituzionali."
 date: 2026-07-28 00:20:00 +0100
-last_modified_at: 2026-07-28 00:20:00 +0100
+last_modified_at: 2026-07-28 17:15:08 +0100
 lang: it
 locale: it_IT
 permalink: /it/scritti/peacelink-dati-ambientali-taranto/
@@ -11,7 +11,7 @@ series: "Qualità dell’aria e partecipazione civica"
 cluster: citizen-it
 cluster_label: "Qualità dell’aria e partecipazione civica"
 article_order: 1
-read_time: "8 min"
+read_time: "10 min"
 description: "Come il lavoro sui dati ambientali di Taranto è diventato un supporto continuativo alle attività civiche e istituzionali di PeaceLink."
 image: /assets/images/articles/benzene-hourly-readings-2013-2023.png
 image_alt: "Grafico delle misurazioni orarie di benzene superiori a 27 microgrammi per metro cubo in via Machiavelli dal 2013 al 2023"
@@ -139,6 +139,26 @@ e
 [Benzene](https://omniscope.app/Air+Pollution/Italy/Taranto.iox/r/Benzene/)
 permettono ancora oggi di passare dall'avviso all'analisi che lo ha generato.
 
+Nel febbraio 2023 Alessandro raccontò questo modo di lavorare a modo suo, con
+parecchia ironia, in
+[“Antonio e i picchi del benzene”](https://www.peacelink.it/lds/a/49359.html).
+Io da Londra gli mandavo grafici e avvisi; lui li seguiva da Taranto, fra la
+scuola, la spesa e il telefono che continuava a notificare. Nell'articolo mi
+promuove scherzosamente a suo «guru digitale». Fa sorridere, ma racconta bene
+quanto il lavoro fosse ormai entrato nella quotidianità: dietro ogni
+segnalazione c'erano dati da controllare, un report da aprire e una richiesta di
+verifica da far arrivare a chi di competenza.
+
+Nella notte fra il 31 luglio e il 1° agosto 2023 la centralina ARPA di via
+Machiavelli registrò una media oraria di 85 µg/m³, il valore più alto osservato
+fino ad allora a Taranto. PeaceLink
+[documentò il picco e le verifiche successive](https://www.peacelink.it/tarantosociale/a/49602.html),
+precisando anche che quell'episodio non era stato intercettato in tempo reale da
+Omniscope per ragioni tecniche. La misurazione fu recuperata e documentata
+successivamente dai dati ufficiali. Anche questo fa parte della storia: il
+monitoraggio automatico dipende dalla continuità dell'intera catena tecnica e
+le eventuali lacune devono rimanere visibili.
+
 ## PeaceLink porta l'analisi fuori dal report
 
 Un sistema automatico può individuare una condizione e produrre un'immagine.
@@ -162,11 +182,32 @@ lavoro che ha reso utile il progetto. Io potevo concentrarmi sulla preparazione
 e sulla qualità del dato; PeaceLink poteva usarlo nel proprio lavoro sul
 territorio.
 
+## Dai singoli episodi alle serie storiche
+
+All'inizio del 2024 il lavoro si allargò ai confronti su periodi più lunghi.
+L'8 gennaio PeaceLink pubblicò
+[un confronto fra il 2021, il 2022 e il 2023](https://www.peacelink.it/tarantosociale/a/49828.html)
+basato sui dati ARPA disponibili per via Orsini ed elaborati con Omniscope. Nel
+2023 il benzene risultava in aumento del 14,93% rispetto al 2022 e il PM10 del
+22,09%; anche il 2022 era stato superiore al 2021 per entrambe le misure.
+
+Poche settimane dopo estesi l'analisi del benzene all'intero periodo 2016–2023,
+sempre per la centralina di via Orsini. La retta di tendenza elaborata con
+Omniscope indicava un andamento crescente della serie. L'analisi fu ripresa da
+*Repubblica Bari* e pubblicata da PeaceLink in
+[“Otto anni di benzene in aumento a Taranto nel quartiere Tamburi”](https://www.peacelink.it/ecologia/a/49861.html),
+che mi attribuisce esplicitamente l'elaborazione e il grafico.
+
+La retta descriveva la tendenza complessiva di quella serie: non significa che
+ogni anno fosse necessariamente peggiore del precedente e, da sola, non
+identifica la causa. Le valutazioni sullo stabilimento e sulle politiche
+industriali appartenevano a PeaceLink e agli autori degli articoli; il mio
+contributo riguardava i dati e l'analisi.
+
 ## Oltre 80.000 misurazioni per il Senato
 
-Fra la fine del 2023 e l'inizio del 2024 la collaborazione produsse una delle
-analisi più complete. Per l'audizione di PeaceLink al Senato del 6 febbraio
-2024 esaminai oltre 80.000 misurazioni orarie del benzene registrate in via
+Pochi giorni dopo, per l'audizione di PeaceLink al Senato del 6 febbraio 2024,
+esaminai oltre 80.000 misurazioni orarie del benzene registrate in via
 Machiavelli fra il 2013 e il 2023.
 
 Nel dataset disponibile al momento dell'analisi risultavano 63 misurazioni
@@ -225,7 +266,7 @@ giuridiche restano responsabilità di PeaceLink e degli specialisti coinvolti.
 
 <figure>
   <img src="{{ '/assets/images/benzene-trend-linkedin-2023-2025.jpg' | relative_url }}" alt="Report Omniscope sul numero e sul valore medio dei picchi giornalieri di benzene in quattro centraline di Taranto dal 2023 al 2025" width="800" height="1112" loading="lazy">
-  <figcaption>Nel periodo 2023–2025 il report mostrava meno picchi giornalieri e valori medi in calo, in particolare ai Tamburi. Qui il picco è una media giornaliera sopra 5 µg/m³: una misura diversa dagli episodi orari sopra 27 µg/m³. Il 2025 era ancora incompleto quando pubblicai l'analisi.</figcaption>
+  <figcaption>Nel periodo 2023–2025 il report mostrava meno picchi giornalieri e valori medi in calo, in particolare ai Tamburi. Qui il picco è una media giornaliera sopra 5 µg/m³: una misura diversa dagli episodi orari sopra 27 µg/m³. Il 2025 era ancora incompleto quando pubblicai l'analisi. Il confronto non è sovrapponibile alla serie 2016–2023 di via Orsini: cambiano il periodo, il numero di centraline e l'indicatore utilizzato.</figcaption>
 </figure>
 
 ## Competenze tecniche e conoscenza del territorio
