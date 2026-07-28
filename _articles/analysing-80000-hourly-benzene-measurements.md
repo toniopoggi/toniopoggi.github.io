@@ -24,7 +24,7 @@ tags:
   - Omniscope
 takeaways:
   - "Annual averages and hourly peaks answer different questions; do not collapse one into the other."
-  - "In the February 2024 Senate snapshot, 63 readings exceeded 27 µg/m³, including 32 in 2023; a later final ARPA report gave 47 for 2023, which is why the snapshot date must travel with the result."
+  - "In the public data available for the February 2024 Senate analysis, 63 readings exceeded 27 µg/m³, including 32 in 2023; ARPA’s final report used a more complete 2023 series and gave 47."
   - "That 27 µg/m³ OEHHA acute REL is a one-hour health reference, not an EU or Italian ambient legal limit and not proof of individual harm."
 next_url: /writing/citizen-owned-air-quality/
 next_label: "Next in the series"
@@ -127,31 +127,27 @@ source records all become relevant to a causal investigation. A single
 monitoring series can show when and where a pattern deserves examination. It
 cannot close every explanatory question.
 
-## A later official report gave a different count
+## The final ARPA report used a more complete series
 
-There is an important complication: the later final ARPA Puglia benzene report
-for 2023 records **47** Via
-Machiavelli observations above 27 µg/m³, not 32.
+The February hearing used the public data available at the time. That series
+was incomplete, and the Omniscope result—32 Via Machiavelli observations above
+27 µg/m³ in 2023—correctly described the records available for analysis.
 
-The exact
+The later final
 [ARPA Puglia 2023 benzene report](https://www.arpa.puglia.it/moduli/output_immagine.php?id=7864)
-contains that later official count.
+records **47** observations above 27 µg/m³ for the same station. Its 2023 series
+was more complete. The difference came from the state of the public source
+data, rather than the Omniscope calculation.
 
-The February hearing used an earlier dataset snapshot. I have not found a
-public reconciliation that explains the difference. It may involve validation,
-completion or revision of the source series, but the reason remains unresolved
-and should not be guessed away.
-
-The discrepancy made one requirement impossible to ignore:
+This makes one requirement impossible to ignore:
 
 > A result is not fully described by the query. It also needs the source
 > snapshot and its date.
 
-Anyone citing the 63/32 result should call it what it is: the dataset snapshot
-analysed and filed for the February 2024 hearing. The final 2023 ARPA report is
-a later version and should be cited for its final annual count.
-
-The discrepancy does not make the earlier analysis worthless. Hiding it would.
+Anyone citing the 63/32 result should describe it as the public dataset
+available for the February 2024 hearing and include its extraction date. The
+final 2023 ARPA report should be cited for the final annual count. The earlier
+analysis remains valid for the data available at that point.
 
 ## Missingness is evidence too
 

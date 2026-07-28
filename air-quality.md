@@ -53,7 +53,7 @@ image: /assets/images/x-2025-benzene-peak-42-54.jpg
         <div class="timeline-year">2023</div>
         <div class="timeline-content">
           <h3>The Omniscope alerts reach PeaceLink in Taranto</h3>
-          <p>I put extraction, analysis, reporting, screenshot generation and threshold alerts into one Omniscope workflow. Alessandro Marescotti describes receiving my benzene graphs from London and relaying the warnings through PeaceLink’s network in Taranto. <a href="https://www.facebook.com/antonio.poggi.7/posts/pfbid0UZLMKVp1kUsSMtknVQ4vDQp1jVaYYfaDq7pbAs669Dmq9MXKy2CWmvEaLV3wo8Kpl">Read Marescotti’s account ↗</a> <a href="https://visokio.com/2023/12/04/how-to-create-a-twitter-x-bot-posting-data-driven-content-with-charts/">Read the implementation tutorial ↗</a></p>
+          <p>I put extraction, analysis, reporting, screenshot generation and threshold alerts into one Omniscope workflow. Alessandro Marescotti describes receiving my benzene graphs from London and relaying the warnings through PeaceLink’s network in Taranto. <a href="https://www.facebook.com/antonio.poggi.7/posts/pfbid0UZLMKVp1kUsSMtknVQ4vDQp1jVaYYfaDq7pbAs669Dmq9MXKy2CWmvEaLV3wo8Kpl">Read Marescotti’s account ↗</a> <a href="https://visokio.com/2023/12/04/how-to-create-a-twitter-x-bot-posting-data-driven-content-with-charts/">Read the implementation tutorial ↗</a> <a href="{{ '/it/scritti/peacelink-dati-ambientali-taranto/' | relative_url }}" lang="it" hreflang="it">Read the full PeaceLink account in Italian ↗</a></p>
         </div>
       </div>
       <div class="timeline-item">
@@ -142,7 +142,7 @@ image: /assets/images/x-2025-benzene-peak-42-54.jpg
     </div>
     <div class="metric">
       <strong>63</strong>
-      <span>Observations over 27 µg/m³ in the February 2024 Senate dataset snapshot; later final reporting revised the 2023 count.</span>
+      <span>Observations over 27 µg/m³ in the public data available for the February 2024 Senate analysis; ARPA’s final report used a more complete 2023 series.</span>
     </div>
     <div class="metric">
       <strong>1 min</strong>
@@ -183,14 +183,23 @@ image: /assets/images/x-2025-benzene-peak-42-54.jpg
   <div class="shell">
     <div class="section-heading">
       <p class="eyebrow">Read the story</p>
-      <h2>Five articles on this air-quality work.</h2>
-      <p class="lead">The five articles below explain how I connected the open monitor, analysed the 80,000 hourly readings, made ARPA data easier to use, built the alerts and dealt with the responsibilities of running the complete monitoring path.</p>
+      <h2>The articles behind this air-quality work.</h2>
+      <p class="lead">The English series covers the open monitor, the 80,000 hourly readings, public ARPA data, evidence-preserving alerts and the complete monitoring path. The article in Italian brings together the work done with PeaceLink over time.</p>
     </div>
     <div class="article-list">
       {% assign citizen_articles = site.articles | where: 'cluster', 'citizen' | sort: 'article_order' %}
+      {% assign citizen_italian_articles = site.articles | where: 'cluster', 'citizen-it' | sort: 'article_order' %}
       {% for article in citizen_articles %}
         <a class="article-row" href="{{ article.url | relative_url }}">
           <span class="article-index">0{{ article.article_order }}</span>
+          <h3>{{ article.title }}</h3>
+          <p>{{ article.description }}</p>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </a>
+      {% endfor %}
+      {% for article in citizen_italian_articles %}
+        <a class="article-row" href="{{ article.url | relative_url }}" lang="it" hreflang="it">
+          <span class="article-index">IT</span>
           <h3>{{ article.title }}</h3>
           <p>{{ article.description }}</p>
           <span class="arrow" aria-hidden="true">↗</span>
@@ -225,7 +234,7 @@ image: /assets/images/x-2025-benzene-peak-42-54.jpg
         <span class="tag">Historical analysis · 2013–2023</span>
         <div>
           <h3>Eleven years of benzene measurements</h3>
-          <p>The February 2024 dataset snapshot contained 63 readings over 27 µg/m³, including 32 in 2023. ARPA’s later final report recorded 47 for 2023, so the snapshot date has to accompany the numbers.</p>
+          <p>The public data available for the February 2024 analysis contained 63 readings over 27 µg/m³, including 32 in 2023. ARPA’s final report used a more complete 2023 series and recorded 47.</p>
         </div>
       </a>
       <a class="work-card" href="https://www.peacelink.it/citizenscience/a/50007.html">

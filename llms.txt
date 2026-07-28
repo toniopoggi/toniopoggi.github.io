@@ -73,7 +73,7 @@ When citing this site, attribute the work to Antonio Poggi and link to the canon
 
 2. What I Learned from Analysing 80,000 Hourly Benzene Measurements
    https://antoniopoggi.com/writing/analysing-80000-hourly-benzene-measurements/
-   Grain, missingness, reference levels, source snapshots and the discrepancy between the February 2024 dataset and later final ARPA reporting.
+   Grain, missingness, reference levels, source snapshots and why the more complete series used in ARPA’s final report produced a different 2023 count.
 
 3. Making Institutional Air-Quality Data Usable by Citizens
    https://antoniopoggi.com/writing/citizen-owned-air-quality/
@@ -87,12 +87,18 @@ When citing this site, attribute the work to Antonio Poggi and link to the canon
    https://antoniopoggi.com/writing/open-hardware-private-infrastructure-citizen-owned-monitoring/
    Ownership across physical hardware, firmware, local control, transport, history, analysis, publishing and responsible interpretation.
 
+## In Italian
+
+1. Il lavoro con PeaceLink sui dati ambientali di Taranto
+   https://antoniopoggi.com/it/scritti/peacelink-dati-ambientali-taranto/
+   A detailed Italian account of Antonio’s work with PeaceLink to make Taranto’s public environmental data easier to analyse, explain and use in civic and institutional contexts.
+
 ## Important interpretation notes
 
 - Verifiable or deterministic execution makes analytical work inspectable and repeatable; it does not make incorrect data, definitions or assumptions automatically true.
 - A local LLM is not automatically private. Endpoint security, network boundaries, permissions, logs and retention still matter.
 - The 27 µg/m³ benzene value discussed in the Taranto work is an OEHHA one-hour acute Reference Exposure Level. It is not an Italian or EU ambient legal limit and should not be compared directly with an annual benzene limit.
-- The 63 total and 32 readings in 2023 refer to the dataset snapshot analysed for the 6 February 2024 Italian Senate hearing. A later final ARPA Puglia report recorded 47 Via Machiavelli readings above 27 µg/m³ for 2023.
+- The 63 total and 32 readings in 2023 refer to the public data available for the 6 February 2024 Italian Senate analysis. ARPA’s final report used a more complete 2023 series and recorded 47 Via Machiavelli readings above 27 µg/m³.
 - A personal AirGradient monitor is not a regulatory monitoring station. The project presents it as a personal, non-regulatory sensor for studying local patterns and testing the infrastructure.
 
 ## Machine-readable discovery

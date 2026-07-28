@@ -66,8 +66,8 @@ body_class: home
 <section class="section">
   <div class="shell">
     <div class="section-heading">
-      <p class="eyebrow">Three article series</p>
-      <h2>Fifteen articles based on things I have built, tested and learned.</h2>
+      <p class="eyebrow">Writing</p>
+      <h2>{{ site.articles.size }} articles based on things I have built, tested and learned.</h2>
     </div>
     <div class="article-list">
       {% assign ai_articles = site.articles | where: 'cluster', 'ai' | sort: 'article_order' %}

@@ -7,6 +7,7 @@ description: Articles by Antonio Poggi on verifiable AI analytics, complete data
 {% assign ai_articles = site.articles | where: 'cluster', 'ai' | sort: 'article_order' %}
 {% assign product_articles = site.articles | where: 'cluster', 'products' | sort: 'article_order' %}
 {% assign citizen_articles = site.articles | where: 'cluster', 'citizen' | sort: 'article_order' %}
+{% assign italian_articles = site.articles | where: 'cluster', 'citizen-it' | sort: 'article_order' %}
 <header class="page-intro">
   <div class="shell page-intro-grid">
     <div>
@@ -50,6 +51,13 @@ description: Articles by Antonio Poggi on verifiable AI analytics, complete data
         <div>
           <h3>Citizen science and public evidence</h3>
           <p>Taranto, benzene, public alerts and a privately operated AirGradient monitor sending measurements directly to Omniscope.</p>
+        </div>
+      </a>
+      <a class="work-card" href="#in-italian">
+        <span class="tag">In Italian · {{ italian_articles.size }} article</span>
+        <div>
+          <h3>Qualità dell’aria a Taranto</h3>
+          <p>The detailed account of the environmental-data work carried out with PeaceLink over time.</p>
         </div>
       </a>
     </div>
@@ -106,6 +114,26 @@ description: Articles by Antonio Poggi on verifiable AI analytics, complete data
       {% for article in citizen_articles %}
         <a class="article-row" href="{{ article.url | relative_url }}">
           <span class="article-index">0{{ article.article_order }}</span>
+          <h3>{{ article.title }}</h3>
+          <p>{{ article.description }}</p>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section article-cluster" id="in-italian">
+  <div class="shell">
+    <div class="section-heading">
+      <p class="eyebrow">In Italian</p>
+      <h2>The PeaceLink work, in Italian.</h2>
+      <p class="lead">This article brings together the work with PeaceLink on environmental data, reports, alerts and public evidence in Taranto.</p>
+    </div>
+    <div class="article-list">
+      {% for article in italian_articles %}
+        <a class="article-row" href="{{ article.url | relative_url }}" lang="it" hreflang="it">
+          <span class="article-index">IT</span>
           <h3>{{ article.title }}</h3>
           <p>{{ article.description }}</p>
           <span class="arrow" aria-hidden="true">↗</span>

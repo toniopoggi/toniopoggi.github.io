@@ -208,8 +208,8 @@ For the February 2024 Senate hearing, we examined more than 80,000 hourly
 benzene observations from Via Machiavelli. PeaceLink presented the resulting
 evidence during the hearing on ILVA.
 
-The analysis—and an important later discrepancy between its February snapshot
-and ARPA’s final 2023 reporting—is documented separately in
+The analysis, including the public source available for the February hearing
+and the more complete series used in ARPA’s final 2023 report, is documented in
 [What I learned from analysing 80,000 hourly benzene measurements]({{ '/writing/analysing-80000-hourly-benzene-measurements/' | relative_url }}).
 
 The project worked because automation and people did different jobs.

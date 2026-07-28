@@ -181,7 +181,8 @@
               {% assign directory_ai_articles = site.articles | where: 'cluster', 'ai' | sort: 'article_order' %}
               {% assign directory_product_articles = site.articles | where: 'cluster', 'products' | sort: 'article_order' %}
               {% assign directory_citizen_articles = site.articles | where: 'cluster', 'citizen' | sort: 'article_order' %}
-              {% assign directory_articles = directory_ai_articles | concat: directory_product_articles | concat: directory_citizen_articles %}
+              {% assign directory_italian_articles = site.articles | where: 'cluster', 'citizen-it' | sort: 'article_order' %}
+              {% assign directory_articles = directory_ai_articles | concat: directory_product_articles | concat: directory_citizen_articles | concat: directory_italian_articles %}
               {% for article in directory_articles %}
               {
                 "@type": "ListItem",

@@ -9,6 +9,7 @@ description: Search and browse every article and main page on Antonio Poggi’s 
 {% assign directory_ai_articles = site.articles | where: 'cluster', 'ai' | sort: 'article_order' %}
 {% assign directory_product_articles = site.articles | where: 'cluster', 'products' | sort: 'article_order' %}
 {% assign directory_citizen_articles = site.articles | where: 'cluster', 'citizen' | sort: 'article_order' %}
+{% assign directory_italian_articles = site.articles | where: 'cluster', 'citizen-it' | sort: 'article_order' %}
 {% assign directory_guide_count = 9 %}
 {% assign directory_total = site.articles.size | plus: directory_guide_count %}
 <header class="page-intro">
@@ -45,6 +46,7 @@ description: Search and browse every article and main page on Antonio Poggi’s 
             <button type="button" data-directory-filter="ai" aria-pressed="false">AI analytics <span>{{ directory_ai_articles.size }}</span></button>
             <button type="button" data-directory-filter="products" aria-pressed="false">Data products <span>{{ directory_product_articles.size }}</span></button>
             <button type="button" data-directory-filter="citizen" aria-pressed="false">Citizen science <span>{{ directory_citizen_articles.size }}</span></button>
+            <button type="button" data-directory-filter="italian" aria-pressed="false">In Italian <span>{{ directory_italian_articles.size }}</span></button>
             <button type="button" data-directory-filter="guides" aria-pressed="false">Site guides <span>{{ directory_guide_count }}</span></button>
           </div>
           <p class="directory-status" aria-live="polite" data-directory-status>Showing all {{ directory_total }} entries.</p>
@@ -118,6 +120,31 @@ description: Search and browse every article and main page on Antonio Poggi’s 
               <span class="directory-entry-number">0{{ article.article_order }}</span>
               <span class="directory-entry-copy">
                 <span class="directory-entry-meta">Article{% if article.read_time %} · {{ article.read_time }}{% endif %}</span>
+                <strong>{{ article.title }}</strong>
+                <span>{{ article.description }}</span>
+              </span>
+              <span class="directory-entry-arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+        {% endfor %}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section directory-group" data-directory-section aria-labelledby="directory-italian-title">
+    <div class="shell">
+      <div class="directory-group-heading">
+        <p class="eyebrow">In Italian · {{ directory_italian_articles.size }} article</p>
+        <h2 id="directory-italian-title">Italian writing</h2>
+      </div>
+      <ol class="directory-list">
+        {% for article in directory_italian_articles %}
+          {% capture article_search %}italian italiano {{ article.title }} {{ article.description }} {{ article.tags | join: ' ' }} {{ article.series }}{% endcapture %}
+          <li data-directory-item data-directory-filter="italian" data-search="{{ article_search | downcase | strip_newlines | escape }}">
+            <a class="directory-entry" href="{{ article.url | relative_url }}" lang="it" hreflang="it">
+              <span class="directory-entry-number">IT{{ article.article_order }}</span>
+              <span class="directory-entry-copy">
+                <span class="directory-entry-meta">Article in Italian{% if article.read_time %} · {{ article.read_time }}{% endif %}</span>
                 <strong>{{ article.title }}</strong>
                 <span>{{ article.description }}</span>
               </span>
@@ -219,7 +246,7 @@ description: Search and browse every article and main page on Antonio Poggi’s 
             <span class="directory-entry-copy">
               <span class="directory-entry-meta">Publication</span>
               <strong>Writing</strong>
-              <span>All fifteen articles, organised into three subject series.</span>
+              <span>All {{ site.articles.size }} articles, organised into three subject series and an Italian section.</span>
             </span>
             <span class="directory-entry-arrow" aria-hidden="true">↗</span>
           </a>
