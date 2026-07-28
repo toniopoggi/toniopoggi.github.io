@@ -1,8 +1,8 @@
 ---
 title: "How to Turn an Analytical Workflow into an Internal Product"
-subtitle: "Start with the user’s job, model state and actions explicitly, then wrap the visible analytical logic in a focused and operable experience."
+subtitle: "What a customer-success prototype taught me about systems of record, focused interfaces and the work that remains after AI builds the first version."
 date: 2026-07-27 00:08:00 +0100
-last_modified_at: 2026-07-27 21:25:00 +0100
+last_modified_at: 2026-07-28 12:11:00 +0100
 eyebrow: "Internal tools · Data applications"
 series: "Building complete data products"
 cluster: products
@@ -22,78 +22,55 @@ tags:
   - internal tools
   - Omniscope
 takeaways:
-  - "An internal product helps a defined user change state, run a process or make a decision; it is more than a dashboard."
-  - "Choose the system of record deliberately and keep analytical tools from becoming an accidental transactional database."
-  - "Production still requires permissions, tests, release control, monitoring, recovery and a named product owner."
+  - "An internal product lets a defined user view the data, change state, run a process or make a decision."
+  - "That requires a deliberate system of record so the analytical project does not become an accidental transactional database."
+  - "The prototype reaches production only with permissions, tests, release control, monitoring, recovery and a named product owner."
 next_url: /writing/lessons-building-omniscope-technology-cycles/
 next_label: "Next in the series"
 next_title: "Lessons from building Omniscope across multiple technology cycles"
 ---
 
-A dashboard helps somebody see.
+Do not use AI only to write code. Ask it to help author a system you can
+inspect, understand and verify.
 
-An internal product helps somebody do.
+I tested that idea in July 2026 with OpenAI Sol and Terra 5.6 in the Codex app.
+The agent could author through our MCP server and, when necessary, continue
+through the Omniscope browser interface. I asked it to build a small internal
+customer-success application covering customers, deals, renewals and
+activities.
 
-The difference is not the quality of the styling. It is whether the user can
-complete a defined job: upload a file, correct a record, run a simulation,
-approve a result, investigate an exception or trigger a governed process.
-
-Analytical workflows often contain most of the valuable logic for such a
-product. They connect the data, apply the rules and produce the answer. The
-challenge is turning that builder-oriented workflow into something a team can
-use safely every day.
-
-I recently explored this boundary by building an internal customer-success
-prototype. It brought customers, deals, renewals and activities into one
-working application. The useful lessons were not about generating a dashboard
-quickly. They were about deciding where state lived, which actions were
-transactional and what still separated the prototype from production.
+The interesting result was not a quickly generated dashboard. It was a working
+prototype in which the operational flow remained visible: I could inspect the
+workflow, transformations, formulae, forms, report configuration and database
+interactions. The experiment also forced some real product decisions. We had
+to decide where durable state lived, which changes required transactional
+writes, what belonged in Omniscope, where custom code helped and what still
+separated the prototype from production.
 
 ## Start with a job, not a chart
 
-Before choosing a layout, write down:
-
-- who uses the product;
-- what situation causes them to open it;
-- which decision or action they need to complete;
-- what information they need at that moment;
-- what should happen afterwards.
+Before choosing a layout, I need to know who opens the product, what has
+happened to make them open it, which decision or action they need to complete,
+what information is needed at that moment and what should happen afterwards.
 
 For a customer-success manager, the job might be:
 
 > Review accounts with a renewal due in the next 90 days, understand risk and
 > recent activity, update the follow-up state and assign the next action.
 
-That statement immediately suggests more than charts:
-
-- a list of accounts;
-- renewal and deal state;
-- activity history;
-- risk logic;
-- filters and prioritisation;
-- editable follow-up fields;
-- user identity and assignment;
-- a durable write;
-- an audit of what changed.
-
-The report is part of the product, not the complete product.
+That statement immediately requires more than charts. The manager needs a list
+of accounts, renewal and deal state, activity history, risk logic, filters and
+prioritisation. If they can update a follow-up or assign the next action, the
+product also needs user identity, a durable write and an audit of what changed.
+The report supplies the context; the application has to carry the action.
 
 ## Model entities, state and actions
 
 An analytical dataset is often designed to answer questions. An application
-model must also support change.
-
-Identify the durable entities:
-
-- customers;
-- contracts;
-- opportunities;
-- renewals;
-- users;
-- activities;
-- tasks.
-
-Then identify the state each owns and the actions that can change it.
+model must also support change. In this case the durable entities included
+customers, contracts, opportunities, renewals, users, activities and tasks. We
+then had to identify the state each one owned and the actions allowed to change
+it.
 
 For example:
 
@@ -104,18 +81,17 @@ For example:
 | Activity | type, time, note | add activity |
 | Task | assignee, status, due date | complete or defer |
 
-This is not database ceremony. It prevents a chart filter, an editable table
-and an API from each inventing a different version of the business process.
+Writing this down prevents a chart filter, an editable table and an API from
+quietly inventing different versions of the business process.
 
 ## Choose the system of record early
 
-One of the best decisions in the customer-success prototype was not to pretend
-that an analytics project should quietly become the transactional database.
-
-We designed a structured SQLite schema and used transactional writes for the
-durable state. Omniscope handled the visible application, preparation,
-validation, editing and reporting. Python blocks and JavaScript views extended
-the parts that genuinely needed them.
+Early in the customer-success prototype, we decided that the analytics project
+should not quietly become the transactional database. I worked with the AI to
+design a structured SQLite schema and transactional writes for the durable
+state. Omniscope handled the visible application, preparation, validation,
+editing and reporting. Python blocks and JavaScript views extended the parts
+that needed custom behaviour.
 
 That division made responsibilities clearer:
 
@@ -130,48 +106,31 @@ Focused application controls
   → let authorised users perform defined actions
 ```
 
-SQLite was appropriate for an internal prototype. A production, concurrent
-multi-user application might require another database and a more substantial
-service layer.
-
-The principle is more important than the technology: decide which system is
-authoritative before users begin changing state.
+SQLite was appropriate for this internal prototype. A production application
+with many concurrent users might require another database and a more
+substantial service layer, but making one system authoritative before users
+began changing state gave the prototype a clean boundary.
 
 ## Keep the workflow visible
 
-The analytical logic should not disappear when the interface becomes polished.
+The analytical logic remained visible as the interface took shape. A builder
+or reviewer could inspect the source ingestion, joins, transformations and
+quality checks; see how risk or priority fields were derived; follow the
+parameters into the workflow; and inspect both a write and the state returned
+to each report view.
 
-A visible workflow lets a builder or reviewer inspect:
-
-- source ingestion;
-- joins and transformations;
-- quality checks;
-- derived risk or priority fields;
-- parameter handling;
-- writes and returned state;
-- data supplied to each report view.
-
-This makes iteration faster. When a user says an account is in the wrong risk
-band, the team can inspect the real rule and input fields rather than search
-through an opaque application backend.
-
-Visibility does not remove the need for tests. It gives the tests and review a
-clear object.
+That made iteration practical. If a user said an account was in the wrong risk
+band, we could open the rule and its input fields instead of searching an
+opaque application backend. We still wrote tests, but the workflow gave those
+tests and the review a clear object.
 
 ## Design a focused interaction surface
 
-The user should see the controls required for the job:
-
-- select an account;
-- change a controlled field;
-- add a note;
-- run an approved calculation;
-- compare scenarios;
-- approve or reject;
-- export a result;
-- trigger a workflow.
-
-Everything else can remain behind the product boundary.
+The user should see the controls required for the job. That may mean selecting
+an account, changing an allowed field, adding a note, running an approved
+calculation, comparing scenarios, approving or rejecting a result, exporting
+it or triggering a workflow. The connections, intermediate blocks and builder
+settings can remain behind that focused surface.
 
 Omniscope reports can pass parameters into workflows and trigger execution.
 This pattern has existed in the platform for years: a report acts as both a
@@ -184,27 +143,21 @@ control panel and a result surface.
 
 The same idea supports a sales-capacity simulation. A user changes opportunity
 volume, win rate, stage duration or rep capacity, runs the model and immediately
-sees the resulting headcount and revenue path. The interface is not simply
-displaying a saved analysis. It is letting the user operate a bounded one.
+sees the resulting headcount and revenue path. In that application, the report
+is both the control panel and the place where the result is investigated.
 
 ## Treat editing as a privileged action
 
-An editable table is deceptively powerful.
+An editable table is deceptively powerful. Before enabling it, we need to
+decide which fields are editable, which values are valid and whether a change
+requires approval. We also need behaviour for concurrent edits, useful
+validation errors, retention of the previous value and an audit of who made
+the change.
 
-Before allowing a user to change data, decide:
-
-- which fields are editable;
-- which values are valid;
-- whether changes require approval;
-- what happens if two users edit at once;
-- how validation errors are returned;
-- whether the old value is retained;
-- who performed the change;
-- whether the write can be retried safely;
-- which downstream calculations refresh.
-
-The application should never make a write look like a harmless report
-interaction.
+The write path must say whether a failed operation can be retried safely and
+which downstream calculations refresh after it succeeds. A change to customer
+ownership or renewal stage should look and behave like a durable application
+action, not like an innocent report filter.
 
 This is another reason to separate transient analytical state from the system
 of record. Filters and scenario parameters may exist only for the session.
@@ -212,17 +165,11 @@ Customer ownership and renewal stage probably should not.
 
 ## Add permissions at the action level
 
-Viewing a result and changing its source are different permissions.
-
-An internal product may need:
-
-- readers who can explore;
-- operators who can run workflows;
-- editors who can change specific state;
-- approvers who can publish or confirm;
-- administrators who can alter the application.
-
-Avoid using one broad builder permission for all of them.
+Viewing a result and changing its source require different permissions. An
+internal product may have readers who explore, operators who run workflows,
+editors allowed to change particular state, approvers who publish or confirm,
+and administrators who alter the application. Giving all of them one broad
+builder permission would erase the boundary we had just designed.
 
 If the application calls an API, the service identity should have only the
 permissions that action requires. If it displays a published report, the
@@ -231,15 +178,9 @@ audience.
 
 ## Make state and failure visible
 
-When a user clicks **Run**, the product should show whether the request is:
-
-- queued;
-- executing;
-- completed;
-- completed with warnings;
-- rejected by validation;
-- failed;
-- awaiting approval.
+When a user clicks **Run**, the product should show whether the request is
+queued, executing, completed, completed with warnings, rejected by validation,
+failed or awaiting approval.
 
 Optimistic interfaces are pleasant until the workflow fails silently and the
 user assumes a change was saved.
@@ -250,56 +191,41 @@ workflow without exposing secrets to the end user.
 
 ## Release the product, not only the workflow
 
-An internal product has several versioned surfaces:
-
-- data schema;
-- workflow logic;
-- report and user interface;
-- custom code;
-- API contract;
-- validation rules;
-- permissions;
-- deployment configuration.
-
-Test them together.
+An internal product has several surfaces that change together: the data schema,
+workflow logic, report and interface, custom code, API contract, validation
+rules, permissions and deployment configuration. They need to be versioned and
+tested as one release.
 
 A working copy or staging project gives the team somewhere to exercise
 representative workflows before changing the live application. Automated
 tests should cover important calculations and write paths. A second human or
 model review can help, but responsibility remains with the team shipping it.
 
-In the customer-success experiment, most of the time went into defining,
-refining and reviewing—not asking the agent to produce more code. That is what
-“AI made this faster” looks like in a serious build.
+In this experiment, most of my time went into defining the problem, refining
+requirements and reviewing. I asked the agent to write tests and used another
+model to review the code. Producing more code was rarely the difficult part.
 
 ## Know the prototype boundary
 
-The July 2026 customer-success application was an internal prototype, not a
-production customer deployment.
-
-Moving it into production would still require operational engineering around
+The July 2026 customer-success application was an internal prototype,
+obviously. Production software still requires engineering around
 authentication, concurrency, recovery, security, retention, deployment,
 monitoring and support. The
 [CSV-to-scheduled-application guide]({{ '/writing/csv-prototype-to-scheduled-data-application/' | relative_url }})
 covers those production controls in detail.
 
-Saying this does not diminish the prototype. It identifies the work it
-successfully made visible.
+That caveat does not diminish the experiment. It tells us exactly what the
+prototype proved and which work remains.
 
 ## A product test
 
-An analytical workflow is becoming an internal product when you can answer:
+I would run one final test before calling an analytical workflow an internal
+product. Can we name the user and the job they complete? Can we identify the
+entities and state exposed by the application, the authoritative system for
+each state, the actions the user can take and the consequence of each action?
+And is there a person who owns the product after launch?
 
-1. Who is the user?
-2. What job do they complete?
-3. Which entities and state does the application expose?
-4. Which system is authoritative for each state?
-5. Which actions can the user take?
-6. What consequence does each action create?
-7. Who owns the product after launch?
-
-A dashboard may answer the user’s question.
-
-An internal product must also carry the consequence of what they do next.
-
-That is the transition.
+The customer-success prototype gave us concrete answers for the system of
+record, the visible workflow and the focused application surface. It also made
+the remaining production work impossible to hide, which is exactly what I
+wanted from the experiment.

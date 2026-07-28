@@ -1,8 +1,8 @@
 ---
 title: "From CSV Prototype to Scheduled Data Application"
-subtitle: "A useful upload-and-report demo is the beginning. The real product appears when the data contract, execution, failures and ownership are designed."
+subtitle: "What I would add to a four-hour data-quality prototype before asking teams to depend on it every Monday."
 date: 2026-07-27 00:06:00 +0100
-last_modified_at: 2026-07-27 21:25:00 +0100
+last_modified_at: 2026-07-28 12:11:00 +0100
 eyebrow: "Data products · Operations"
 series: "Building complete data products"
 cluster: products
@@ -22,78 +22,68 @@ tags:
   - data quality
   - Omniscope
 takeaways:
-  - "A prototype proves that a user’s job is valuable; it does not prove that the system is safe to operate."
-  - "Move towards production by defining the data contract, parameterising the workflow, narrowing the interface and making failures visible."
-  - "Scheduling without idempotency, access control, schema-drift handling, monitoring and an owner merely automates failure."
+  - "A prototype can prove that a user’s job is valuable without proving that the system is safe to operate."
+  - "Turning it into a dependable application means defining the data contract, parameterising the workflow, narrowing the interface and making failures visible."
+  - "Only then does scheduling make sense, with idempotency, access control, schema-drift handling, monitoring and a named owner in place."
 next_url: /writing/why-data-preparation-analytics-reporting-belong-together/
 next_label: "Next in the series"
 next_title: "Why data preparation, analytics and reporting belong together"
 ---
 
 In November 2025 I built a small data-quality application in about four hours.
+It was me, ChatGPT, Omniscope Report Ninja and a coffee break.
 
-The arrangement was simple: me, two AI assistants and Omniscope.
+The application was deliberately simple. A user could upload a CSV or Excel
+file and receive an interactive report showing missing values, duplicate rows
+and numeric outliers. I built the Omniscope workflow, API wiring, project
+template and deployment. ChatGPT helped with a bounded Python component and a
+few parts of the landing page; Report Ninja shaped the report created for each
+uploaded dataset. I kept the assembly, review and deployment in my hands.
 
-A user could upload a CSV or Excel file and receive an interactive inspection
-of missing values, duplicate rows and numeric outliers.
-It was useful quickly because most of the capabilities already existed. The AI
-helped with pieces. I assembled, reviewed and deployed the complete path.
+That division of work was important. I could have asked an agent to generate
+the backend, interface, workflow, reporting and API integration in one go, but
+the more components I put into one prompt, the more the model started to lose
+the plot. Building useful pieces and joining them inside a system I could
+inspect was faster.
 
-It was also a prototype.
-
-That distinction is easy to lose when a polished report appears after one
-upload. The interface works. The charts move. Everybody can see the potential.
-Then somebody asks whether it can run every Monday for 40 teams, survive a
-renamed column and tell an owner when it fails.
-
-This is the journey from a CSV prototype to a scheduled data application.
+Four hours was enough to prove the idea and put a live demonstration in front
+of people. It did not answer what would happen if 40 teams depended on it every
+Monday, a source column changed name, two runs arrived together or the result
+failed without anybody noticing. Those questions begin the journey from a CSV
+prototype to a scheduled data application.
 
 ## First, prove the job
 
-The earliest version should answer one question:
+The earliest version needed to answer one question:
 
 > Does this help a specific person complete a useful task?
 
-For the Data Quality Inspector, the job was not “build a dashboard”. It was:
+For the Data Quality Inspector, the complete job was to accept a tabular file,
+profile its structure and contents, make quality problems visible, let the user
+investigate them and then discard the temporary project created for the
+demonstration. That narrow definition is what made the four-hour build
+possible.
 
-1. accept a tabular file;
-2. profile its structure and contents;
-3. make quality problems visible;
-4. let the user investigate them;
-5. discard the temporary project after the demonstration.
-
-That narrow definition made four hours possible.
-
-A prototype should resist premature infrastructure. Use representative data.
-Put the complete path in front of a real user. Learn which outputs cause an
-action and which are only decorative.
-
-But record the shortcuts. Typical prototype choices might include temporary
-file retention, one user at a time and manual observation. They are still
-design choices.
+At this stage I want representative data and the complete path in front of a
+real user. I want to see which warnings cause somebody to act, which charts
+help them investigate and which outputs are merely decorative. I do not need
+to pretend that temporary retention, one user at a time and manual observation
+are production choices, but I do need to record those shortcuts so they do not
+quietly become permanent.
 
 ## Define the data contract
 
-A CSV file looks simple because it carries so little formal structure.
+A CSV looks simple largely because it carries so little formal structure. The
+application still has to know which formats and encodings it accepts, the
+maximum file and row size, whether headers are required, and which fields are
+required or optional. It needs expectations for data types, dates and decimal
+conventions, a rule for extra fields and duplicates, and a way to communicate
+schema changes.
 
-The application still needs to decide:
-
-- accepted formats and encodings;
-- maximum file and row size;
-- header rules;
-- required and optional fields;
-- expected data types;
-- date and decimal conventions;
-- whether extra fields are allowed;
-- how duplicate records are identified;
-- what constitutes a warning versus a failure;
-- how schema changes are communicated.
-
-Without a contract, every new file is an improvisation.
-
-The contract does not need to reject all messy data. A quality application
-exists precisely because data is messy. It should separate errors that make
-execution unsafe from issues that the user needs to examine.
+Those decisions form the contract for each run. The contract should also
+separate a warning from a failure; a data-quality application exists precisely
+because the input will be messy, so rejecting every imperfect file would make
+it fairly useless.
 
 For example, a missing required identifier may stop the run. A field with 18%
 missing values may continue with a prominent warning.
@@ -113,14 +103,11 @@ upload
   → analytical output
 ```
 
-Each gate should produce a useful state:
-
-- passed;
-- passed with warnings;
-- rejected with an actionable explanation;
-- failed because the system could not complete the check.
-
-“No report appeared” is not an error model.
+Each gate should finish in a state the user and operator can understand:
+passed, passed with warnings, rejected with an actionable explanation, or
+failed because the system could not complete the check. A run that simply
+produces no report leaves everybody guessing about which of those things
+happened.
 
 Keep the rejected rows, warnings and rule results available to the user where
 appropriate. A hidden quality filter can make the final chart cleaner while
@@ -138,40 +125,26 @@ customer-c-new-final.iox
 
 This feels fast until the core logic changes.
 
-A better design separates stable logic from variable inputs:
-
-- input file or source;
-- customer or business-unit identifier;
-- date range;
-- thresholds;
-- output destination;
-- branding and permitted views.
-
-One reusable workflow or project template can then serve many executions.
-Changes happen once, and the parameters remain visible.
+A better design keeps the profiling and reporting logic stable while passing
+the input source, customer or business-unit identifier, date range, thresholds,
+output destination, branding and permitted views as parameters. One reusable
+workflow or project template can then serve many executions, with changes made
+once and the variation still visible.
 
 Omniscope project workflows can be executed through the
 [Workflow REST API](https://help.visokio.com/support/solutions/articles/42000073133-workflow-rest-api)
 or created from governed templates through the
 [Project API](https://help.visokio.com/support/solutions/articles/42000101804-use-project-rest-api-to-create-projects-from-templates).
-The principle applies beyond Omniscope: encode variation as data before
-encoding it as duplicated software.
+The same approach applies outside Omniscope. Before copying a project, I would
+first ask whether the difference can be expressed as a visible parameter.
 
 ## Give the user a narrow front door
 
-The builder interface is not necessarily the product interface.
-
-Most users need:
-
-- an upload control or source selector;
-- a few safe parameters;
-- a clear run button;
-- progress and error state;
-- the result;
-- an export or next action.
-
-They do not need every workflow block, connection property and publishing
-option.
+The person using the finished application usually needs a much smaller
+interface than the person who built it: an upload control or source selector, a
+few safe parameters, a clear way to start the run, progress and error
+information, and the resulting report or export. The workflow blocks,
+connection properties and publishing settings can remain in the builder.
 
 <figure>
   <img src="{{ '/assets/images/articles/project-creator-upload.png' | relative_url }}" alt="A focused upload page that creates an Omniscope project from a reusable template" width="1132" height="262" loading="lazy">
@@ -187,48 +160,33 @@ capability.
 A small file may complete while the browser waits. A larger workflow should
 not depend on one open HTTP connection.
 
-A robust application can:
-
-1. accept and validate the request;
-2. create a job identifier;
-3. start execution;
-4. expose pending, running, completed, warning and failed states;
-5. let the user retrieve the result;
-6. expire temporary data according to policy.
-
-The interface should distinguish an application error from a long-running job.
-It should also prevent the user from launching the same expensive request
-repeatedly because nothing appeared to happen.
+A robust application can accept and validate the request, create a job
+identifier, start the execution and expose pending, running, completed,
+warning and failed states while the user does something else. The same job
+identifier lets the user retrieve the result later and lets the application
+expire temporary data according to policy. It also gives the interface enough
+information to distinguish a long-running job from an application error and to
+stop an impatient user launching the same expensive request repeatedly.
 
 ## Add automation carefully
 
-Once the manual path works, execution may be triggered:
-
-- at a time or interval;
-- when a file arrives in a watched location;
-- by another application through an API;
-- on demand from the report;
-- after an upstream event.
+Once the manual path works, the same execution may start at a particular time
+or interval, when a file arrives in a watched location, through an API call
+from another application, on demand from the report, or after an upstream
+event.
 
 Omniscope’s
 [Scheduler](https://help.visokio.com/support/solutions/articles/42000036492-scheduler-automating-the-reporting-process)
 supports scheduled, on-demand and watch-folder patterns with task status and
 logs.
 
-The schedule is the easy part.
-
-The operational questions are:
-
-- Can the same input run twice safely?
-- What happens if the previous run is still active?
-- Are partial outputs visible?
-- Which failures should retry?
-- Who is notified?
-- How late may the source be before the result is misleading?
-- Can a corrected file replace an earlier result?
-- Is history retained, overwritten or versioned?
-
-A clock does not answer any of them.
+Adding the time is straightforward. Operating the run takes more thought. The
+application needs defined behaviour when the same input arrives twice or the
+previous run is still active. It must decide whether partial outputs are
+visible, which failures retry and who is notified. It also needs a freshness
+limit, a rule for corrected files and a choice between retaining, overwriting
+or versioning earlier results. The Scheduler can start the workflow, but those
+decisions still belong to the application owner.
 
 ## Separate development from production
 
@@ -239,35 +197,27 @@ Use a development or working copy, test with representative data, review the
 change and promote a known version. Preserve enough history to restore the
 previous release.
 
-The same discipline applies to:
-
-- workflow logic;
-- report layout;
-- data-quality rules;
-- custom Python or JavaScript;
-- project templates;
-- external API contracts.
+That separation needs to cover the workflow logic, report layout,
+data-quality rules, custom Python or JavaScript, project templates and
+external API contracts together. Testing only the workflow while changing the
+interface or its contract is an incomplete release.
 
 Omniscope
 [Working Copies](https://help.visokio.com/support/solutions/articles/42000072007-working-copies)
 and project release management provide one implementation of this separation.
-The important idea is universal: the prototype becomes an operated product
-when change itself is controlled.
+They give the team somewhere to test a complete change and a known version to
+restore if the new one behaves differently with production data.
 
 ## Design retention and access
 
 Uploaded files often contain more sensitive data than the person building the
 prototype realises.
 
-Decide:
-
-- where the file is stored;
-- who can retrieve it;
-- whether it appears in logs or backups;
-- how long source, intermediate and result data remain;
-- whether generated projects are isolated per user or organisation;
-- how deletion is verified;
-- which credentials the workflow uses.
+Before accepting a real file, decide where it is stored, who can retrieve it
+and whether any part of it appears in logs or backups. Set retention periods
+for the source, intermediate and result data; decide whether generated
+projects are isolated by user or organisation; verify deletion; and give the
+workflow only the credentials it needs.
 
 The public Data Quality Inspector demonstration deliberately limits runs and
 automatically removes temporary projects. A permanent internal application
@@ -275,24 +225,12 @@ would need a retention policy tied to its real users and obligations.
 
 ## Observe the application, not only the server
 
-A green process does not mean the data product is healthy.
-
-Monitor both technical and analytical conditions:
-
-- execution duration;
-- success and failure rate;
-- queue depth;
-- source freshness;
-- row-count changes;
-- schema drift;
-- rejected-record volume;
-- empty or implausible outputs;
-- publication time;
-- user-facing availability.
-
-The application can run perfectly while reporting yesterday’s data as if it
-were current. That is an analytical incident, even if every server metric is
-green.
+Server health is only part of this. I would monitor execution duration,
+success and failure rates, queue depth, publication time and user-facing
+availability, but also source freshness, unexpected row-count changes, schema
+drift, rejected-record volume and empty or implausible outputs. A workflow can
+complete exactly as designed while publishing yesterday’s data as if it were
+current; the process is alive, but the analytical result is wrong.
 
 ## Production-readiness checklist
 
@@ -312,23 +250,20 @@ to each of these:
 11. Is there a runbook for common failures?
 12. Who owns it when the person who built the prototype is away?
 
-If that last answer is unclear, the application is still a project.
+The last question is usually the revealing one. A demo can depend on the
+person who built it watching every run; a shared service needs somebody to own
+what happens when that person is away.
 
 ## Scheduling is not the finish line
 
-The path from prototype to product is not a rewrite by default.
+The Data Quality Inspector moved from an idea to a live application in four
+hours because Omniscope already supplied much of the preparation, automation
+and reporting machinery, while the AI helped with bounded pieces. I would keep
+that visible workflow if the application became a permanent service and add
+the stronger contracts, parameters, permissions and release controls around
+it.
 
-A good analytical environment lets the same visible logic acquire stronger
-contracts, parameters, APIs, permissions, scheduling and release controls. The
-person who understands the problem can remain close to the implementation
-while operational discipline grows around it.
-
-That continuity is valuable.
-
-But the moment a cron expression appears is not the moment the system becomes
-production.
-
-Scheduling without idempotency, access control, schema-drift handling,
-observability and an owner merely automates failure.
-
-The good news is that all of those can be designed.
+Before putting the same project on a Monday schedule, I would want the
+idempotency, access control, schema-drift handling, monitoring and ownership
+questions answered. The cron expression can wait until we know what the next
+run is allowed to do.

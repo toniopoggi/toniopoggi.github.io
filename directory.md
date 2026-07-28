@@ -4,7 +4,7 @@ permalink: /directory/
 section: directory
 body_class: directory-page
 schema_type: CollectionPage
-description: Search and browse every article and principal page on Antonio Poggi’s site, covering Omniscope, verifiable AI analytics, data products and citizen science.
+description: Search and browse every article and main page on Antonio Poggi’s site, covering Omniscope, AI analytics, data products and air quality.
 ---
 {% assign directory_ai_articles = site.articles | where: 'cluster', 'ai' | sort: 'article_order' %}
 {% assign directory_product_articles = site.articles | where: 'cluster', 'products' | sort: 'article_order' %}
@@ -15,8 +15,8 @@ description: Search and browse every article and principal page on Antonio Poggi
   <div class="shell page-intro-grid">
     <div>
       <p class="eyebrow">Directory · {{ directory_total }} entries</p>
-      <h1>Find the work behind the work.</h1>
-      <p class="lead">Search every field guide and principal page on this site. Filter by subject, or browse the complete directory below.</p>
+      <h1>Search the articles and main pages.</h1>
+      <p class="lead">Everything on the site is listed here. Search by title or subject, use a filter, or browse the complete directory below.</p>
     </div>
     <aside class="intro-aside">
       <p>Every result is present in the page HTML, so the directory remains useful to readers, search engines and AI systems even without JavaScript.</p>
@@ -208,18 +208,18 @@ description: Search and browse every article and principal page on Antonio Poggi
             <span class="directory-entry-copy">
               <span class="directory-entry-meta">Project guide</span>
               <strong>Air quality</strong>
-              <span>The living record of Taranto monitoring, benzene alerts, civic evidence and open sensor work.</span>
+              <span>Taranto monitoring data, benzene alerts, work with local citizens and the open AirGradient sensor project.</span>
             </span>
             <span class="directory-entry-arrow" aria-hidden="true">↗</span>
           </a>
         </li>
-        <li data-directory-item data-directory-filter="guides" data-search="writing articles essays field guides publication">
+        <li data-directory-item data-directory-filter="guides" data-search="writing articles essays publication">
           <a class="directory-entry" href="{{ '/writing/' | relative_url }}">
             <span class="directory-entry-number">08</span>
             <span class="directory-entry-copy">
               <span class="directory-entry-meta">Publication</span>
               <strong>Writing</strong>
-              <span>All fifteen long-form field guides, organised into three connected editorial series.</span>
+              <span>All fifteen articles, organised into three subject series.</span>
             </span>
             <span class="directory-entry-arrow" aria-hidden="true">↗</span>
           </a>

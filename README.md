@@ -1,8 +1,8 @@
 # antoniopoggi.com
 
 [antoniopoggi.com](https://antoniopoggi.com) brings together my work on
-Omniscope, data analytics, AI, open software and citizen-led air-quality
-monitoring.
+Omniscope, data analytics, AI, software development and open-hardware
+air-quality monitoring.
 
 I am COO of [Visokio](https://visokio.com), the team behind
 [Omniscope](https://visokio.com/omniscope). Omniscope is one workspace for the

@@ -2,7 +2,7 @@
 title: "From Natural-Language Question to Inspectable Analytical Workflow"
 subtitle: "Natural language is a very good input format. The evidence should finish as data, queries, calculations and reusable analytical artefacts."
 date: 2026-07-27 00:05:00 +0100
-last_modified_at: 2026-07-27 21:25:00 +0100
+last_modified_at: 2026-07-28 12:11:00 +0100
 eyebrow: "Natural-language analytics · Workflow"
 series: "Verifiable and private AI analytics"
 cluster: ai
@@ -23,228 +23,96 @@ tags:
   - Insight Explorer
   - Omniscope
 takeaways:
-  - "Natural language captures intent; it should not be the only representation of the method or result."
-  - "A strong system resolves definitions, executes visible operations, validates the result and links each numerical claim to evidence."
-  - "Useful one-off analysis should be promotable into a saved query, report or scheduled workflow."
+  - "Natural language is an easy way to describe the task, while the method and result are more useful as data, operations and saved artefacts."
+  - "In the Ferrari Luce experiment we extracted grounded facts into related tables before asking questions over the material."
+  - "That structure made the answers faster to reuse and gave a reviewer records, source spans and workflow steps to inspect."
 next_url: /writing/
 next_label: "Explore the publication"
 next_title: "Browse all three article series"
 ---
 
-“Ask your data a question” is an attractive promise.
+Everyone was talking about the Ferrari Luce for different reasons. I used its
+press kit for a different experiment: turning roughly 90,000 characters of
+PDF and text into structured, queryable data.
 
-It removes syntax from the first step. A person can describe the problem in
-their own language instead of translating it into a query tool before they
-have even started thinking.
-
-The danger is treating the sentence at the other end as the complete product.
-
-Natural language is an excellent input format. It is a poor evidence format.
-
-The useful path is longer:
+The workflow, all in Omniscope, looked like this:
 
 ```text
-question
-  → resolved intent
-  → analytical plan
-  → governed execution
-  → validation
-  → answer with evidence
-  → reusable artefact
+PDF and text
+  → LangExtract in a custom block
+  → facts, attributes, metrics, entities and run metadata
+  → Insight Explorer Q&A over the structured tables
 ```
 
-This article follows that path.
+The Q&A model was not repeatedly retrieving from the raw document. We extracted
+the material once, kept grounded source spans, reviewed the resulting tables
+and then asked questions over those records.
+
+That is a much more interesting use of natural language than putting a chat box
+over a document and hoping for the best. The initial request can be informal,
+but the work it creates should become something people can inspect.
 
 ## Step 1: state the analytical intent
 
-A user might ask:
+The task in this experiment was to turn the Ferrari press kit into structured
+facts that could be queried many times. That immediately raises questions the
+workflow has to settle. Which kinds of thing count as a fact? How should a
+performance number differ from an attribute? Which entity does a statement
+belong to? What happens when the document does not provide a value?
 
-> Which product categories grew fastest this quarter, and was the growth
-> driven by price or volume?
+We instructed the extraction not to invent missing information and to preserve
+the source text supporting each record. These are part of the analytical
+intent, not optional prompt decoration.
 
-The sentence contains more ambiguity than it appears to:
-
-- Which definition of product category?
-- Calendar quarter or fiscal quarter?
-- Revenue, gross value or booked value?
-- Compared with the previous quarter or the same quarter last year?
-- How should returns and currency changes be treated?
-- Does “price” mean average realised unit price?
-- Which data is complete enough to use?
-
-The model’s first job is not to calculate. It is to turn an informal request
-into an explicit analytical specification.
-
-Sometimes it can resolve the terms from governed metadata. Sometimes it should
-ask a question. Guessing quickly is not always the fastest route to a useful
-answer.
+For a normal question over tables, the same discipline applies. The model may
+need the organisation's definition of a metric, the comparison period or an
+exclusion before it can plan sensible work. Sometimes the context resolves the
+term. Sometimes the quickest route is to ask the user.
 
 ## Step 2: supply the right context
 
-An agent cannot plan sound analysis from table names alone.
+The model cannot build a reliable plan from a filename or a list of table names
+alone. In the Ferrari workflow, it needed the document, the extraction schema,
+the required record types and the rule that each extracted item stay grounded
+in the source.
 
-The system should provide bounded context:
+Once those records existed, Insight Explorer needed the related tables, their
+fields and relationships, types and units, plus any quality warnings from the
+extraction run. The application also decides which data the selected model may
+see. A cloud model might receive schema and aggregates while a local model is
+allowed to inspect sample rows.
 
-- approved datasets and fields;
-- relationships and join keys;
-- types and units;
-- metric definitions;
-- data freshness;
-- row-level or project permissions;
-- available analytical tools;
-- known quality warnings;
-- the report or business context in which the question was asked.
-
-This is also the point to control data exposure. A cloud model may receive
-schema and aggregate context while a local model is allowed to inspect sample
-rows. Sensitive fields can be excluded before the request is constructed.
-
-More context is not always better. The right context reduces ambiguity without
-dumping an uncontrolled warehouse into the model window.
+More context is not always better. I want the context needed for the task,
+without dumping every available document or an uncontrolled warehouse into the
+model window.
 
 ## Step 3: create a plan that can become operations
 
-For the question above, a plan might be:
+For this experiment the plan was concrete:
 
-1. select the current and comparison quarters;
-2. aggregate units and net revenue by product category and period;
-3. calculate realised price as net revenue divided by units;
-4. separate the change in revenue into price and volume contributions;
-5. rank categories by growth;
-6. retain a minimum-volume field so tiny categories are visible;
-7. produce a chart and a supporting table.
+1. load and prepare the press-kit text;
+2. extract facts, attributes, metrics and entities with grounded source spans;
+3. turn those results into related analytical tables;
+4. keep run metadata so the extraction can be identified;
+5. review the structured output and its quality;
+6. let Insight Explorer query those tables;
+7. preserve useful queries, charts and evidence in Omniscope.
 
-The model may generate this plan, but the plan should not remain prose. Each
-step needs a corresponding query or workflow operation that the analytical
-platform can validate and execute.
-
-This is where an LLM becomes more useful than a chat layer. It can select and
-configure real tools.
+LangExtract and the local model helped perform the fuzzy part: recognising
+meaning in unstructured language. Omniscope handled the surrounding data
+workflow and the resulting analytical records. The plan did not remain a
+paragraph describing what the system *would* do.
 
 ## Step 4: execute against governed data
 
-The platform now performs the work:
+Once the extraction ran, the press kit became ordinary analytical data:
+filterable, joinable, visualisable and available to the same data-quality and
+reporting tools as other Omniscope datasets.
 
-- typed date filters;
-- joins using declared relationships;
-- groupings at the intended grain;
-- formulae with explicit inputs;
-- sorting and ranking;
-- chart construction with named fields.
-
-Execution should inherit permissions and return structured state. If a field
-is missing or a join multiplies rows, the model needs a specific error or
-warning rather than a blank result it can explain away.
-
-The difference matters:
-
-```text
-“I would join orders to products and calculate growth.”
-```
-
-is a proposed method.
-
-```text
-orders.product_id = products.product_id
-→ 184,203 order rows
-→ grouped by category and fiscal_quarter
-→ net_revenue = gross_revenue - returns
-```
-
-is the beginning of an inspectable execution record.
-
-## Step 5: validate before narrating
-
-Before producing a polished conclusion, the system should test the result.
-
-Useful checks include:
-
-- row counts before and after joins;
-- uniqueness of expected keys;
-- missingness in required measures;
-- reconciliation of totals with a known report;
-- complete coverage of the requested periods;
-- denominator checks;
-- outlier and small-sample warnings;
-- confirmation that units and currencies match.
-
-Validation does not have to become a giant ceremony. A few relevant checks can
-prevent a confident explanation of a broken intermediate table.
-
-The model can help choose checks. The platform should execute them.
-
-## Step 6: produce an answer that points back to evidence
-
-The narrative should clearly distinguish:
-
-- direct observations;
-- derived calculations;
-- user-supplied parameters;
-- assumptions;
-- limitations.
-
-If it says a category grew by 18%, the value should be openable. A reviewer
-should be able to see the two periods, totals and growth formula. If the answer
-attributes the change to price, the price and volume decomposition should be
-available rather than merely described.
-
-This is the purpose of the “Explain Query” work in
-[Omniscope Insight Explorer](https://help.visokio.com/support/solutions/articles/42000116042-insight-explorer-natural-language-data-q-a-from-answer-to-verifiable-and-reusable-artefacts-).
-Lineage, chart configuration, data, formulae, input origins and limitations
-remain connected to the response.
-
-<figure>
-  <img src="{{ '/assets/images/articles/insight-explorer-query-lineage.png' | relative_url }}" alt="Omniscope Explain view connecting source tables through query steps to a joined analytical result" width="1097" height="714" loading="lazy">
-  <figcaption>Explain Query connects the answer to the exact sources, joins and transformations used to produce it. <a href="https://help.visokio.com/support/solutions/articles/42000116042-insight-explorer-natural-language-data-q-a-from-answer-to-verifiable-and-reusable-artefacts-">See the Insight Explorer documentation ↗</a></figcaption>
-</figure>
-
-Showing the model’s internal reasoning would not provide the same assurance.
-Verification lives in the executed operations and data.
-
-## Step 7: turn the answer into an artefact
-
-Many natural-language systems stop after displaying a response. That wastes
-the most valuable part of the work.
-
-If the query was useful, a user should be able to:
-
-- save it;
-- add the chart to a report;
-- edit the generated operations;
-- compare it with another method;
-- rerun it when data refreshes;
-- place validation around it;
-- schedule it;
-- expose it through a controlled application.
-
-The temporary answer becomes part of the organisation’s analytical memory.
-
-This does not mean every question should become a dashboard. Most should not.
-It means the useful ones have a path out of chat.
-
-## A second pattern: extract once, query many times
-
-Natural-language analytics is not limited to tables that already exist.
-
-In one recent experiment, we processed a Ferrari Luce press kit containing
-roughly 90,000 characters. Repeatedly sending the whole document to a chat
-would have been slow, expensive and difficult to govern.
-
-Instead, a local model and LangExtract performed a semantic ETL step. The
-workflow produced related tables for:
-
-- facts;
-- attributes;
-- metrics;
-- entities;
-- run metadata.
-
-Extracted records retained grounded source spans, and the extraction was
-instructed not to invent missing information. Insight Explorer then answered
-questions over the structured semantic layer rather than rereading the raw
-document for every request.
-
-This pattern changes the economics and the evidence:
+That gave us tables for performance metrics, battery specifications, design
+features, collaborators, entities and attributes. Run metadata identified the
+extraction, while grounded spans retained the connection to the original
+document.
 
 ```text
 unstructured document
@@ -254,39 +122,91 @@ unstructured document
   → repeated analytical questions
 ```
 
-As I wrote in the
-[full semantic-ETL experiment](https://visokio.com/2026/05/28/from-unstructured-text-to-structured-qa-langextract-omniscope-and-insight-explorer/),
-the LLM is one step in a larger workflow.
+This execution record is more useful than a model saying it "read the press
+kit". I can inspect the extracted row, its type and the source text from which
+it came.
+
+## Step 5: validate before narrating
+
+Extraction can look impressive while quietly dropping a qualification,
+duplicating a fact or assigning a number to the wrong entity. Before asking for
+a polished summary, start with ordinary checks: inspect the source
+span, look for duplicates and missing values, confirm types and units, review
+the related entity, and make sure absent information has not been filled by the
+model's imagination.
+
+The table design matters too. Facts, attributes, metrics and entities have
+different shapes. Forcing all of them into one vague text table would make the
+next analytical step harder, even if the extraction itself sounded clever.
+
+Validation does not need to become a giant ceremony. A small review of the
+records most relevant to the question can catch a bad extraction before it
+becomes a confident answer.
+
+## Step 6: produce an answer that points back to evidence
+
+Insight Explorer then answered natural-language questions over the structured
+semantic layer. If an answer used a performance metric, the reviewer could
+inspect the table record and the grounded press-kit span behind it. The model's
+internal reasoning was not the evidence; the extracted records and executed
+query were.
+
+This is the purpose of the "Explain Query" work in
+[Omniscope Insight Explorer](https://help.visokio.com/support/solutions/articles/42000116042-insight-explorer-natural-language-data-q-a-from-answer-to-verifiable-and-reusable-artefacts-).
+Lineage, chart configuration, data, formulae, input origins and limitations
+remain connected to the response.
+
+<figure>
+  <img src="{{ '/assets/images/articles/insight-explorer-query-lineage.png' | relative_url }}" alt="Omniscope Explain view connecting source tables through query steps to a joined analytical result" width="1097" height="714" loading="lazy">
+  <figcaption>Explain Query connects the answer to the exact sources, joins and transformations used to produce it. <a href="https://help.visokio.com/support/solutions/articles/42000116042-insight-explorer-natural-language-data-q-a-from-answer-to-verifiable-and-reusable-artefacts-">See the Insight Explorer documentation ↗</a></figcaption>
+</figure>
+
+The narrative should still distinguish what came directly from the source,
+what was derived, which parameters the user supplied and which limitations
+remain.
+
+## Step 7: turn the answer into an artefact
+
+A useful query should have a life beyond the chat. In Omniscope I can save it,
+edit the generated operations, add its chart to a report, compare the method,
+rerun it when data changes and place validation or scheduling around it.
+
+Most questions do not need to become dashboards. But when a question is asked
+again, or its answer starts feeding a decision, rebuilding the method from
+prompt history is a waste. The structured tables and saved query give the work
+somewhere normal to live.
+
+## The result: extract once, query many times
+
+Repeatedly sending all 90,000 characters to a chat would be slower, more
+expensive and harder to review. The semantic-ETL approach performs the fuzzy
+extraction once and makes the result available for many analytical questions.
+
+It also changes where an error can be corrected. If a source passage was
+extracted badly, fix or rerun the extraction. If the query used the wrong
+field, inspect and revise the query. You do not have to keep rephrasing the
+question and hoping the next answer improves.
+
+The
+[full semantic-ETL experiment](https://visokio.com/2026/05/28/from-unstructured-text-to-structured-qa-langextract-omniscope-and-insight-explorer/)
+includes the workflow and table design in more detail. The LLM was one useful
+step inside it, not the whole application.
 
 ## What can still go wrong?
 
-An inspectable workflow is not immune to error.
+An inspectable workflow is not immune to error. The extraction may omit a
+qualification, the source document itself may be misleading, a technically
+valid relationship may still be wrong for the question, or a reviewer may
+approve the result too quickly.
 
-The model may select a reasonable but wrong metric. A join may be technically
-valid but analytically inappropriate. A source document may be misleading.
-An extraction may omit a qualification. A human may approve a result too
-quickly.
-
-The architecture helps because these failures have somewhere to become
-visible.
-
-The reviewer can inspect:
-
-- the resolved definitions;
-- the selected sources;
-- the operations;
-- the intermediate data;
-- the validation;
-- the cited spans;
-- the final claim.
-
-Without that chain, disagreement becomes another prompt. With it, disagreement
-can become a precise correction.
+The advantage is having somewhere to look. We can inspect the resolved
+definition, source passage, extracted record, intermediate tables, executed
+operations and final claim. A disagreement can become a correction to a
+specific step rather than another round of prompting.
 
 ## A practical standard
 
-For natural-language analytics, I would expect the system to answer five
-questions:
+For a natural-language analytical system, I would still ask five questions:
 
 1. **Intent:** What did it decide the user meant?
 2. **Method:** Which operations did it choose?
@@ -294,20 +214,16 @@ questions:
 4. **Evidence:** Which records and calculations support the claims?
 5. **Reuse:** What can be saved, edited and rerun?
 
-If any answer is “it is somewhere in the conversation”, the workflow is not
-finished.
+If the answer to any of these is "somewhere in the conversation", the work is
+not ready to reuse.
 
 ## Language at the front, structure underneath
 
-Natural language opens analytics to more people and makes experienced people
-faster. That is a substantial change.
+Natural language made the Ferrari experiment easier to define and made the
+resulting tables easier to question. The durable part was still the workflow:
+grounded extraction, related records, quality review, executed queries and
+artefacts that could be opened again.
 
-It does not require us to turn data work into an exchange of unstructured
-sentences.
-
-Use language to express intent. Use the model to plan and explain. Use governed
-tools to execute. Preserve the work as structure.
-
-The chat can disappear.
-
-The evidence should remain.
+If an answer looked wrong, I knew whether to inspect the source span, the
+extraction or the query. That is a much better debugging interface than asking
+the same document another question and getting a new paragraph back.

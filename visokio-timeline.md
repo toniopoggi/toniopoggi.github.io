@@ -8,11 +8,11 @@ description: The evolution of Visokio and Omniscope from visual data exploration
   <div class="shell page-intro-grid">
     <div>
       <p class="eyebrow">Visokio · Product history</p>
-      <h1>One product idea, expanded over two decades.</h1>
-      <p class="lead">Omniscope has changed substantially since its first release in 2005, but its direction has remained recognisable: let people work across the complete data problem in one coherent environment.</p>
+      <h1>More than twenty years of building and rebuilding Omniscope.</h1>
+      <p class="lead">Omniscope looks very different from the first release in 2005. We moved from a desktop visualisation product to a web-based platform for workflows, reports, applications, automation and AI-assisted data work, while keeping the work connected inside one environment.</p>
     </div>
     <aside class="intro-aside">
-      <p>This timeline is distilled from Visokio’s release record, product articles and my public writing. It is a map of the important shifts, not a list of every feature.</p>
+      <p>This timeline comes from Visokio’s release record, product articles and my own writing. It concentrates on the engineering and product shifts that changed what people could build; listing every feature from twenty years of releases would be a rather less useful page.</p>
     </aside>
   </div>
 </header>
@@ -24,7 +24,7 @@ description: The evolution of Visokio and Omniscope from visual data exploration
         <div class="timeline-year">2002</div>
         <div class="timeline-content">
           <h3>Visokio is founded</h3>
-          <p>The independent company begins in London. The early ambition is already broader than producing static charts: make large and complex datasets something people can explore and understand directly. <a href="https://visokio.com/">See the current company history ↗</a></p>
+          <p>Visokio is founded in London; Omniscope 1.0 follows in 2005. <a href="https://visokio.com/">See the current company history ↗</a></p>
         </div>
       </div>
       <div class="timeline-item">
@@ -45,7 +45,7 @@ description: The evolution of Visokio and Omniscope from visual data exploration
         <div class="timeline-year">2015-18</div>
         <div class="timeline-content">
           <h3>The platform is rebuilt for the web</h3>
-          <p>A three-year engineering programme creates a new generation of Omniscope, publicly released on 12 November 2018. Its web-based report architecture, workflow system and extension model provide the foundation for server deployment, collaboration and a much wider class of data applications.</p>
+          <p>After three years of engineering work, the new generation of Omniscope is publicly released on 12 November 2018. At the time I wrote about the former and current colleagues who had built it together, and admitted that I would never stop being a developer because creating software can make you feel a little invincible. The release’s web reporting, workflow and extension architecture became the foundation for server deployment, collaboration and a much wider class of data applications.</p>
           <p><a href="https://www.linkedin.com/posts/antoniopoggi_omniscope-is-activity-6467892735952199680-SZDG">Read my release reflection ↗</a></p>
         </div>
       </div>
@@ -68,7 +68,7 @@ description: The evolution of Visokio and Omniscope from visual data exploration
       <div class="timeline-item">
         <div class="timeline-year">2021</div>
         <div class="timeline-content">
-          <h3>Governed projects and isolated extensions</h3>
+          <h3>Authentication, templates and isolated Python/R</h3>
           <p>OIDC authentication, publishing controls, project templates and performance work make deployment more systematic. Custom blocks can run Python and R in isolated Docker environments, combining no-code assembly with specialist code where it adds value.</p>
           <p><a href="https://visokio.com/2021/10/06/omniscope-rock-build-2021-2/">Read the 2021.2 release ↗</a></p>
         </div>
@@ -101,7 +101,7 @@ description: The evolution of Visokio and Omniscope from visual data exploration
         <div class="timeline-year">2026</div>
         <div class="timeline-content">
           <h3>Verifiable, model-neutral AI</h3>
-          <p>Insight Explorer, Workflow Ninja, AI Request and AI Insights expand the model’s reach across exploration, preparation and reporting. Support for multiple providers and local models keeps deployment flexible. Visible transformations, validation and human review keep the answer grounded in a deterministic platform.</p>
+          <p>Insight Explorer, Workflow Ninja, AI Request and AI Insights expand the model’s reach across exploration, preparation and reporting. Support for multiple providers and local models keeps deployment flexible, while the generated transformations and outputs remain visible for review.</p>
           <p><a href="https://visokio.com/2026/04/30/omniscope-rock-2026-release/">Read the Omniscope Rock 2026 release ↗</a></p>
         </div>
       </div>
@@ -111,10 +111,10 @@ description: The evolution of Visokio and Omniscope from visual data exploration
 
 <section class="section">
   <div class="shell split-content">
-    <h2>The thread that connects the releases</h2>
+    <h2>How the releases connect</h2>
     <div class="body-copy">
-      <p>Each generation has reduced a boundary. Coordinated views reduced the gap between datasets and visual understanding. Workflows joined preparation to analysis. Publishing and APIs joined projects to operations. Data applications joined analytical logic to a focused user experience. AI now offers a new interface to the same platform.</p>
-      <p>That is why Omniscope’s current AI work cannot be understood in isolation. A model is useful because it can operate years of accumulated analytical, visual and operational capability. Verification is possible because the platform already knows how to represent that work visibly.</p>
+      <p>The first coordinated views made it easier to explore a dataset directly. Workflows connected preparation to analysis; web publishing and APIs connected projects to day-to-day operations; application features gave the same logic a focused interface. AI is the latest interface into those accumulated capabilities.</p>
+      <p>An agent is useful in Omniscope because it can operate tools we have spent years building. Its work is verifiable for the same reason: joins, calculations, workflows and reports already have visible representations in the platform.</p>
     </div>
   </div>
 </section>

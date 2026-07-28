@@ -2,7 +2,7 @@
 title: "What I Learned from Analysing 80,000 Hourly Benzene Measurements"
 subtitle: "Grain, missingness, reference levels and dataset versions matter as much as the chart—especially when evidence enters public debate."
 date: 2026-07-27 00:12:00 +0100
-last_modified_at: 2026-07-27 21:25:00 +0100
+last_modified_at: 2026-07-28 12:11:00 +0100
 eyebrow: "Citizen science · Evidence"
 series: "Citizen science and public evidence"
 cluster: citizen
@@ -24,8 +24,8 @@ tags:
   - Omniscope
 takeaways:
   - "Annual averages and hourly peaks answer different questions; do not collapse one into the other."
-  - "The February 2024 Senate snapshot contained 63 readings above 27 µg/m³, including 32 in 2023; a later final ARPA report gave 47 for 2023, so snapshot dates must be disclosed."
-  - "The 27 µg/m³ OEHHA acute REL is a one-hour health reference, not an EU or Italian ambient legal limit and not proof of individual harm."
+  - "In the February 2024 Senate snapshot, 63 readings exceeded 27 µg/m³, including 32 in 2023; a later final ARPA report gave 47 for 2023, which is why the snapshot date must travel with the result."
+  - "That 27 µg/m³ OEHHA acute REL is a one-hour health reference, not an EU or Italian ambient legal limit and not proof of individual harm."
 next_url: /writing/citizen-owned-air-quality/
 next_label: "Next in the series"
 next_title: "Making institutional air-quality data usable by citizens"
@@ -35,21 +35,17 @@ For the February 2024 Senate hearing, PeaceLink asked me to examine all the
 hourly benzene measurements from the Via Machiavelli monitoring station in
 Taranto across 2013–2023.
 
-The dataset contained more than 80,000 observations.
-
-That number sounds substantial, but volume was not the difficult part. The
-difficult part was deciding what could be claimed from the measurements,
-preserving the hourly events that annual summaries hide, and making the result
+The dataset contained more than 80,000 observations, but volume was not the
+difficult part. I had to decide what the measurements could support,
+preserve the hourly events that annual summaries hide, and make the result
 clear enough to enter a public and institutional discussion without making it
 sound more certain than it was.
 
 The analysis was later presented by Alessandro Marescotti during an
 [Italian Senate hearing on 6 February 2024](https://www.senato.it/application/xmanager/projects/leg19/attachments/documento_evento_procedura_commissione/files/000/429/055/2024_02_06_PeaceLink_slides.pdf).
 The official slides credit my data analysis and processing with
-[Omniscope](https://visokio.com/).
-
-What follows is not only the result. It is what the work taught me about public
-evidence.
+[Omniscope](https://visokio.com/). This is the result and an account of the
+decisions I had to make before those numbers could be presented.
 
 ## Hourly grain changes the question
 
@@ -57,24 +53,17 @@ Benzene regulation and public reporting often focus on annual averages. Those
 are essential for assessing long-term ambient concentrations and legal
 compliance.
 
-An annual mean cannot describe the shape of every hour inside it.
-
-Two years can have the same annual average while one contains a relatively
+An annual mean cannot describe the shape of every hour inside it. Two years can
+have the same annual average while one contains a relatively
 stable distribution and the other contains short, extreme episodes. People
 living near a monitoring station experience both patterns, but the analytical
-questions are different:
+questions are different. I needed the station’s annual mean, but I also needed
+to know how often unusually high hours occurred, whether they clustered in
+particular months or times, whether the distribution changed and whether data
+was missing during an event somebody wanted to examine.
 
-- What was the station’s annual mean?
-- How often did unusually high hourly episodes occur?
-- Were they concentrated in particular months or times?
-- Did the distribution change?
-- Were measurements missing during events of interest?
-
-Aggregating too early destroys the evidence needed for the second group.
-
-The first lesson was simple: retain the finest trustworthy grain, then derive
-the summaries. Do not keep only the summary and hope it answers every future
-question.
+Those questions disappear if the hourly rows are aggregated too early. I kept
+the finest trustworthy series and derived the summaries from it.
 
 ## A threshold needs a name and a meaning
 
@@ -131,8 +120,7 @@ These counts appear on page 5 of
 
 The striking finding was the concentration in the latest year of that
 snapshot: 32 in 2023, compared with 31 across the previous ten years combined.
-
-That justified attention. It did not identify a cause by itself.
+That justified attention, but the count alone did not identify a cause.
 
 Time, wind direction, other stations, industrial operations and validated
 source records all become relevant to a causal investigation. A single
@@ -141,9 +129,8 @@ cannot close every explanatory question.
 
 ## A later official report gave a different count
 
-There is an important complication.
-
-The later final ARPA Puglia benzene report for 2023 records **47** Via
+There is an important complication: the later final ARPA Puglia benzene report
+for 2023 records **47** Via
 Machiavelli observations above 27 µg/m³, not 32.
 
 The exact
@@ -155,7 +142,7 @@ public reconciliation that explains the difference. It may involve validation,
 completion or revision of the source series, but the reason remains unresolved
 and should not be guessed away.
 
-This changed one of my strongest lessons:
+The discrepancy made one requirement impossible to ignore:
 
 > A result is not fully described by the query. It also needs the source
 > snapshot and its date.
@@ -169,20 +156,11 @@ The discrepancy does not make the earlier analysis worthless. Hiding it would.
 ## Missingness is evidence too
 
 Public environmental datasets contain gaps, station outages, delayed
-validation and revised records.
-
-These must remain visible.
-
-For each period I want to know:
-
-- how many hours should exist;
-- how many measurements are present;
-- whether missingness is isolated or continuous;
-- whether values are provisional or validated;
-- whether timestamps and daylight-saving changes were handled consistently;
-- whether duplicate observations exist;
-- whether units changed;
-- when the source file was retrieved.
+validation and revised records. For each period I want to know how many hours
+should exist, how many measurements are present and whether a gap is isolated
+or continuous. I also check whether values are provisional or validated,
+timestamps and daylight-saving changes were handled consistently, duplicates
+exist, units changed and when the source file was retrieved.
 
 A line chart that connects across a three-day gap can visually imply
 continuous monitoring. An annual summary can hide that the station was absent
@@ -200,11 +178,10 @@ Tamburi.
 At the same time, later hourly episodes still exceeded the 27 µg/m³ acute
 reference.
 
-These findings are not contradictory.
-
 Longer-term improvement can coexist with individual events that deserve
-attention. Public communication becomes distorted when it insists on only one
-of those truths.
+attention. The 2023–2025 direction and the later hourly episodes describe
+different parts of the same record, and neither should be dropped to make the
+story simpler.
 
 <figure>
   <img src="{{ '/assets/images/benzene-trend-linkedin-2023-2025.jpg' | relative_url }}" alt="Omniscope report comparing the number and average of high daily benzene readings at four Taranto stations from 2023 through 2025" width="800" height="1112" loading="lazy">
@@ -214,31 +191,18 @@ of those truths.
 The distinction between hourly and daily measures belongs in the caption, not
 in a footnote nobody reads.
 
-## Evidence has to travel
+## What stayed attached when the analysis travelled
 
-The analysis moved through several forms:
+The source monitoring records became a prepared and checked hourly dataset, an
+Omniscope workflow and report, charts and threshold counts, PeaceLink’s public
+explanation and finally the Senate slides. At every hand-off some context could
+have disappeared.
 
-1. source monitoring records;
-2. a prepared and checked hourly dataset;
-3. an Omniscope workflow and report;
-4. charts and threshold counts;
-5. PeaceLink’s public explanation;
-6. the Senate hearing slides.
-
-At every hand-off, context could have been lost.
-
-The most valuable properties were:
-
-- the raw observations remained available;
-- the distribution by year was visible;
-- the threshold was named;
-- the station and period were explicit;
-- the method could be rerun;
-- later data could be compared;
-- uncertainty about causation remained stated.
-
-This is what turns a chart into public evidence rather than campaign
-decoration.
+We kept the raw observations available, showed the distribution by year,
+named the threshold and stated the station and period. The method could be
+rerun, later data could be compared and the limits of causal attribution
+remained explicit. Those details kept the chart connected to the analysis
+behind it when it reached a different audience.
 
 ## What I would preserve in the next analysis
 
@@ -254,24 +218,19 @@ For any long-running environmental series, I would now keep:
 - transformation version;
 - threshold definition and source;
 - result snapshot used for each publication;
-- links from every public claim back to the interactive evidence.
+- links from every public claim back to the interactive report and source rows.
 
 I would also reconcile later official revisions explicitly rather than
 silently updating an old number.
 
-## The number is not the conclusion
+## What the 80,000 measurements taught me
 
-“More than 80,000 measurements” communicates scale.
-
-“63 above the reference” communicates a finding from one snapshot.
-
-Neither is the complete conclusion.
-
-The complete work includes grain, coverage, threshold meaning, version,
+“More than 80,000 measurements” communicates scale, while “63 above the
+reference” communicates a finding from one snapshot. The conclusion also
+depends on grain, coverage, threshold meaning, version,
 comparison and the limits of attribution. It includes the later official count
 that does not match the earlier snapshot. It includes the fact that trends can
 improve while significant episodes continue.
 
-That may be less satisfying than one permanent headline.
-
-It is much closer to evidence.
+That is less tidy than one permanent headline, but it is an honest account of
+what the data can support.

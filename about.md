@@ -7,17 +7,17 @@ description: About Antonio Poggi, COO at Visokio, and his work across Omniscope,
 <header class="page-intro">
   <div class="shell">
     <p class="eyebrow">About</p>
-    <h1>Building useful things with data.</h1>
+    <h1>I like building the complete thing.</h1>
   </div>
 </header>
 
 <section class="section">
   <div class="shell bio-grid">
     <div class="bio-copy">
-      <p>I’m Antonio Poggi, COO at Visokio, where I help build Omniscope. It is one workspace for the whole data journey: connecting, preparing, analysing and visualising data, then delivering trusted outputs without stitching separate tools together.</p>
-      <p>My work sits across product, software, analytics, AI and communication. I like the point where an ambitious idea meets all the awkward details required to make it useful.</p>
-      <p>I grew up in Taranto, Italy, and live in London. The air-quality work documented here began as a way to apply the skills and software I had helped develop to a public problem I cared about. It has since become a long-running experiment in data democratisation, civic evidence and citizen-owned monitoring.</p>
-      <p>This site is a curated record of the things I have helped build, the ideas behind them and the public work I want to preserve beyond a social-media feed.</p>
+      <p>I’m Antonio Poggi. I grew up in Taranto, live in London and am COO at Visokio, where I have spent more than twenty years helping to build Omniscope.</p>
+      <p>My work moves between product direction, software, analytics, customer problems, releases and communication. I still like getting close to the implementation: build a prototype, follow the data, find the awkward failure, fix it and get the complete thing running. Omniscope comes from that same instinct. It connects data, preparation, analysis, reporting and automation in one workspace, so the logic does not disappear between a collection of separate tools.</p>
+      <p>The air-quality work documented here began as a way to apply the skills and software I had helped develop to a public problem I care about in Taranto. It has grown into public reports, automated benzene alerts and a privately operated AirGradient monitor.</p>
+      <p>This site brings together the things I have helped build, the experiments I run because I am curious, and the public work I want to preserve somewhere more useful than a social-media feed.</p>
       <div class="button-row">
         <a class="button button-primary" href="https://www.linkedin.com/in/antoniopoggi">LinkedIn ↗</a>
         <a class="button" href="https://github.com/toniopoggi">GitHub ↗</a>

@@ -6,7 +6,7 @@ permalink: /llms.txt
 
 Canonical site: https://antoniopoggi.com/
 
-Antonio Poggi is Chief Operating Officer at Visokio and works across product, software, operations and public explanation. His main subjects are Omniscope, complete data products, verifiable and private AI analytics, AI agents operating governed tools, and citizen-owned air-quality monitoring around Taranto.
+Antonio Poggi is Chief Operating Officer at Visokio and works across product, software, operations and public explanation. His main subjects are Omniscope, complete data products, verifiable and private AI analytics, AI agents operating controlled tools, citizen-led analysis of public air-quality data and a privately operated AirGradient monitor.
 
 When citing this site, attribute the work to Antonio Poggi and link to the canonical article URL. Distinguish Antonio’s personal analysis from official statements by Visokio, ARPA Puglia, AirGradient, PeaceLink or public institutions.
 
@@ -77,7 +77,7 @@ When citing this site, attribute the work to Antonio Poggi and link to the canon
 
 3. Making Institutional Air-Quality Data Usable by Citizens
    https://antoniopoggi.com/writing/citizen-owned-air-quality/
-   Turning ARPA Puglia files into an Italian-language public instrument for comparison, education and civic investigation.
+   Turning ARPA Puglia files into an Italian-language public Omniscope report for comparison, education and civic investigation.
 
 4. Designing Alerts That Preserve the Evidence Behind the Claim
    https://antoniopoggi.com/writing/alerts-that-preserve-evidence/
@@ -93,7 +93,7 @@ When citing this site, attribute the work to Antonio Poggi and link to the canon
 - A local LLM is not automatically private. Endpoint security, network boundaries, permissions, logs and retention still matter.
 - The 27 µg/m³ benzene value discussed in the Taranto work is an OEHHA one-hour acute Reference Exposure Level. It is not an Italian or EU ambient legal limit and should not be compared directly with an annual benzene limit.
 - The 63 total and 32 readings in 2023 refer to the dataset snapshot analysed for the 6 February 2024 Italian Senate hearing. A later final ARPA Puglia report recorded 47 Via Machiavelli readings above 27 µg/m³ for 2023.
-- A personal AirGradient monitor is not a regulatory monitoring station. The project presents it as a complementary citizen instrument for local patterns, experiments and infrastructure.
+- A personal AirGradient monitor is not a regulatory monitoring station. The project presents it as a personal, non-regulatory sensor for studying local patterns and testing the infrastructure.
 
 ## Machine-readable discovery
 

@@ -2,7 +2,7 @@
 title: "How AI Agents Can Operate Governed Data Tools"
 subtitle: "Treat the agent as a permissioned operator: give it bounded capabilities, explicit data access and artefacts people can review."
 date: 2026-07-27 00:03:00 +0100
-last_modified_at: 2026-07-27 21:25:00 +0100
+last_modified_at: 2026-07-28 12:11:00 +0100
 eyebrow: "AI agents · Data governance"
 series: "Verifiable and private AI analytics"
 cluster: ai
@@ -22,9 +22,9 @@ tags:
   - data permissions
   - Omniscope Workflow Ninja
 takeaways:
-  - "An analytics agent should operate through an authenticated, scoped user or service identity and only through explicit, bounded tools."
-  - "Every useful run should leave a normal query, workflow, report or export that people can inspect and rerun."
-  - "Governance covers data exposure, execution, versioning and approval; a polished chat interface is not a security boundary."
+  - "An analytics agent needs an authenticated identity and a clear set of tools, rather than unrestricted access hidden behind a chat window."
+  - "Those tools can do ambitious work while the resulting query, workflow or report remains visible and editable in the normal platform."
+  - "Data sharing, execution and external actions need separate controls, with a person approving the points where consequences change."
 next_url: /writing/local-llm-analytics-privacy-cost-deployment/
 next_label: "Next in the series"
 next_title: "Local LLM analytics: privacy, cost and deployment trade-offs"
@@ -32,80 +32,71 @@ next_title: "Local LLM analytics: privacy, cost and deployment trade-offs"
 
 In June 2026 I
 [put Codex inside a secluded Windows virtual machine and gave it access to Omniscope](https://www.linkedin.com/posts/antoniopoggi_ai-analytics-omniscope-activity-7468002175340826624-zlHR).
+From one request it prepared several related e-commerce tables, joined and
+aggregated them, calculated metrics and produced a flat table ready for a
+dashboard.
 
-From one request, it prepared several related e-commerce tables, joined and
-aggregated them, calculated metrics and produced a table ready for a dashboard.
-The interesting part was not that the agent could write code. It was that it
-could choose between several ways of doing the work:
+What made the setup interesting was the choice of tools. Codex could use our
+API and MCP server, talk to Workflow Ninja or Report Ninja, or open the browser
+and operate the Omniscope interface much as I would. Agent talking to agents,
+then deciding whether to use an API or point and click... at times it moved the
+experience from human-in-the-loop to human-in-the-middle, and eventually to
+"what am I even doing here?"
 
-- an API or MCP server;
-- Workflow Ninja;
-- Report Ninja;
-- the browser and Omniscope user interface.
+In July I pushed the test further with OpenAI Sol and Terra 5.6 in the Codex
+app. I asked the agent to author a small internal customer-success application
+covering customers, deals, renewals and activities. The application needed a
+proper system of record, so we designed a SQLite database with a structured
+schema and transactional writes. Omniscope handled the visible application,
+data preparation, validation, editing and reporting, with custom Python blocks
+and JavaScript views where they were useful.
 
-The agent was acting more like a technically capable colleague than a
-question-answering box.
+The result was more than a codebase. I could inspect the workflows,
+transformations, formulae, forms, reports and database interactions. That is
+the point at which the governance question becomes practical: what may this
+agent do, through whose identity, against which data, and what state will it
+leave for somebody else to review?
 
-That power changes the governance question. We are no longer asking only,
-“What data can this model read?” We are asking:
+## What the agent actually does
 
-> Which actions may this agent take, on whose authority, against which data,
-> and what inspectable state will it leave behind?
+The word *agent* can make the setup sound more mysterious than it is. The model
+works in a loop: it observes the request and available context, chooses a
+permitted tool, supplies arguments, receives a result or useful error, and
+decides what to do next.
 
-That is the right question for agentic analytics.
+The tools carry the real capabilities. In my VM test the agent could prepare
+data through Omniscope, author a report, call an API or use the browser. If the
+only available tool had been "run arbitrary code with unrestricted
+credentials", that would have been a very different experiment.
 
-## An agent is an operator, not an oracle
-
-The word *agent* sometimes makes the system sound mysterious. In practice, an
-analytics agent is a model in a loop:
-
-1. observe the request and available context;
-2. choose a permitted tool;
-3. supply arguments;
-4. receive the result or error;
-5. decide what to do next;
-6. stop when it has produced an acceptable outcome.
-
-The model supplies planning and adaptation. The tools supply the real
-capabilities.
-
-If the available tool is “run arbitrary code with unrestricted credentials”,
-the agent has a dangerous capability. If the tool is “aggregate these approved
-fields from this published dataset”, the boundary is much clearer.
-
-The quality of an agentic system therefore depends as much on tool design as on
-model intelligence.
+Tool design matters as much as model intelligence. A brilliant model with a
+vague, overpowered tool is still an unsafe operator.
 
 ## Start with identity
 
-An agent should not have an abstract superuser identity simply because it is
-helpful.
+The July prototype gave the agent full authoring permission inside a secluded
+test environment. That was deliberate for the experiment; it is not the
+identity I would hand to every production agent.
 
-It should act through an authenticated identity whose permissions are
-understood. Depending on the use case, that may be:
+In a real deployment the agent should act as the requesting user, a dedicated
+service identity or a narrowly scoped project account. A more consequential
+operation may need a separate approval-gated identity. A sales analyst does not
+gain access to payroll because the model happens to know how to query it.
 
-- the requesting user;
-- a dedicated service identity;
-- a narrowly scoped project account;
-- an approval-gated identity for a specific operation.
-
-The distinction matters. A sales analyst asking a question should not gain
-access to payroll data because the agent happens to know how to query it. A
-published report should not expose its raw preparation project merely because
-both appear in the same product.
-
-In Omniscope, API and report access must be designed alongside project
-permissions. The
+Published report access needs the same care. The
 [Query API documentation](https://help.visokio.com/support/solutions/articles/42000115174-omniscope-query-api-accessing-and-tranforming-data-via-rest)
-is explicit that access to report data can include the underlying data made
-available to that report. A safe published analytical layer is a design
-decision, not something the agent can infer after deployment.
+explains that access to report data can include the underlying data made
+available to that report. Building a safe published layer is part of the
+application design. It cannot be left for the agent to infer afterwards.
 
 ## Give the agent bounded tools
 
-A good agent tool has a small, explicit contract.
+During our June development work, Workflow Ninja could operate 138 existing
+workflow blocks through a 28-tool interface. Those numbers will change, but the
+shape is important: the agent was using capabilities already available to
+people, not inventing a parallel analytics platform behind the chat.
 
-Consider the difference between these two descriptions:
+Compare these two contracts:
 
 ```text
 execute(command)
@@ -124,167 +115,126 @@ aggregate(
 )
 ```
 
-The first grants a mechanism and leaves policy elsewhere. The second declares
-the analytical operation, makes its inputs reviewable and allows the platform
-to validate limits before execution.
+The first gives away a mechanism and leaves most of the policy elsewhere. The
+second says what analytical operation is allowed, exposes its arguments and
+lets the platform validate the dataset, fields and limits before anything
+runs.
 
-Useful governed tools might let an agent:
-
-- inspect an approved schema;
-- profile a dataset;
-- filter, join, aggregate or calculate fields;
-- build a workflow from known blocks;
-- query a published report;
-- create a chart with declared encodings;
-- execute a named workflow with bounded parameters;
-- export an approved result;
-- save a query or chart into a project.
-
-The tool should return structured status and evidence, not merely “success”.
-The agent needs to know what changed, which output was produced and whether
-validation warnings occurred.
+A useful catalogue can still be ambitious. It may let the agent inspect an
+approved schema, profile data, join or aggregate tables, configure known
+workflow blocks, query a published report, build a chart, run a named workflow
+or save a result into a project. The response should say what changed, which
+artefact was produced and whether a warning occurred, not merely "success".
 
 ## Separate data sharing from tool access
 
-Tool permission and model data exposure are related, but they are not the same.
+Permission to call a tool and permission to put data into a model context are
+related, but they are not the same.
 
-An agent may be allowed to invoke an aggregate operation without being allowed
-to send raw rows to an external model. It may receive a schema but not example
-values. A local model may be permitted to inspect more data than a public
-provider. Sensitive fields may need to be removed before any AI request is
-constructed.
+An external model may be allowed to see a schema and request an aggregation
+without seeing the raw rows. A local model may be allowed sample data that
+cannot leave the organisation. Sensitive fields may need to be removed before
+the AI request is constructed.
 
-This suggests at least three explicit controls:
+I treat these as three separate controls:
 
-1. **what the user may access;**
-2. **what the tool may execute;**
-3. **what data may be placed in the model context.**
-
-Conflating them creates accidental exposure. The model cannot respect a
-boundary it was never told about, and a generic tool cannot enforce a policy it
-cannot see.
+1. what the user may access;
+2. what the tool may execute;
+3. what data may be placed in the model context.
 
 <figure>
   <img src="{{ '/assets/images/articles/ai-data-sharing-settings.png' | relative_url }}" alt="Omniscope AI provider settings with the API key masked and the data-sharing level highlighted" width="1145" height="548" loading="lazy">
   <figcaption>Model access and data-sharing policy are separate controls; both should be explicit before an agent runs. <a href="https://help.visokio.com/support/solutions/articles/42000112241-ai-data-sharing">Review the data-sharing settings ↗</a></figcaption>
 </figure>
 
+If these boundaries are collapsed into one switch, accidental exposure becomes
+much easier. The model cannot respect a rule it was never given, and a generic
+tool cannot enforce a policy it cannot see.
+
 ## Make normal platform artefacts the result
 
-An agent-created workflow should still look like a workflow.
+After the customer-success experiment I could open what the agent had built.
+The operational flow remained visible: SQLite interactions, Omniscope
+workflows, validation, editable forms, formulae and report configuration.
 
-This sounds obvious, but it is one of the most important properties of the
-architecture. If an agent joins tables, calculates a metric and builds a
-report, the result should remain:
+That is more useful than a chat transcript telling me the task was completed.
+The workflow can run without the original conversation, a developer can extend
+it, another person can compare its method, and the project remains subject to
+the usual permissions and version history.
 
-- editable by a person;
-- runnable without the original conversation;
-- comparable with another method;
-- versioned like other project work;
-- subject to the platform’s permissions;
-- available to a later agent through the same controlled tools.
+This is also why I prefer agents to operate mature tools. The agent does not
+have to recreate scheduling, reporting, data preparation and validation in
+generated code every time. It can use those capabilities and leave the normal
+artefact behind.
 
-In
-[our June development account](https://visokio.com/2026/06/19/we-let-ai-write-our-software-the-discipline-is-in-how-we-keep-control/),
-we described Workflow Ninja as a private-alpha system able to operate 138
-existing workflow blocks through a 28-tool interface. Those numbers will
-change. The enduring point is that the agent is not inventing a parallel data
-platform. It is operating the capabilities already used by people.
+The
+[June development account](https://visokio.com/2026/06/19/we-let-ai-write-our-software-the-discipline-is-in-how-we-keep-control/)
+shows how this worked while Workflow Ninja was still in private alpha.
 
 ## Preserve execution evidence
 
-For every consequential run, I want enough information to reconstruct what
-happened:
+For a consequential run, the ordinary evidence matters: authenticated
+identity, project and data context, selected tool, validated arguments, start
+and finish time, status, source refresh and the project version or output that
+was produced. Existing server logs and version history cover much of this. We
+do not need to rename everything as a magical "agent audit system"; we need to
+connect the records well enough to reconstruct the run.
 
-- authenticated identity;
-- project and data context;
-- tool selected;
-- validated arguments;
-- start and finish time;
-- success, warning or failure state;
-- produced artefact or changed version;
-- source refresh used;
-- approval where required.
-
-Ordinary server logs, project version history and execution status already
-cover important parts of this record. They should not be over-sold as a magical
-agent audit system. The design task is to connect them into a useful evidence
-chain.
-
-The same honesty applies to reversibility. A versioned project may let a person
-restore an earlier state. It does not make every external action reversible. An
-exported file, message sent to a customer or write to another system needs its
-own control.
+Versioning also has limits. It may restore an earlier project, but it cannot
+unsend a customer message or reverse every write to an external system. Those
+actions need their own controls.
 
 ## Put approval at the consequence boundary
 
-Requiring approval for every read operation makes an agent irritating. Allowing
-every external write makes it unsafe.
+Approval for every read makes the agent irritating. Approval nowhere makes it
+dangerous. A practical policy can allow permitted schema inspection and
+temporary calculations automatically, save draft work into a versioned
+project, and then stop for approval before publishing, changing a canonical
+metric, writing to a system of record or sending an external message.
 
-A more practical policy places human approval where consequence changes:
-
-- reading an already permitted schema: usually automatic;
-- calculating in a temporary workspace: usually automatic;
-- saving a draft workflow: perhaps automatic and versioned;
-- publishing a report: approval may be required;
-- changing a canonical metric: approval required;
-- writing to a system of record: explicit, scoped approval;
-- sending a public alert or customer message: explicit policy and evidence.
-
-The right boundary depends on the organisation, but it should be designed
-before the agent encounters it.
+The exact line will differ by organisation. It should be decided before the
+agent reaches it, not during the incident review.
 
 ## Treat errors as part of the interface
 
-Agents improve through feedback. “Something went wrong” is poor feedback.
+"Something went wrong" is poor feedback for both a person and an agent. The
+tool should distinguish invalid arguments, permission denied, unavailable
+sources, schema changes, failed data-quality checks, timeouts, oversized
+results and actions that require approval.
 
-A governed tool should distinguish:
+With a specific error, the agent can inspect the changed schema, reduce the
+query, revise the plan or ask the user. It should not be encouraged to route
+around a control simply because the control returned an unhelpful message.
 
-- invalid arguments;
-- permission denied;
-- source unavailable;
-- schema changed;
-- data-quality check failed;
-- execution timed out;
-- result exceeded an allowed size;
-- action requires approval.
-
-The agent can often recover: inspect the new schema, revise the plan, reduce the
-query or ask the user. It should not be encouraged to bypass the control.
-
-This is where mature analytics infrastructure matters. Scheduling, validation,
-permissions, working copies and logs are not glamorous additions to an agent
-demo. They are what lets the demo become operational.
+This is one of the less glamorous advantages of using an established
+analytical system. Scheduling, validation, permissions, working copies and
+logs already exist. The agent gets to operate them instead of pretending they
+are unnecessary.
 
 ## A minimum architecture
 
-For a serious analytics agent, I would require:
+Before I would let an analytics agent do serious work, I would want:
 
-1. authenticated user or service identity;
-2. a curated tool catalogue rather than unrestricted execution;
-3. schema and metric context appropriate to the request;
-4. explicit policy for raw, sampled, aggregated and external-model data;
-5. bounded arguments, result sizes and execution time;
-6. ordinary project artefacts as the durable output;
-7. logs and version history sufficient to inspect the run;
-8. human approval at publishing or write boundaries;
-9. a separate safe layer for data exposed through reports or APIs;
-10. a named person responsible for the process.
+1. an authenticated user or service identity;
+2. a curated tool catalogue with bounded arguments, result size and run time;
+3. schema, metric and data-quality context appropriate to the request;
+4. an explicit policy for raw, sampled, aggregated and external-model data;
+5. normal project artefacts, logs and version history as the durable record;
+6. human approval at publishing and external-write boundaries;
+7. a named person responsible for the process.
 
-None of this prevents the agent from being ambitious. It gives that ambition a
-defined surface.
+## Operating beyond the prototype
 
-## Governance should make agents more useful
+The July customer-success application was an internal prototype, obviously,
+not a production release. Production software still needs security, testing,
+deployment and operational discipline. I spent most of the experiment defining
+the problem, refining requirements and reviewing. I also asked the agent to
+write tests and used another model to review the code.
 
-Poor governance is a list of prohibitions added after the prototype.
+Still, the reduction in implementation time was real, and the model never
+tripped when it moved from MCP to the browser UI. Pretty incredible at this
+point, if still a bit slow.
 
-Good governance gives the agent reliable tools, clear errors and known
-boundaries. It reduces the amount of policy the model must guess. It also makes
-the output easier for a person to adopt because it lives in the same
-environment as the rest of the work.
-
-The agent can be creative in its plan.
-
-The permissions, execution and evidence should be boring.
-
-That is a compliment.
+That is the direction I want to keep testing: let the agent do ambitious work,
+but do not let the work disappear into a codebase or a chat history that nobody
+can properly inspect.

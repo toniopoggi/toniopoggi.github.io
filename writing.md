@@ -2,7 +2,7 @@
 title: Writing
 permalink: /writing/
 section: writing
-description: Field guides by Antonio Poggi on verifiable AI analytics, complete data products, Omniscope and citizen-owned air-quality evidence.
+description: Articles by Antonio Poggi on verifiable AI analytics, complete data products, Omniscope and air-quality monitoring.
 ---
 {% assign ai_articles = site.articles | where: 'cluster', 'ai' | sort: 'article_order' %}
 {% assign product_articles = site.articles | where: 'cluster', 'products' | sort: 'article_order' %}
@@ -10,15 +10,15 @@ description: Field guides by Antonio Poggi on verifiable AI analytics, complete 
 <header class="page-intro">
   <div class="shell page-intro-grid">
     <div>
-      <p class="eyebrow">Writing · {{ site.articles.size }} field guides</p>
-      <h1>Build the answer. Preserve the evidence.</h1>
-      <p class="lead">Three connected series on AI that can be verified, data work that can become a product, and public measurements that citizens can actually use.</p>
+      <p class="eyebrow">Writing · {{ site.articles.size }} articles</p>
+      <h1>Articles about Omniscope, AI, data products and air quality.</h1>
+      <p class="lead">These articles come from work I have done at Visokio, technical experiments I have run myself and seven years of air-quality work around Taranto.</p>
       <div class="button-row">
         <a class="button button-primary" href="{{ '/directory/' | relative_url }}">Search all articles and pages <span aria-hidden="true">↗</span></a>
       </div>
     </div>
     <aside class="intro-aside">
-      <p>The articles draw on two decades of building Omniscope, more than forty Visokio articles, hundreds of public posts and seven years of air-quality work around Taranto.</p>
+      <p>I have pulled the useful material out of two decades of product work, the Visokio archive, around 200 LinkedIn posts and the civic record, then linked each article back to the original sources.</p>
     </aside>
   </div>
 </header>
@@ -27,29 +27,29 @@ description: Field guides by Antonio Poggi on verifiable AI analytics, complete 
   <div class="shell">
     <div class="section-heading">
       <p class="eyebrow">The publication</p>
-      <h2>Three ways into the same work.</h2>
-      <p class="lead">Start with the question closest to you. Each article is self-contained; together they show how data moves from source to inspectable decision and useful action.</p>
+      <h2>Browse by subject.</h2>
+      <p class="lead">Each article stands on its own. The three series make it easier to follow one subject from the first practical question through to the technical and operational detail.</p>
     </div>
     <div class="work-grid">
       <a class="work-card" href="#verifiable-ai">
         <span class="tag">Series 01 · {{ ai_articles.size }} articles</span>
         <div>
           <h3>Verifiable and private AI analytics</h3>
-          <p>Where models belong, how agents operate real tools, and what it takes to keep AI-assisted analysis inspectable.</p>
+          <p>Experiments with local and frontier models, agents operating Omniscope, and the controls needed to inspect the analysis they leave behind.</p>
         </div>
       </a>
       <a class="work-card" href="#data-products">
         <span class="tag">Series 02 · {{ product_articles.size }} articles</span>
         <div>
           <h3>Building complete data products</h3>
-          <p>From one useful file to a governed, scheduled application—and the engineering boundary between blocks and code.</p>
+          <p>How a useful prototype acquires data contracts, an interface, scheduling and ownership, including the point where visual tools need custom code.</p>
         </div>
       </a>
       <a class="work-card" href="#citizen-evidence">
         <span class="tag">Series 03 · {{ citizen_articles.size }} articles</span>
         <div>
           <h3>Citizen science and public evidence</h3>
-          <p>Taranto, benzene, public alerts and a private path from an open physical sensor to an analytical record.</p>
+          <p>Taranto, benzene, public alerts and a privately operated AirGradient monitor sending measurements directly to Omniscope.</p>
         </div>
       </a>
     </div>
@@ -60,7 +60,7 @@ description: Field guides by Antonio Poggi on verifiable AI analytics, complete 
     <div class="section-heading">
       <p class="eyebrow">Series 01</p>
       <h2>Verifiable and private AI analytics.</h2>
-      <p class="lead">The model interprets and plans. Governed tools execute. People inspect the data, calculations and artefacts before they rely on the answer.</p>
+      <p class="lead">I use language models every day and I am excited by what they can already do. These articles are about putting that capability to work inside a real analytical system, while keeping the generated queries, transformations, charts and assumptions available for a person to inspect.</p>
     </div>
     <div class="article-list">
       {% for article in ai_articles %}
@@ -80,7 +80,7 @@ description: Field guides by Antonio Poggi on verifiable AI analytics, complete 
     <div class="section-heading">
       <p class="eyebrow">Series 02</p>
       <h2>Building complete data products.</h2>
-      <p class="lead">Useful analysis earns stronger contracts, interfaces, scheduling and ownership without losing the visible logic that made the prototype valuable.</p>
+      <p class="lead">A prototype becomes interesting when other people start depending on it. This series follows what has to be added—contracts, validation, interfaces, automation, releases and an owner—without throwing away the visible analytical logic that made the first version useful.</p>
     </div>
     <div class="article-list">
       {% for article in product_articles %}
@@ -100,7 +100,7 @@ description: Field guides by Antonio Poggi on verifiable AI analytics, complete 
     <div class="section-heading">
       <p class="eyebrow">Series 03</p>
       <h2>Citizen science and public evidence.</h2>
-      <p class="lead">Public measurements become useful when source, grain, gaps, context and method remain attached—and when citizens can inspect the complete path.</p>
+      <p class="lead">This series records how the Taranto work grew from public files into reports, alerts, civic and institutional evidence, then a privately operated sensor. It also covers the limitations, gaps and responsibilities that need to remain visible.</p>
     </div>
     <div class="article-list">
       {% for article in citizen_articles %}
@@ -118,9 +118,9 @@ description: Field guides by Antonio Poggi on verifiable AI analytics, complete 
 <section class="section">
   <div class="shell">
     <div class="section-heading">
-      <p class="eyebrow">Primary record</p>
-      <h2>Follow the work back to its sources.</h2>
-      <p class="lead">The field guides synthesise firsthand builds, release notes, documentation, experiments and public evidence. These archives preserve the wider record.</p>
+      <p class="eyebrow">Earlier writing and source material</p>
+      <h2>The wider record is still available.</h2>
+      <p class="lead">The articles bring together firsthand builds, release notes, documentation, experiments and public evidence. These links lead back to the larger archives and the original work.</p>
     </div>
     <div class="work-grid">
       <a class="work-card" href="https://visokio.com/author/antonio17b4b024ad/">

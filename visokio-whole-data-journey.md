@@ -9,10 +9,10 @@ description: Why Omniscope connects data preparation, analysis, reporting, autom
     <div>
       <p class="eyebrow">Visokio · Platform</p>
       <h1>One workspace for the whole data journey.</h1>
-      <p class="lead">The value of an analytics platform is not only how well it draws a chart or runs a transformation. It is whether the complete path from source to decision remains coherent, inspectable and operable.</p>
+      <p class="lead">A chart is only one point in the job. Somebody still has to connect the source, clean and join the data, define the calculations, investigate the result, build the interface and keep the whole thing running when the data changes.</p>
     </div>
     <aside class="intro-aside">
-      <p><strong>Raw data → trusted output.</strong><br>One project can contain the data, logic, analysis, user experience and automation that keep an answer alive.</p>
+      <p><strong>Raw data → trusted output.</strong><br>One project can hold the data, logic, analysis, user experience and automation needed to keep the result alive.</p>
     </aside>
   </div>
 </header>
@@ -28,23 +28,23 @@ description: Why Omniscope connects data preparation, analysis, reporting, autom
   <div class="shell">
     <div class="section-heading">
       <p class="eyebrow">Why integration matters</p>
-      <h2>Every hand-off creates another place for meaning to be lost.</h2>
-      <p class="lead">A stitched analytics stack can work, but it often separates the people who understand the source, the people who prepare it, the people who build the report and the people who operate the result.</p>
+      <h2>Hand-offs are where small differences start to compound.</h2>
+      <p class="lead">A stitched analytics stack can work perfectly well, and many organisations need one. The trouble begins when a definition, filter or exception is reimplemented at every boundary by people who see only their own part of the chain.</p>
     </div>
     <div class="principles">
       <div class="principle">
         <span class="number">01</span>
-        <h3>Keep logic beside the result.</h3>
+        <h3>Open the transformation behind a chart.</h3>
         <p>Transformations, calculations, filters and validations remain available to inspect instead of disappearing behind the final visual.</p>
       </div>
       <div class="principle">
         <span class="number">02</span>
-        <h3>Reuse the work, not only the output.</h3>
+        <h3>Run one workflow in several modes.</h3>
         <p>The same workflow can support exploration, scheduled production, an API response, a report or a focused data application.</p>
       </div>
       <div class="principle">
         <span class="number">03</span>
-        <h3>Change without rebuilding.</h3>
+        <h3>Revise the project when the source changes.</h3>
         <p>When sources or questions change, the visible project can be revised and traced rather than recreated in another system.</p>
       </div>
     </div>
@@ -106,10 +106,10 @@ description: Why Omniscope connects data preparation, analysis, reporting, autom
 
 <section class="section">
   <div class="shell split-content">
-    <h2>Prototype and production share the same logic</h2>
+    <h2>A useful prototype should have a practical route into production</h2>
     <div class="body-copy">
-      <p>Analytical prototypes often prove useful and then face an expensive rewrite before they can be operated. Omniscope is designed so the project used to investigate a problem can acquire parameters, validation, permissions, scheduling, publishing and an application interface without its central logic being translated into a separate stack.</p>
-      <p>That is especially valuable for small, serious teams. The person closest to the problem can remain involved while engineering and operational controls are added around the work.</p>
+      <p>I have seen analytical prototypes prove useful and then stall because operating them requires a complete rewrite. In Omniscope, the project used to investigate a problem can acquire parameters, validation, permissions, scheduling, publishing and a focused application interface while keeping its central logic visible.</p>
+      <p>That is especially valuable for small teams. The person closest to the problem can remain involved while engineering and operational controls are added around the work.</p>
       <p><a href="https://visokio.com/2025/10/14/omniscope-for-dataops-see-fix-and-build-data-pipelines-anywhere/">Read about Omniscope for DataOps ↗</a></p>
     </div>
   </div>
@@ -117,10 +117,10 @@ description: Why Omniscope connects data preparation, analysis, reporting, autom
 
 <section class="section">
   <div class="shell split-content">
-    <h2>One platform does not mean one rigid method</h2>
+    <h2>One platform, several ways to build</h2>
     <div class="body-copy">
       <p>No-code blocks make common work fast and accessible. Python, R and JavaScript extensions allow specialist methods. REST APIs let other systems call workflows. Custom blocks and applications create focused experiences. Cloud and on-premises deployment support different operational constraints.</p>
-      <p>The platform supplies continuity and control. It does not require every problem to be solved with the same level of code or the same user interface.</p>
+      <p>The team can choose the amount of code and the type of interface the problem deserves, while the surrounding workflow, deployment and operational controls remain connected.</p>
       <p><a href="https://visokio.com/2025/09/16/omniscope-compared-to-other-bi-and-analytics-tools-as-alternative-to-tableau-power-bi-looker/">Read how Omniscope differs from conventional BI tools ↗</a></p>
     </div>
   </div>

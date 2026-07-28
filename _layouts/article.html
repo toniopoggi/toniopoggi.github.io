@@ -37,11 +37,7 @@ body_class: article-page
       {% if page.takeaways %}
         <aside class="article-summary" aria-labelledby="article-summary-title">
           <p class="kicker" id="article-summary-title">In brief</p>
-          <ul>
-            {% for takeaway in page.takeaways %}
-              <li>{{ takeaway }}</li>
-            {% endfor %}
-          </ul>
+          <p>{% for takeaway in page.takeaways %}{{ takeaway }}{% unless forloop.last %}&#32;{% endunless %}{% endfor %}</p>
         </aside>
       {% endif %}
       {{ content }}

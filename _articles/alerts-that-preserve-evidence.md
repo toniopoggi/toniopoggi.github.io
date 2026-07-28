@@ -2,7 +2,7 @@
 title: "Designing Alerts That Preserve the Evidence Behind the Claim"
 subtitle: "The social post should attract attention without becoming the only surviving record of the measurement, method and context."
 date: 2026-07-27 00:14:00 +0100
-last_modified_at: 2026-07-27 21:25:00 +0100
+last_modified_at: 2026-07-28 12:11:00 +0100
 eyebrow: "Public alerts · Provenance"
 series: "Citizen science and public evidence"
 cluster: citizen
@@ -23,19 +23,19 @@ tags:
   - Taranto
   - Omniscope
 takeaways:
-  - "An alert is an index into evidence, not the end of the evidence."
-  - "Include station, pollutant, timestamp and timezone, value and unit, averaging duration, reference meaning, source status and a report link."
-  - "Preserve the source snapshot, rule version and publication record outside the social platform so revisions and platform changes remain auditable."
+  - "I treat an alert as a route into the evidence, not as the end of it."
+  - "It therefore includes the station, pollutant, timestamp and timezone, value and unit, averaging duration, reference meaning, source status and a report link."
+  - "I also preserve the source snapshot, rule version and publication record outside the social platform so revisions and platform changes remain auditable."
 next_url: /writing/open-hardware-private-infrastructure-citizen-owned-monitoring/
 next_label: "Next in the series"
 next_title: "Open hardware, private infrastructure and citizen-owned monitoring"
 ---
 
-A bare alert is easy to produce:
+A real Via Machiavelli alert reported an hourly benzene value of 42.54 µg/m³
+against the 27 µg/m³ acute reference. Strip away the station, hour, unit and
+reference, and it becomes:
 
 > High benzene in Taranto: 42.54.
-
-It is also almost useless as evidence.
 
 Which station? Which hour? Which unit? Was 42.54 an hourly mean or an
 instantaneous value? High compared with what? Was the source provisional? What
@@ -44,10 +44,9 @@ happened before and after? Can anybody inspect the observation?
 The number gets attention because it is large. The missing context makes it
 difficult to assess and easy to misuse.
 
-An alert should be an index into evidence, not the end of the evidence.
-
-That principle has shaped the automated air-quality monitoring I have built
-for Taranto.
+I built the Taranto automation so a reader could move from that number to the
+station, surrounding hours, threshold definition and source data in the
+Omniscope report.
 
 ## The alert is the last step of a data workflow
 
@@ -73,12 +72,15 @@ an Omniscope workflow obtained the data, transformed it, compared measurements
 with configured conditions, generated a report screenshot and passed qualifying
 rows to a Python block for publication.
 
-The code that called the social API was a small part. The analytical decisions
-before it were the alert system.
+The code that called the social API was a small part of my work. Most of it was
+in the preceding workflow: preparing the source data, preserving its hourly
+meaning, applying the configured condition and deciding what the screenshot
+and text had to contain.
 
-## The minimum evidence envelope
+## What I include in each alert
 
-Every measurement-based alert should carry or link to an evidence envelope.
+For each measurement-based alert I keep enough information to interpret the
+number and a direct route to the fuller report.
 
 ### 1. Station and pollutant
 
@@ -134,14 +136,9 @@ a way to retain or amend the original alert.
 
 ### 6. Evidence link
 
-The post should link to a report where a reader can inspect:
-
-- the surrounding hours;
-- history;
-- station comparisons;
-- source rows;
-- update time;
-- gaps in coverage.
+The post should link to a report where a reader can inspect the surrounding
+hours, longer history, station comparisons, source rows, update time and gaps
+in coverage.
 
 The current
 [Aria Taranto report](https://omniscope.app/Air+Pollution/Italy/Taranto.iox/r/Aria+Taranto/)
@@ -155,29 +152,21 @@ The observation may represent 03:00, the source may publish it later, the
 workflow may retrieve it at 05:10 and the social API may accept the post at
 05:11.
 
-Those are different times. Preserve them.
+I preserve each time separately because they describe different stages of the
+same alert.
 
 ## The screenshot is a bridge
 
-A well-designed image gives the reader enough visual context to decide whether
-to investigate:
-
-- the current observation;
-- the reference line;
-- the previous hours or days;
-- station name;
-- source update time;
-- units.
-
-The image is not the dataset.
+A useful screenshot shows the current observation, reference line, preceding
+hours or days, station name, source update time and units. That is enough for a
+reader to decide whether to open the report.
 
 It may be compressed by the platform. Alt text may disappear. The post may be
 re-shared without its link. A screenshot also freezes the provisional state at
 publication time while the report may later refresh.
 
-This is why both are useful:
-
-> The screenshot creates immediacy. The report preserves exploration.
+I use the screenshot for the immediate view and the report for the data and
+history that cannot fit inside it.
 
 ## Context should counterbalance the peak
 
@@ -195,7 +184,8 @@ episodes still deserved attention.
   <figcaption>This chart uses daily means above 5 µg/m³, a different measure from an hourly 27 µg/m³ alert. The 2025 period was incomplete when the image was published. Long-term context and short-term alerts can both be true.</figcaption>
 </figure>
 
-The alert channel and historical report should let a reader hold both facts.
+The alert channel and historical report should show both the individual event
+and the longer direction.
 
 ## Do not rewrite the historical rules
 
@@ -221,7 +211,8 @@ reclassifying old publications.
 
 ## Handle duplicates and revisions
 
-Automated publication creates ordinary distributed-systems problems.
+Once I automated publication, timeouts, retries and source revisions became
+part of the same workflow.
 
 ### Duplicate protection
 
@@ -250,10 +241,9 @@ Deleting the old post without explanation weakens the public record.
 
 ### Gaps
 
-If the source or workflow is unavailable, make the gap visible. Absence of
-alerts should never be interpreted automatically as absence of high readings.
-
-Monitor the monitor.
+If the source or workflow is unavailable, the gap needs to remain visible.
+Silence from the alert account cannot establish that there were no high
+readings.
 
 ## Keep a record outside the social platform
 
@@ -264,7 +254,7 @@ The Taranto alert channel began on X through
 Platforms change API access, link behaviour, image quality and account policy.
 Accounts can be suspended or removed.
 
-The durable record should remain under project control:
+I therefore keep the durable record under project control:
 
 - alert payload;
 - source observation or snapshot;
@@ -275,7 +265,8 @@ The durable record should remain under project control:
 - canonical report URL;
 - correction history.
 
-The social post is distribution. It should not be the archive.
+The social platform distributes the alert, while this retained material allows
+the project to reconstruct or correct it later.
 
 ## Learn from official communication standards
 
@@ -291,9 +282,6 @@ The structure is still useful design inspiration. Public warnings should tell
 people what happened, where, when, at what concentration and against which
 defined reference.
 
-That is the test I would apply: an alert must explain itself at publication and
-leave enough state to be corrected later.
-
-The alert gets attention.
-
-The evidence earns trust.
+I apply the same practical test to each alert: it should explain the
+measurement when published and leave enough state for me to trace and correct
+it later.

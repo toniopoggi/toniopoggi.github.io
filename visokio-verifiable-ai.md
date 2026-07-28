@@ -9,29 +9,28 @@ image: /assets/images/omniscope-human-vs-ai.jpg
   <div class="shell page-intro-grid">
     <div>
       <p class="eyebrow">Visokio · AI · Verification</p>
-      <h1>AI can accelerate the work without hiding it.</h1>
-      <p class="lead">Omniscope gives language models tools for working with real data, workflows and reports. The model can plan. The platform performs visible analytical operations. A person can inspect what happened.</p>
+      <h1>I want AI to do useful analytical work that I can still inspect.</h1>
+      <p class="lead">In Omniscope, a language model can interpret a question, plan the analysis and operate real workflow and reporting tools. The joins, calculations, transformations and charts are then left in the project for a person to open, test and change.</p>
     </div>
     <aside class="intro-aside">
-      <p><strong>A mature platform underneath the model.</strong><br>Visible logic, deterministic execution, validation, permissions and human review.</p>
+      <p><strong>The model uses the same Omniscope tools people already use.</strong><br>The normal workflow, validation, permissions and review controls still apply.</p>
     </aside>
   </div>
 </header>
 
 <section class="statement">
   <div class="shell">
-    <blockquote>LLMs plan. Omniscope does the work. People verify the result.</blockquote>
-    <cite>THE OPERATING MODEL</cite>
+    <blockquote>The model helps interpret the question and decide what analysis to run. Omniscope performs the data work and leaves the result open for inspection.</blockquote>
+    <cite>HOW WE USE LLMS IN OMNISCOPE</cite>
   </div>
 </section>
 
 <section class="section">
   <div class="shell split-content">
-    <h2>AI is an operating layer, not the foundation</h2>
+    <h2>The model operates the platform</h2>
     <div class="body-copy">
-      <p>Omniscope already knows how to connect and prepare data, apply calculations, build visualisations, publish reports, run workflows and enforce project controls. Giving a language model access to those capabilities is more useful than asking it to improvise an answer in isolation.</p>
-      <p>Report Ninja can drive the real report designer. Data Q&amp;A can apply filters, aggregations, joins and calculated fields. Workflow blocks can use models inside repeatable data processes. External agents can call governed Omniscope services.</p>
-      <p>The important artefact is not only the sentence produced by the model. It is the visible analysis, report or workflow left behind.</p>
+      <p>Omniscope already connects and prepares data, applies calculations, builds visualisations, publishes reports and runs workflows. We expose those existing capabilities to the model through controlled tools, much as we expose them to a person through the interface.</p>
+      <p>Report Ninja drives the real report designer. Data Q&amp;A applies filters, aggregations, joins and calculated fields. Workflow blocks can call models inside repeatable data processes, and external agents can use authenticated, permissioned Omniscope services. When the run finishes, the analysis, report or workflow remains in the product; it has not vanished into the chat history.</p>
       <p><a href="https://www.linkedin.com/pulse/omniscope-toolbox-llms-ai-product-antonio-poggi-sfnpf">Read Omniscope as a toolbox for LLMs ↗</a></p>
     </div>
   </div>
@@ -41,8 +40,8 @@ image: /assets/images/omniscope-human-vs-ai.jpg
   <div class="shell">
     <div class="section-heading">
       <p class="eyebrow">A small experiment</p>
-      <h2>Speed matters. Inspection matters more.</h2>
-      <p class="lead">I gave a human and an AI the same question across five normalised tables. The AI was much faster at constructing the result. The meaningful comparison included the time required to inspect and verify what it built.</p>
+      <h2>The same question, five tables, one human and one AI.</h2>
+      <p class="lead">The human analysis took five minutes. The AI built its answer in thirty seconds, which looked spectacular until I added the three and a half minutes needed to inspect its transformations and verify the result. It was still faster, and the review time was part of the comparison rather than an inconvenient footnote.</p>
     </div>
     <figure class="feature-image">
       <img src="{{ '/assets/images/omniscope-human-vs-ai.jpg' | relative_url }}" alt="Comparison of a human and an AI answering the same multi-table data question in Omniscope" width="800" height="502" loading="lazy">
@@ -72,7 +71,7 @@ image: /assets/images/omniscope-human-vs-ai.jpg
   <div class="shell">
     <div class="section-heading">
       <p class="eyebrow">The verification layer</p>
-      <h2>A plausible answer is only the beginning.</h2>
+      <h2>What I expect to inspect before accepting the answer.</h2>
     </div>
     <div class="principles">
       <div class="principle">
@@ -99,10 +98,10 @@ image: /assets/images/omniscope-human-vs-ai.jpg
 
 <section class="section">
   <div class="shell split-content">
-    <h2>Private data does not require a public model</h2>
+    <h2>We have tested the same tools with private, self-hosted models</h2>
     <div class="body-copy">
       <p>Omniscope can work with frontier model providers or self-hosted models. We have tested local Qwen models through vLLM on controlled infrastructure, allowing the model to inspect datasets, plan multi-step analysis and call tools without moving the data into a public AI service.</p>
-      <p>The useful architecture is straightforward: a model chosen for the organisation’s needs, private data kept in controlled infrastructure, real analytical tools, and an output whose logic can be checked.</p>
+      <p>The setup is known to work, but model fit, endpoint security, GPU cost and version pinning still matter. The generated analytical work remains in Omniscope in a form the user can check.</p>
       <p><a href="https://visokio.com/2026/05/27/running-omniscope-against-a-local-qwen3-6-27b-fp8-model-on-an-h100/">Read the local Qwen and H100 test ↗</a><br><a href="https://www.linkedin.com/pulse/proving-full-european-ai-data-analytics-stack-omniscope-poggi-7tyxe">Read about the European AI and analytics stack ↗</a></p>
     </div>
   </div>
@@ -112,8 +111,8 @@ image: /assets/images/omniscope-human-vs-ai.jpg
   <div class="shell split-content">
     <h2>Model choice should remain reversible</h2>
     <div class="body-copy">
-      <p>Models will continue to change. A serious product should not make its analytical logic or software process inseparable from one provider. We use multiple frontier and local models, and keep the durable work in systems, repositories, workflows and tests that the team controls.</p>
-      <p>The same principle applies to AI-assisted software engineering. The productivity gain is real, but responsibility for architecture, verification and production consequences remains with the team.</p>
+      <p>Models change quickly. We use several frontier and local models, and our own tests regularly show that one is excellent for a particular tool-calling task and disappointing on another. The durable analytical work therefore stays in the projects, workflows, repositories and tests the team controls, rather than becoming inseparable from whichever provider is strongest this month.</p>
+      <p>We take the same approach to AI-assisted software engineering. The productivity gain is real—I see it every week—but the team still owns the architecture, review and production consequences.</p>
       <p><a href="https://visokio.com/2026/06/19/we-let-ai-write-our-software-the-discipline-is-in-how-we-keep-control/">Read how we use AI while retaining engineering control ↗</a></p>
     </div>
   </div>

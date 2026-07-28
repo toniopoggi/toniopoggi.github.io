@@ -2,7 +2,7 @@
 title: "Local LLM Analytics: Privacy, Cost and Deployment Trade-offs"
 subtitle: "Running the model yourself can protect control and data residency. It also gives you the GPU bill, cold starts, version conflicts and operational responsibility."
 date: 2026-07-27 00:04:00 +0100
-last_modified_at: 2026-07-27 21:25:00 +0100
+last_modified_at: 2026-07-28 12:11:00 +0100
 eyebrow: "Local AI · Deployment"
 series: "Verifiable and private AI analytics"
 cluster: ai
@@ -23,63 +23,53 @@ tags:
   - Qwen
   - Omniscope
 takeaways:
-  - "Local deployment improves control only when the endpoint, network, permissions, logs and stored prompts are also secured."
-  - "Compare cost per useful workload, including idle GPU time and operations, not only API token price."
-  - "Tool-calling and structured-output reliability matter more to analytics than a model’s benchmark headline."
+  - "Running a model yourself can keep data inside a controlled environment, provided the endpoint, network, permissions and logs are controlled too."
+  - "It replaces a visible token bill with hardware capacity, idle time and the engineering work required to operate the service."
+  - "The sensible comparison uses real analytical workloads, including tool calls, structured output, latency and recovery when something fails."
 next_url: /writing/natural-language-to-inspectable-analytical-workflow/
 next_label: "Next in the series"
 next_title: "From natural-language question to inspectable analytical workflow"
 ---
 
-Local AI became very easy to romanticise.
+I spent one weekend trying to run modern local models on a new ROG NUC: Core
+Ultra 9, RTX 4070 with 8GB VRAM and 32GB RAM. Qwen, QwQ and DeepSeek models in
+the 8B to 32B range all taught me the same uncomfortable lesson. VRAM is the
+wall.
 
-Keep the data inside your infrastructure. Avoid a provider dependency. Pay no
-per-token bill. Work even when an external service is unavailable.
+Once a 32B model spills into normal RAM, inference becomes a CPU-GPU shuffle
+over PCIe. It works, with enough tuning of context, layers and offload, but it
+is fragile and slow. A similarly priced Mac with 24GB unified memory handled
+the larger models more steadily. Not necessarily faster per token, just without
+the same VRAM cliff.
 
-All of those can be real advantages.
+I kept the NUC. It is a good machine for CUDA work, development and smaller
+models. The experiment was a useful reminder that "local AI" is physical:
+memory architecture, model size, runtime, startup time and somebody paying for
+the machine.
 
-Then the model takes 90 seconds to start, a runtime update breaks tool calls,
-the GPU sits idle all weekend and somebody has to work out why a perfectly
-valid response was wrapped in the wrong chat template.
+The attractive claims are still real. You can keep data inside your
+infrastructure, pin the model, avoid a per-token bill and work without an
+external service. Then the model takes 90 seconds to start, a runtime update
+breaks tool calls and the GPU sits idle all weekend. I like local AI. I just do
+not think the word *local* settles the trade-off.
 
-Local LLM analytics is not automatically private, cheap or reliable. It is a
-deployment choice. A very physical one.
-
-I still like it. I just think it should be chosen for the right reasons.
-
-## Stop using “local” for three different things
+## Define the deployment boundary
 
 People often collapse local execution, private hosting and open-weight models
-into “local AI”. They are not equivalent.
+into one thing. They are not equivalent. A model may run on an analyst's
+laptop, an office workstation, a data-centre GPU, a private-cloud instance or a
+European hosting provider. A managed external endpoint can use open weights
+without being local at all.
 
-The actual arrangements include:
+Before choosing, I want to know where the weights run, where prompts and
+responses are stored, who can connect to the endpoint, whether requests are
+logged, which data enters the model context and whether the runtime sends
+telemetry. Credentials and model configuration need protection as well.
 
-- a model running on the analyst’s laptop;
-- an inference server on a workstation inside the office;
-- a GPU machine in the organisation’s data centre;
-- a dedicated instance inside a private cloud network;
-- a European or other region-specific hosting provider;
-- a managed external endpoint using open weights — not local, despite the
-  model licence.
-
-These do not provide the same privacy or operational properties.
-
-Before choosing, define the boundary:
-
-- Where do model weights run?
-- Where are prompts and responses stored?
-- Does the endpoint accept connections outside the private network?
-- Are request logs enabled?
-- Can administrators inspect the traffic?
-- Which data is placed into the model context?
-- Is telemetry sent by the runtime or surrounding application?
-- How are credentials and model configuration protected?
-
-An open-weight model sent data through an unsecured endpoint is not private.
-A server in the same building with shared administrator access may be less
-controlled than a properly isolated cloud service.
-
-“Local” is a location. Privacy is a system property.
+An open-weight model behind an unsecured endpoint is not private. Equally, a
+server in the same building with broad administrator access may be less
+controlled than a properly isolated cloud service. The network and operational
+boundary matters more than the label.
 
 ## A working reference point
 
@@ -94,13 +84,18 @@ work:
   and model files.
 
 I tested multi-step Insight Explorer questions, Instant Dashboard and AI
-Insights. That matters because generating prose is not the difficult test.
-The model had to reason over schemas, call tools and return structured output
-that the application could actually consume.
+Insights. Generating nice prose was not the test. The model had to reason over
+schemas, call tools and return structured output that Omniscope could actually
+consume.
 
-The configuration was a known-working point, not a timeless recommendation.
-Local AI changes too quickly for that. The exact version pins are part of the
-result.
+The first start took roughly 60–120 seconds while vLLM compiled CUDA graphs and
+Triton artefacts. In Omniscope, the provider uses the endpoint base URL without
+a `/v1` suffix because Omniscope appends the OpenAI-compatible path itself.
+The full Docker command and launch flags are in the linked setup guide.
+
+This was a known-working point, not a timeless recommendation. Things move very
+fast in this space, so treat anything more than a few months old with
+suspicion. Pin exact versions in production. Do not use `latest`.
 
 <figure>
   <img src="{{ '/assets/images/articles/omniscope-h100-workbench.png' | relative_url }}" alt="Conceptual illustration of a Qwen model served through vLLM on H100 hardware" width="1376" height="768" loading="lazy">
@@ -116,21 +111,12 @@ may need to ensure that prompts and source data do not leave a controlled
 environment. It may need to run in a disconnected network. It may need to
 choose when a model is updated rather than accepting a provider change.
 
-Local deployment can support those requirements. It also transfers the
-responsibility:
-
-- secure the inference endpoint;
-- authenticate callers;
-- restrict network routes;
-- patch the host and runtime;
-- manage logs and retention;
-- control which projects can use which model;
-- review licenses and model provenance;
-- monitor resource use;
-- document the configuration.
-
-The model is only one component. Private analytics also needs governed source
-access, execution tools and outputs.
+Local deployment can support those requirements, but it also transfers the
+work. Somebody has to secure the endpoint, authenticate callers, restrict the
+network, patch the host and runtime, manage retention, review the model licence
+and provenance, monitor resources and document what is running. Private
+analytics also needs controlled access to its source data and tools. Installing
+weights is only one part of it.
 
 ## Cost: token bill versus utilisation
 
@@ -139,26 +125,19 @@ that cost into capacity.
 
 In the May test, a GCP Spot H100 was approximately **$2–2.50 per hour**. Left
 running continuously, that is roughly **$1,500 per month** before the other
-operational costs.
+operational costs. Idle cost is the GPU, so configure an auto-shutdown.
 
 That does not mean the setup costs $1,500 per month. An auto-shutdown machine
 used for a few intensive sessions may cost a fraction of that. Equally, a GPU
 that sits idle for most of the day can make a cheap-looking per-token
 calculation meaningless.
 
-A fair comparison includes:
-
-- model download and storage;
-- GPU hours, including idle and cold-start time;
-- engineering time to configure and upgrade;
-- monitoring, security and backup;
-- failed experiments;
-- concurrency requirements;
-- the cost of a fallback when the local service is unavailable;
-- cloud API charges for the same real workload.
-
-The relevant unit is not the price of one million tokens. It is the cost of
-useful, accepted analytical work.
+A fair comparison includes model storage, idle and cold-start GPU time,
+engineering and upgrades, monitoring, security, failed experiments,
+concurrency and the fallback used when the local service is unavailable. Then
+compare that with the API cost for the same real task. Price per million tokens
+on one side and a GPU hourly rate on the other do not tell you which completed
+work more cheaply.
 
 ### Utilisation changes the answer
 
@@ -167,17 +146,16 @@ efficient. If requests are occasional and bursty, an API may be cheaper and
 operationally simpler. If data cannot leave the perimeter, price may be a
 secondary constraint.
 
-This is why there is no universal winner.
+There is no universal winner here. The workload decides.
 
 ## Quality versus hardware footprint
 
 Larger models tend to need more memory and may deliver stronger reasoning, but
-model size is not the same as application quality.
-
-Quantisation reduces memory and can make local deployment practical. It can
-also alter output quality. A smaller model may respond quickly but fail on
-multi-step joins. A reasoning model may solve a difficult plan but take too
-long for an interactive application.
+the NUC experiment showed why model size alone is a poor deployment plan.
+Quantisation can make a model fit, while the remaining CPU-GPU shuffle still
+makes it unpleasant to use. A smaller model may respond quickly but fail on
+multi-step joins; a stronger reasoning model may produce the right plan too
+slowly for an interactive application.
 
 For analytics, test at least:
 
@@ -191,9 +169,10 @@ For analytics, test at least:
 - latency from the user’s perspective.
 
 A benchmark score cannot tell you whether the model will reliably emit the
-JSON your report builder expects.
+JSON your report builder expects. That is why the May test used real Omniscope
+workloads rather than a generic model conversation.
 
-## The model is not the complete inference stack
+## Model, runtime and parser as one system
 
 One of the less glamorous lessons from local deployment is that “the model”
 does not operate alone.
@@ -225,30 +204,19 @@ OpenAI-compatible endpoints are not behaviourally identical.
 
 The H100 configuration took roughly **60–120 seconds** to start without a warm
 cache. That is manageable for a scheduled service with auto-shutdown, but it is
-not invisible.
-
-You need to decide:
-
-- Is the model always warm?
-- How quickly must the first answer arrive?
-- How many concurrent users are expected?
-- Should smaller requests use another model?
-- What happens during startup or model loading?
-- Can a queue form without making the application feel broken?
+not invisible. The application still needs a sensible answer for what users
+see during startup, how concurrent requests queue and whether smaller jobs use
+another model.
 
 Local does not necessarily mean low latency. A nearby overloaded GPU can be
 slower than a well-operated remote endpoint.
 
 ## Portability and dependence
 
-Self-hosting reduces one kind of vendor dependence, but may create another:
-
-- GPU availability;
-- a particular serving engine;
-- one model’s prompt format;
-- custom parsers;
-- cloud-specific machine images;
-- specialist knowledge held by one engineer.
+Self-hosting reduces one kind of vendor dependence and can create another:
+GPU availability, a particular serving engine, one prompt format, custom
+parsers, cloud-specific machine images or specialist knowledge held by one
+engineer.
 
 The safest design keeps the application above the model interface as portable
 as practical. In Omniscope we want the analytical tools and resulting
@@ -307,20 +275,17 @@ Before calling a local model “production ready”, I would want:
 
 Running the weights is the beginning, not the deployment.
 
-## Choice is the advantage
+## Choosing for the workload
 
 I do not want every analytical workload forced into a public model. I also do
 not want teams buying expensive GPUs to satisfy a slogan.
 
-The real advantage is choice:
+For the May setup, Qwen3.6-27B-FP8 on one H100 gave us the best balance of
+quality, speed and tool-calling reliability among the combinations we tested.
+That is a dated result for a particular workload, which is exactly why the
+model choice should remain replaceable.
 
-- choose where the data can travel;
-- choose the model quality required;
-- choose whether cost follows requests or capacity;
-- choose how much infrastructure to operate;
-- change that decision without rebuilding the analytical work.
-
-Local AI is not a moral virtue and the cloud is not a moral failure.
-
-They are engineering trade-offs. Make them visible, test them with the real
-workload, and keep the exit door unlocked.
+Keep sensitive work local when that boundary is required. Use a frontier API
+when its capability and operating model make more sense. Mix them when projects
+have different risks. I mainly want to be able to change that decision without
+rebuilding the data preparation, reports and analytical workflows around it.

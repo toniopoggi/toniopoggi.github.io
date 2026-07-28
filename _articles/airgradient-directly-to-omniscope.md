@@ -2,7 +2,7 @@
 title: "How to Build a Private AirGradient-to-Analytics Pipeline"
 subtitle: "An Android controller, custom ESP32-C3 firmware and one direct, authenticated path from an open monitor to Omniscope."
 date: 2026-07-27 00:11:00 +0100
-last_modified_at: 2026-07-27 21:25:00 +0100
+last_modified_at: 2026-07-28 12:11:00 +0100
 eyebrow: "Citizen science · Technical build"
 series: "Citizen science and public evidence"
 cluster: citizen
@@ -22,9 +22,9 @@ tags:
   - citizen science
   - Omniscope Workflow API
 takeaways:
-  - "The monitor sends one complete measurement directly to a private Omniscope workflow every minute; no vendor cloud, collector, broker or inbound router port sits in the data path."
-  - "Local control and remote analytics coexist: the Android app stays on the LAN while the device makes an outbound authenticated HTTPS request."
-  - "The minimal design accepts visible gaps instead of hiding a flash-backed retry queue, and it still needs least-privilege credentials, TLS validation and recovery."
+  - "My monitor sends one complete measurement directly to a private Omniscope workflow every minute; no vendor cloud, collector, broker or inbound router port sits in the data path."
+  - "The Android app keeps local control on the LAN, while the device makes an outbound authenticated HTTPS request for remote analytics."
+  - "That minimal design accepts visible gaps instead of hiding a flash-backed retry queue, and it still needs least-privilege credentials, TLS validation and recovery."
 next_url: /writing/analysing-80000-hourly-benzene-measurements/
 next_label: "Next in the series"
 next_title: "What I learned from analysing 80,000 hourly benzene measurements"
@@ -54,32 +54,23 @@ Omniscope Workflow API
 
 There is no AirGradient cloud in the data path, no Raspberry Pi polling the
 device, no inbound router port, no MQTT broker and no separate Python receiver.
-
-This article explains the complete build.
+This article explains how I built that complete path.
 
 ## The hardware
 
-My monitor is an **AirGradient ONE I-9PSL**. It measures:
-
-- CO₂;
-- PM₁, PM₂.₅ and PM₁₀;
-- TVOC and NOₓ indices;
-- temperature;
-- relative humidity.
+My monitor is an **AirGradient ONE I-9PSL**. It measures CO₂, PM₁, PM₂.₅ and
+PM₁₀, TVOC and NOₓ indices, temperature and relative humidity.
 
 The device uses an ESP32-C3 microcontroller with Wi-Fi and 4 MB of flash.
 AirGradient publishes its firmware and hardware materials and explicitly
-supports connecting the device to other data platforms.
-
-That openness is the foundation of this project.
+supports connecting the device to other data platforms. That gave me access to
+the code and hardware details I needed to change where the measurements went.
 
 The stock firmware also exposes a useful
-[local-server API](https://github.com/airgradienthq/arduino/blob/3.3.9/docs/local-server.md):
-
-- `GET /measures/current` returns the current measurement JSON;
-- `GET /config` returns the device configuration;
-- `PUT /config` applies configuration changes;
-- `/metrics` provides a metrics representation.
+[local-server API](https://github.com/airgradienthq/arduino/blob/3.3.9/docs/local-server.md).
+`GET /measures/current` returns the current measurement JSON, `GET /config`
+returns the device configuration, `PUT /config` applies changes and `/metrics`
+provides a metrics representation.
 
 The API can be reached on the same network using:
 
@@ -96,35 +87,21 @@ and obsolete pre-fix firmware version are deliberately blacked out.*
 
 ## The constraints
 
-There were many conventional ways to collect history from the monitor.
+I considered the usual options: the AirGradient cloud, a computer polling
+`/measures/current`, an inbound router port, MQTT, a small HTTP receiver or a
+Python process to parse and append each message. Any of them could work, but
+each introduced a service or machine I did not want to operate for one monitor
+in one room.
 
-I could have:
-
-- used the AirGradient cloud;
-- left a local computer running to poll `/measures/current`;
-- opened a router port for an external poller;
-- published through MQTT;
-- deployed a small HTTP receiver;
-- written a Python process to parse and append the messages.
-
-All are valid architectures in the right context. None matched this project.
-
-I wanted:
-
-- no vendor cloud for the measurement history;
-- no always-on collector inside my home;
-- no inbound access through my router;
-- no broker or receiver service to operate;
-- no phone-based background collector;
-- a configurable destination rather than a hard-coded project;
-- authenticated and encrypted transport;
-- direct ingestion into the environment that would process and visualise the
-  data.
+I wanted the measurement history outside the vendor cloud, with no always-on
+collector in my home, no inbound router access and no phone process running in
+the background. The destination had to be configurable, and the monitor had to
+send its data over an authenticated, encrypted connection directly into the
+environment that would process and visualise it.
 
 The monitor already possessed the data, network connection and processor.
-Making something else poll it would add a dependency.
-
-The simplest path was to make the monitor push.
+Making something else poll it would add a dependency, so I made the monitor
+push.
 
 ## Component one: the Android controller
 
@@ -134,17 +111,11 @@ a convenient control surface that lived on my phone.
 I created
 [AirGradient Omniscope for Android](https://github.com/toniopoggi/airgradient-omniscope-android).
 
-The app can:
-
-- connect through a `.local` hostname or private LAN IP;
-- read and display current measurements;
-- refresh them every five seconds when requested;
-- read and edit `/config`;
-- save changes with `PUT /config`;
-- configure the complete Omniscope integration;
-- expose an advanced JSON editor;
-- remember the monitor address locally;
-- use Android’s dark or light theme.
+The app connects through a `.local` hostname or private LAN IP, displays the
+current measurements and can refresh them every five seconds. It reads and
+edits `/config`, saves changes with `PUT /config`, configures the complete
+Omniscope integration and includes an advanced JSON editor. It remembers the
+monitor address locally and follows Android’s dark or light theme.
 
 It deliberately does not collect measurements in the background. Its
 responsibility is local control, not historical ingestion.
@@ -221,7 +192,8 @@ release embeds the Sectigo E46 trust anchor used by `*.omniscope.me`; moving to
 a host whose certificate chains to another root requires a firmware and
 trust-anchor change.
 
-The integration can also be enabled or disabled without reflashing.
+The same configuration can enable or disable the integration without
+reflashing.
 
 ### Keeping the AirGradient cloud disabled
 
@@ -292,7 +264,7 @@ request.
 This creates a clean ingestion contract: one workflow parameter contains the
 complete payload produced by the device.
 
-`refreshFromSource` is set to `true`, as required by this workflow design.
+This workflow requires `refreshFromSource` to be set to `true`.
 
 ## Authentication, TLS and secrets
 
@@ -311,9 +283,8 @@ the current `*.omniscope.me` certificate chain. It does **not** contain the
 wildcard certificate, its private key or any private server material. A host
 that chains to another root needs a firmware change.
 
-The private key remains on the Omniscope server where it belongs.
-
-An unattended device must retain the Basic-auth password locally. ESP32 flash
+The private key remains on the Omniscope server. An unattended device must
+retain the Basic-auth password locally, however, and ESP32 flash
 should not be mistaken for a hardware security module, so this needs a
 proportionate security model:
 
@@ -354,10 +325,9 @@ The receiving workflow:
 Adding time on the server gives every accepted measurement a consistent UTC
 reference independent of the device clock.
 
-Retaining the complete payload, or at least the fields not yet used in the
-first report, also protects against premature data modelling. Questions change.
-It is useful to preserve enough information to answer tomorrow’s questions
-without redesigning the device request.
+I retained the complete payload, including fields the first report did not yet
+use. Questions change, and I did not want a new analytical question to require
+another redesign of the device request.
 
 <img src="{{ '/assets/images/omniscope-workflow-ingestion.png' | relative_url }}" alt="Omniscope workflow from HTTP input through schema and field organisation to historical data and the report" width="1039" height="229" loading="lazy">
 
@@ -365,17 +335,10 @@ without redesigning the device request.
 passes through schema and field organisation, is appended to the historical
 table and feeds the Report block.*
 
-The report can then expose:
-
-- current and historical CO₂;
-- PM₁, PM₂.₅ and PM₁₀;
-- VOC and NOₓ indices;
-- temperature and humidity;
-- Wi-Fi strength and device metadata;
-- interactive time filters;
-- comparisons between measures;
-- repeated daily or weekly patterns;
-- event-level exploration.
+The report exposes current and historical CO₂, PM₁, PM₂.₅ and PM₁₀, VOC and
+NOₓ indices, temperature, humidity, Wi-Fi strength and device metadata. From
+the same history I can filter time, compare measures, look for repeated daily
+or weekly patterns and inspect individual events.
 
 <img src="{{ '/assets/images/report-and-device-logs-redacted.png' | relative_url }}" alt="AirGradient measurements visible simultaneously in the Omniscope report and device log, with the serial number redacted" width="1672" height="941" loading="lazy">
 
@@ -428,18 +391,12 @@ the incoming PM, VOC and NOₓ observations are visible in the report.*
 
 ## Failure behaviour
 
-I intentionally left out a device-side persistent queue.
-
-If Wi-Fi or Omniscope is unavailable, that minute is not added to the history.
-The next scheduled submission tries the next current measurement.
-
-This is a deliberate trade-off:
-
-- no repeated writes to flash;
-- no queue corruption or migration logic;
-- no ambiguous replay order;
-- no accidental flood after a long outage;
-- no hidden miniature message broker inside the monitor.
+I intentionally left out a device-side persistent queue. If Wi-Fi or Omniscope
+is unavailable, that minute is not added to the history; the next scheduled
+submission tries the next current measurement. This avoids repeated writes to
+flash, queue corruption or migration logic, ambiguous replay order and a flood
+of old measurements after a long outage. I also did not want to hide a
+miniature message broker inside the monitor.
 
 For my use case, visible gaps are acceptable and should be monitored
 server-side. A deployment requiring complete delivery would need a more
@@ -516,35 +473,39 @@ Use your own signing key for a production release.
 
 ## What this architecture demonstrates
 
-The project is small, but it reinforced several useful design principles.
+Running the complete system on one monitor made the consequences of each
+choice concrete.
 
 ### Local control and remote analytics are compatible
 
-The app controls the monitor only on the LAN. The device makes one outbound
-request to the configured server. No external system needs inbound access to
-the home network.
+I use the app only while it is on the same LAN as the monitor. Historical
+collection does not depend on the phone: the device makes one outbound request
+to the configured server, with no inbound access to the home network.
 
 ### Configuration belongs at the edge
 
-Endpoints, workflow blocks and parameter names change. Keeping them
-configurable prevents routine server changes from becoming firmware releases.
+I made the endpoint, workflow block and parameter name configurable because
+those server details can change. A routine project move or rename should not
+require another firmware release within the existing certificate trust
+boundary.
 
 ### A workflow can be an operational API
 
-Omniscope is not only the destination where a chart appears. It receives,
-parses, timestamps, transforms, persists and presents the data.
+The Omniscope workflow receives the request, parses it, timestamps it,
+transforms it, appends it to history and feeds the report. The same workflow is
+the operational API and the visible data process.
 
 ### Removing middleware can improve clarity
 
-MQTT and receiver services are useful when their capabilities are required.
-Here, direct workflow execution reduced the number of credentials, ports,
-processes and failure points.
+For this one-monitor project, direct workflow execution removed the MQTT broker
+and receiver service I would otherwise have had to configure and maintain. It
+also reduced the number of credentials, ports, processes and failure points.
 
 ### Minimal systems still require real security decisions
 
-WebView trust boundaries, local address validation, password masking,
-least-privilege credentials and certificate validation still matter when the
-“fleet” contains one monitor.
+Even with a “fleet” of one, I still had to deal with the WebView trust
+boundary, local-address validation, password masking, least-privilege
+credentials and certificate validation.
 
 ## Could another monitor use the same pattern?
 
@@ -557,18 +518,15 @@ Yes, provided it has:
 - support for outbound HTTPS;
 - a safe configuration mechanism.
 
-The JSON schema can be different. The workflow parameter, parsing logic and
-report can adapt to the device.
+The JSON schema can be different because the workflow parameter, parsing logic
+and report can adapt to the device. The same arrangement could support a
+school, office, community building or distributed citizen-science deployment,
+provided its operators understand and control where the data goes.
 
-This makes the pattern relevant beyond one room or one brand. It could support
-a school, office, community building or a distributed citizen-science
-deployment while keeping the data path understandable and controlled by its
-operators.
-
-Personal sensors are not substitutes for regulatory monitoring stations.
-Calibration, placement, maintenance and interpretation matter. But open
-instruments can complement official data, support education and help
-communities ask better questions.
+I would not present a personal sensor as a substitute for a regulatory
+monitoring station. Calibration, placement, maintenance and interpretation
+still matter. An open monitor can nevertheless support education, complement
+official data and help a community ask more precise questions.
 
 ## Source and documentation
 

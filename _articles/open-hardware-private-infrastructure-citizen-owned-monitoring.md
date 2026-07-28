@@ -1,8 +1,8 @@
 ---
 title: "Open Hardware, Private Infrastructure and Citizen-Owned Monitoring"
-subtitle: "Ownership is not one checkbox. It extends from the physical instrument and firmware to credentials, transport, history, analysis and public claims."
+subtitle: "Buying an open monitor gave me control over the hardware, firmware, network path, stored history and analysis—and responsibility for all of them."
 date: 2026-07-27 00:15:00 +0100
-last_modified_at: 2026-07-27 21:25:00 +0100
+last_modified_at: 2026-07-28 12:11:00 +0100
 eyebrow: "Open hardware · Data ownership"
 series: "Citizen science and public evidence"
 cluster: citizen
@@ -23,53 +23,39 @@ tags:
   - environmental sensors
   - citizen science
 takeaways:
-  - "Ownership spans hardware, firmware, local control, credentials, network path, stored history, analytics and publishing."
+  - "For me, ownership spans hardware, firmware, local control, credentials, network path, stored history, analytics and publishing."
   - "Open designs make adaptation and recovery possible; they also transfer responsibility for security, updates, calibration and data quality."
-  - "A personal low-cost sensor complements rather than replaces a regulatory station unless a validated deployment supports stronger claims."
+  - "Even then, a personal low-cost sensor complements rather than replaces a regulatory station unless a validated deployment supports stronger claims."
 next_url: /air-quality/
 next_label: "Project record"
 next_title: "Explore the complete Taranto air-quality timeline"
 ---
 
 An air-quality monitor can be described as open because its schematic is
-published.
-
-That is valuable.
-
-It does not tell you who controls the firmware, where the measurements travel,
+published. That gives an owner something real to inspect, repair and adapt, but
+it does not tell you who controls the firmware, where the measurements travel,
 whether the vendor cloud can be disabled, who holds the historical record or
 whether a citizen can reproduce the analysis behind a public claim.
-
-Ownership is a stack.
 
 My recent AirGradient experiment began as a way to understand the air in my
 room. It became a useful test of how far citizen ownership can extend: from an
 open physical device, through local configuration and custom firmware, into a
 private analytics workflow and an inspectable report.
 
-This article is not the installation guide. The
+The
 [complete AirGradient-to-analytics build]({{ '/writing/airgradient-directly-to-omniscope/' | relative_url }})
-covers that.
-
-This is about what “citizen-owned monitoring” should mean.
+covers the installation. Here I am looking at what I could actually control,
+change, retain and recover after buying an open monitor.
 
 ## Layer 1: the physical instrument
-
-The first requirement is access to the hardware you bought.
 
 AirGradient publishes code, schematics and 3D files under
 [CC BY-SA 4.0](https://www.airgradient.com/documentation/kb/kb-diy-the-airgradient-builds-overview)
 and states that monitor owners own their data. Its open-files overview covers
 the hardware materials, design and enclosure files.
 
-This enables:
-
-- independent inspection;
-- repair;
-- replacement parts;
-- firmware modification;
-- educational use;
-- adaptation to another data path.
+I can inspect the design, repair the monitor, make replacement parts, modify
+the firmware, use it for education and adapt it to another data path.
 
 Open hardware does not guarantee measurement quality. Sensor selection,
 airflow, enclosure design and maintenance still matter. It makes those choices
@@ -77,18 +63,10 @@ more inspectable.
 
 ## Layer 2: firmware
 
-The firmware decides what the physical instrument actually does.
-
-It can:
-
-- read sensors;
-- calculate or expose indices;
-- connect to Wi-Fi;
-- post to a vendor service;
-- answer local API requests;
-- retain credentials;
-- install updates;
-- send measurements elsewhere.
+The firmware decides what the physical instrument actually does: reading the
+sensors, calculating or exposing indices, connecting to Wi-Fi, posting to a
+vendor service, answering local API requests, retaining credentials, installing
+updates and sending measurements elsewhere.
 
 For my experiment, I forked the official AirGradient firmware at version
 **3.3.9** and published the
@@ -106,12 +84,8 @@ would not be enough to reconstruct the device later.
 A citizen should not need the vendor cloud to see current measurements or
 change local configuration.
 
-The AirGradient firmware exposes a local API. A device on the same network can
-retrieve:
-
-- current measurements;
-- configuration;
-- metrics.
+The AirGradient firmware exposes a local API from which a device on the same
+network can retrieve current measurements, configuration and metrics.
 
 I built a small
 [Android controller](https://github.com/toniopoggi/airgradient-omniscope-android)
@@ -143,13 +117,8 @@ Omniscope workflow push: enabled
 ```
 
 The monitor makes one outbound HTTPS request to a configured Omniscope
-endpoint. There is:
-
-- no inbound router port;
-- no Raspberry Pi poller;
-- no MQTT broker;
-- no separate receiver service;
-- no phone-based collector.
+endpoint. I do not run an inbound router port, Raspberry Pi poller, MQTT broker,
+separate receiver service or phone-based collector.
 
 This does not make direct HTTPS universally better. A broker and local gateway
 are appropriate for many fleets. Here, removing them made the path easier to
@@ -161,19 +130,11 @@ the device is lost.
 
 ## Layer 5: stored history
 
-Live access is not ownership of history.
-
 A vendor application may show the current value while retaining the historical
-record under its own account and export rules. A citizen-owned system needs to
-answer:
-
-- Where are measurements stored?
-- In what format?
-- Who can export them?
-- Can the history survive a provider change?
-- Are timestamps and units preserved?
-- Are missing periods visible?
-- Is the raw payload retained?
+record under its own account and export rules. I wanted to know where my
+measurements were stored, in what format and who could export them. The history
+also needed to survive a provider change while preserving timestamps, units,
+missing periods and the raw payload.
 
 The receiving Omniscope workflow parses the device JSON, adds a server-side UTC
 receipt time and appends the observation to storage controlled by the
@@ -183,21 +144,15 @@ I deliberately did not add a flash-backed queue to the monitor. If submission
 fails, that minute becomes a gap. The design avoids replay and flash-wear
 complexity at the cost of incomplete delivery.
 
-Ownership includes knowing where the gaps came from.
+That trade-off leaves visible gaps, and I know they came from failed delivery
+rather than a hidden edit to the history.
 
 ## Layer 6: analysis
 
-Data ownership without analytical access can still leave people dependent.
-
-The user should be able to:
-
-- inspect source observations;
-- derive new measures;
-- compare periods;
-- change the report;
-- export the result;
-- move to another tool;
-- preserve the method behind a public conclusion.
+I also wanted analytical access to the history. The source observations can be
+inspected, new measures derived, periods compared and the report changed. The
+result can be exported or moved to another tool, with the method behind a
+public conclusion retained alongside it.
 
 In the current project, the workflow and report remain visible. PM, CO₂, VOC
 and NOx indices, temperature, humidity, Wi-Fi state and metadata can be
@@ -208,19 +163,14 @@ examined across time.
 *The analytical layer is part of ownership: the complete path from incoming
 measurement to interactive history can be inspected and changed.*
 
-## Layer 7: publishing and public memory
+## Layer 7: publishing and keeping the record
 
 Citizen-owned monitoring may remain private, or it may contribute to a public
 record.
 
-If published, ownership also means retaining:
-
-- source snapshot;
-- transformation and rule version;
-- chart and report;
-- alert payload;
-- correction history;
-- canonical URL independent of a social platform.
+If I publish a result, I retain its source snapshot, transformation and rule
+version, chart and report, alert payload, correction history and a canonical
+URL independent of the social platform.
 
 A social post can distribute a finding. It should not be the only copy of the
 evidence.
@@ -231,8 +181,8 @@ analytical record.
 
 ## Open installation should include recovery
 
-Publishing source code is useful. Making a physical device reproducible
-requires more.
+Publishing the source fork was only part of making the physical device
+reproducible.
 
 The firmware project includes:
 
@@ -242,7 +192,7 @@ The firmware project includes:
 - a browser-based USB installer;
 - a route back to stock firmware.
 
-Recovery matters because custom firmware can fail. My first HTTPS build caused
+Custom firmware can fail. My first HTTPS build caused
 a networking-task stack overflow and rebooted the device. The fix increased
 the task stack from 4096 to 12288 bytes.
 
@@ -261,14 +211,9 @@ absolute concentrations of one named pollutant. Everyday products such as
 alcohol-based cleaners, ethanol and sunscreen can affect VOC readings.
 Placement, airflow, warm-up, ageing and environmental conditions matter.
 
-This makes the instrument useful for:
-
-- ventilation experiments;
-- observing indoor patterns;
-- comparing rooms or periods carefully;
-- identifying events to investigate;
-- education;
-- building and testing citizen infrastructure.
+I can use the monitor for ventilation experiments, observing indoor patterns,
+careful comparisons between rooms or periods, identifying events worth
+investigating, education and testing the rest of this citizen infrastructure.
 
 It does not justify presenting an index as a regulatory pollutant
 concentration.
@@ -280,16 +225,10 @@ Open access makes it easier to examine the limitation. It does not remove it.
 Regulatory networks provide calibrated, governed measurements with defined
 siting, maintenance and validation.
 
-Citizen sensors can provide:
-
-- denser local observation;
-- rapid experiments;
-- indoor context;
-- community participation;
-- hypotheses for further investigation;
-- independent technical learning.
-
-The strongest relationship is complementary.
+Citizen sensors can add denser local observation, rapid experiments, indoor
+context, community participation, hypotheses for further investigation and
+independent technical learning. I see that role as complementary to the
+regulatory network.
 
 A citizen network can make a pattern visible and ask a precise question. An
 official station or validated study may be required to support a stronger
@@ -297,21 +236,11 @@ claim. Stating that boundary increases credibility.
 
 ## Ownership creates responsibility
 
-Running the full stack means accepting work the vendor previously carried:
-
-- protect credentials;
-- maintain firmware;
-- monitor delivery;
-- back up history;
-- document changes;
-- calibrate or compare sensors where appropriate;
-- disclose limitations;
-- correct public claims;
-- plan for the operator leaving.
-
-This is not an argument against ownership.
-
-It is the reason ownership is meaningful.
+Running the full stack means accepting work the vendor previously carried. I
+have to protect credentials, maintain firmware, monitor delivery, back up the
+history and document changes. I also have to calibrate or compare sensors where
+appropriate, disclose their limitations, correct public claims and plan for
+what happens when the original operator leaves.
 
 ## A citizen-owned monitoring checklist
 
@@ -330,19 +259,15 @@ I would call a monitoring path citizen-owned when its operator can answer:
 11. Can the evidence survive a social-platform change?
 12. Is somebody responsible for security, maintenance and correction?
 
-No single open-source badge answers all twelve.
+An open-source badge on its own cannot answer all twelve.
 
-## From openness to agency
+## What changed when I controlled the whole path
 
-Open hardware made this experiment possible. Private infrastructure let me
-choose the data path. A visible analytical workflow turned the stream into
-history. Public documentation lets somebody else inspect or adapt the result.
+Open hardware made this experiment possible. I could choose the data path,
+turn the stream into history in a visible Omniscope workflow and document the
+result so somebody else can inspect or adapt it.
 
-The full principle is:
-
-> Sense locally. Control locally. Push privately. Explore openly.
-
-Citizen ownership does not turn a small sensor into an official instrument.
-
-It gives people agency over how they observe, preserve and understand their
-environment—and the responsibility to describe that evidence honestly.
+The AirGradient remains a small personal sensor, with the limitations described
+above. What I gained was control over how I observe the room, preserve the
+measurements and analyse them, together with responsibility for explaining
+honestly what the monitor can and cannot support.

@@ -8,11 +8,11 @@ description: Antonio Poggi’s work at Visokio and the evolution of Omniscope fr
   <div class="shell page-intro-grid">
     <div>
       <p class="eyebrow">Visokio · Omniscope</p>
-      <h1>Building the whole system, not another fragment.</h1>
-      <p class="lead">I’m COO at Visokio, the independent company behind Omniscope. For more than two decades, we have been building one workspace for the whole data journey, from raw inputs to decisions people can own.</p>
+      <h1>I have spent more than twenty years helping to build Omniscope.</h1>
+      <p class="lead">I’m COO at Visokio, the independent company behind Omniscope. The product has grown through several generations, but the job has stayed recognisable: help people get from raw data to a useful result without losing control of the logic along the way.</p>
     </div>
     <aside class="intro-aside">
-      <p><strong>One platform. One visible workflow.</strong><br>Connect, prepare, analyse, visualise, automate and deliver without stitching separate tools together.</p>
+      <p><strong>One complete workspace.</strong><br>Connect, prepare, analyse, visualise, automate and deliver while the workflow remains visible.</p>
       <div class="button-row">
         <a class="button" href="https://visokio.com">Visit Visokio ↗</a>
       </div>
@@ -31,9 +31,9 @@ description: Antonio Poggi’s work at Visokio and the evolution of Omniscope fr
   <div class="shell split-content">
     <h2>What we have actually been building</h2>
     <div class="body-copy">
-      <p>Omniscope did not pivot from dashboards to AI. It evolved from an integrated visual data tool into a complete operational analytics and data-application platform. AI is now another way to operate that mature platform, while Omniscope keeps the work visible, repeatable and controlled.</p>
-      <p>The goal is not to collect features. It is to remove the gaps between acquiring data, shaping it, understanding it, turning it into a useful application, and running the result reliably. The same project can move from exploration to a scheduled workflow, a branded report, an internal tool or a customer-facing data application without rebuilding the logic in a different product.</p>
-      <p>That continuity matters. Data preparation remains inspectable. Reports retain a path back to the logic that produced them. Automation runs the same workflow people can open and examine. AI can plan and use tools, but the analytical operations still happen in a governed environment.</p>
+      <p>Omniscope began as an integrated visual data tool and gradually became an operational analytics and data-application platform. We added data preparation, workflows, web reports, APIs, scheduling, application features, private deployment and now AI agents because customers kept needing the next part of the same job.</p>
+      <p>A project can begin as an exploration, then acquire validation, parameters, automation and a focused interface until it becomes an internal tool, a branded report or a customer-facing data application. The data preparation and calculations do not need to be rebuilt somewhere else just because the audience or delivery method changed.</p>
+      <p>This is also why the current AI work is useful. A model can plan an analysis or operate tools, while Omniscope performs the joins, transformations, calculations and report changes as normal platform operations that a person can open and examine.</p>
       <p><a href="https://visokio.com/2026/01/26/omniscope-one-complete-analytics-platform-built-for-data-and-decisions-you-own/">Read why Omniscope exists ↗</a></p>
     </div>
   </div>
@@ -43,8 +43,8 @@ description: Antonio Poggi’s work at Visokio and the evolution of Omniscope fr
   <div class="shell">
     <div class="section-heading">
       <p class="eyebrow">The platform</p>
-      <h2>Six parts of one job.</h2>
-      <p class="lead">Most analytics stacks split these concerns between products and teams. Omniscope keeps them connected, so the evidence, logic and outcome can travel together.</p>
+      <h2>The work runs from source data to an operated result.</h2>
+      <p class="lead">These are the six parts we repeatedly see in real projects. Omniscope keeps them in the same environment so a change in the source or logic can be followed through to the report, application or automated output.</p>
     </div>
     <div class="work-grid">
       <a class="work-card" href="{{ '/visokio/whole-data-journey/' | relative_url }}">
@@ -97,8 +97,8 @@ description: Antonio Poggi’s work at Visokio and the evolution of Omniscope fr
   <div class="shell">
     <div class="section-heading">
       <p class="eyebrow">Product evolution</p>
-      <h2>More than twenty years of one connected idea.</h2>
-      <p class="lead">The language around data has changed repeatedly. The work has accumulated rather than restarted: visual analytics, data preparation, publishing, operational APIs, data applications, automation and now verifiable AI.</p>
+      <h2>What changed across the product generations.</h2>
+      <p class="lead">The industry moved through visual analytics, big data, cloud, no-code and now generative AI. We rebuilt major parts of Omniscope along the way, while the capabilities accumulated: data preparation, publishing, APIs, applications, automation and model-assisted work all sit on the product today.</p>
     </div>
     <div class="timeline">
       <div class="timeline-item">
@@ -139,14 +139,14 @@ description: Antonio Poggi’s work at Visokio and the evolution of Omniscope fr
       <div class="timeline-item">
         <div class="timeline-year">2025</div>
         <div class="timeline-content">
-          <h3>AI starts operating the mature platform</h3>
+          <h3>Models start operating real Omniscope tools</h3>
           <p>Report Ninja, Data Q&amp;A, local and frontier model support, white-label AI data applications and stronger DataOps capabilities make AI useful through real platform actions.</p>
         </div>
       </div>
       <div class="timeline-item">
         <div class="timeline-year">2026</div>
         <div class="timeline-content">
-          <h3>Verification becomes the differentiator</h3>
+          <h3>The generated work stays visible</h3>
           <p>Models can plan, build and investigate. Omniscope keeps the resulting logic and evidence visible enough for a person to check, change and trust.</p>
         </div>
       </div>
@@ -159,10 +159,9 @@ description: Antonio Poggi’s work at Visokio and the evolution of Omniscope fr
 
 <section class="section">
   <div class="shell split-content">
-    <h2>Independence is a product capability</h2>
+    <h2>Independence gives customers real deployment choices</h2>
     <div class="body-copy">
-      <p>Visokio has been bootstrapped from the beginning. Omniscope can be deployed in the cloud, on-premises, in private infrastructure or in controlled offline environments. Teams can choose where data and models run, expose their own governed logic, and avoid making an analytical system dependent on one external ecosystem.</p>
-      <p>This is not an argument that every organisation should avoid the cloud. It is an argument that deployment, privacy and model choice should remain genuine choices.</p>
+      <p>Visokio has been bootstrapped from the beginning. Omniscope can run in the cloud, on-premises, in private infrastructure or in controlled offline environments. Some customers want a managed setup; others cannot send their data or inference requests to an external service. We have kept those choices open because the real constraint varies from one organisation to another. When Azure and AWS both had problems on the same day, I wrote about the reassuring alternative: open the laptop and keep working with no internet, perhaps on a plane surrounded by real clouds.</p>
       <p><a href="https://www.linkedin.com/posts/antoniopoggi_bigdata-cloud-saas-activity-7389404412697309185-Xlv-">Read my reflection on local tools, ownership and control ↗</a></p>
     </div>
   </div>
@@ -172,12 +171,12 @@ description: Antonio Poggi’s work at Visokio and the evolution of Omniscope fr
   <div class="shell">
     <div class="section-heading">
       <p class="eyebrow">My work</p>
-      <h2>Operations, product and engineering meet in the same place.</h2>
-      <p class="lead">I run the operations at Visokio, but I stay close to the product and the engineering. My work crosses product direction, customer problems, prototypes, commercial decisions, releases and public explanation.</p>
+      <h2>My role crosses operations, product and engineering.</h2>
+      <p class="lead">I run the operations at Visokio and stay close to the product and engineering. Depending on the week, that can mean a customer problem, a prototype, a release, a commercial decision, an AI experiment or trying—again—to explain a product that does rather more than one easily named thing.</p>
     </div>
     <div class="archive-note">
       <p class="kicker">A personal constant</p>
-      <p>My background is in computer science. More than twenty years after I started writing software, I still care about the practical consequences of design decisions once a product is in production and relied on by real people. <a href="https://www.linkedin.com/posts/antoniopoggi_omniscope-is-activity-6467892735952199680-SZDG">Read the 2019 release reflection ↗</a></p>
+      <p>My background is in computer science. More than twenty years after I started writing software, I still care about the practical consequences of design decisions once a product is in production and relied on by real people. <a href="https://www.linkedin.com/posts/antoniopoggi_omniscope-is-activity-6467892735952199680-SZDG">Read the 2018 release reflection ↗</a></p>
     </div>
   </div>
 </section>
@@ -186,7 +185,7 @@ description: Antonio Poggi’s work at Visokio and the evolution of Omniscope fr
   <div class="shell">
     <div class="section-heading">
       <p class="eyebrow">Go deeper</p>
-      <h2>Four views of the work.</h2>
+      <h2>If you want the detail, start here.</h2>
     </div>
     <div class="work-grid">
       <a class="work-card" href="{{ '/visokio/timeline/' | relative_url }}">
@@ -224,9 +223,9 @@ description: Antonio Poggi’s work at Visokio and the evolution of Omniscope fr
 <section class="section">
   <div class="shell">
     <div class="section-heading">
-      <p class="eyebrow">New field guides</p>
-      <h2>From AI questions to complete data products.</h2>
-      <p class="lead">Ten original articles turn the product record into practical architecture: how models operate governed tools, how evidence remains inspectable, and how a prototype becomes something people can depend on.</p>
+      <p class="eyebrow">New articles</p>
+      <h2>Ten articles from the product work.</h2>
+      <p class="lead">The two Visokio series cover the experiments behind verifiable AI, local models and agents using controlled Omniscope tools, then follow a prototype as it becomes a data application that other people can depend on.</p>
     </div>
     <div class="work-grid">
       <a class="work-card" href="{{ '/writing/#verifiable-ai' | relative_url }}">

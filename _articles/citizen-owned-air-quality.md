@@ -2,7 +2,7 @@
 title: "Making Institutional Air-Quality Data Usable by Citizens"
 subtitle: "Publishing a file is not the same as giving people an instrument for comparison, investigation and public evidence."
 date: 2026-07-27 00:13:00 +0100
-last_modified_at: 2026-07-27 21:25:00 +0100
+last_modified_at: 2026-07-28 12:11:00 +0100
 eyebrow: "Citizen science · Public data"
 series: "Citizen science and public evidence"
 cluster: citizen
@@ -23,9 +23,9 @@ tags:
   - data democratisation
   - Omniscope
 takeaways:
-  - "Publicly available data becomes usable when source, grain, coverage, language, comparisons, raw rows and visible gaps travel together."
-  - "The Taranto report moved from daily files to historical comparisons, Italian localisation, hourly evidence and public alerts."
-  - "Accessible analysis helps citizens ask better questions; it does not prove causation or replace official scientific responsibility."
+  - "I found that public data becomes usable when source, grain, coverage, language, comparisons, raw rows and visible gaps travel together."
+  - "In Taranto, the report moved from daily files to historical comparisons, Italian localisation, hourly analysis and public alerts."
+  - "That access helps citizens ask better questions; it does not prove causation or replace official scientific responsibility."
 next_url: /writing/alerts-that-preserve-evidence/
 next_label: "Next in the series"
 next_title: "Designing alerts that preserve the evidence behind the claim"
@@ -33,6 +33,9 @@ next_title: "Designing alerts that preserve the evidence behind the claim"
 
 In January 2019 I published
 [“Air pollution: looking after my hometown”](https://medium.com/omniscope/air-pollution-looking-after-my-hometown-1b98857a994d).
+The work had started over Christmas, when Led Zeppelin’s “Good Times Bad
+Times” appeared in a Spotify playlist and reminded me that I had spent years
+building skills and software I could use for something beyond my day job.
 
 My hometown is Taranto, in Puglia: a beautiful city by the sea, living beside
 one of Europe’s largest industrial sites and with the impossible argument of
@@ -40,18 +43,15 @@ one of Europe’s largest industrial sites and with the impossible argument of
 
 [ARPA Puglia](https://www.arpa.puglia.it/pagina2873_report-annuali-e-mensili-qualit-dellaria-rrqa.html),
 the regional environmental agency, was already publishing validated monitoring
-data.
-
-The data was public.
-
-Using it still required somebody to find the right files, understand the
+data. It was public, but using it still required somebody to find the right
+files, understand the
 fields, combine dates, compare stations and create charts. “Available for
 download” and “available to citizens” were not the same thing.
 
 I was living in London and building
-[Omniscope with the Visokio team](https://visokio.com/). The tool I could
-contribute was an analytical instrument: a public report that let people
-investigate the measurements without first becoming data engineers.
+[Omniscope with the Visokio team](https://visokio.com/). I could contribute the
+software and skills I already had: a public report where people could examine
+the measurements without first becoming data engineers.
 
 ## Public is not the same as usable
 
@@ -61,17 +61,12 @@ A file appears on a website. A licence permits reuse. The obligation is met.
 
 That is necessary and valuable. It is not the end of accessibility.
 
-For a citizen trying to understand the air around their home, basic questions
-remain:
-
-- Which station is closest?
-- Which pollutants does it measure?
-- Is this value high relative to the station’s own history?
-- How does one neighbourhood compare with another?
-- Are measurements missing?
-- Is the data hourly, daily or annual?
-- When was it last updated?
-- Can I inspect the original rows behind the chart?
+For a citizen trying to understand the air around their home, publication
+leaves many practical questions unanswered. They still need to find the nearest
+station, see which pollutants it measures, compare a value with the station’s
+history or another neighbourhood, notice missing measurements, distinguish
+hourly from daily and annual data, check the last update and reach the rows
+behind a chart.
 
 If each question requires a new spreadsheet, script or expert, the data is
 open in principle and restricted in practice.
@@ -89,9 +84,8 @@ The first version had five complementary ways to examine the same data:
    average;
 5. **Raw data** — the observations behind the visualisations.
 
-No single view answered every question.
-
-The summary offered orientation. The pollutant and station views supported
+The five views did different jobs. The summary offered orientation, while the
+pollutant and station views supported
 investigation. Distributions exposed spread and unusual observations. Raw rows
 kept the visual claims connected to the source.
 
@@ -103,44 +97,29 @@ Italian civic audience would have preserved an avoidable barrier.
 
 ## The missing-data moment
 
-One photograph gave the project its first sharp test.
-
 At 10:30pm on 2 November 2018, I had photographed orange clouds glowing near
-the industrial area. Later, while building the report, I tried to inspect the
+the industrial area: a sort of hellish Mad Max scene and a sweet “welcome
+home”. Later, while building the report, I tried to inspect the
 corresponding PAH measurements from the Cokeria and Tamburi stations.
 
 The observations were absent between 2 and 4 November 2018.
 
-That did **not** prove why they were absent. It did not prove that anybody had
-deliberately withheld them, and I did not claim that.
+I did **not** know why they were absent and did not claim that anybody had
+deliberately withheld them. We had simply lost the opportunity to examine what
+happened during those hours. If a chart quietly connects the points on either
+side, a citizen may never notice that the station was missing.
 
-It showed something more basic: a gap in monitoring is part of the public
-evidence. If the interface quietly connects the points on either side, a
-citizen may not even know the gap exists.
-
-Usable data needs to expose:
-
-- expected and available coverage;
-- station outages;
-- provisional and validated status;
-- refresh time;
-- breaks in the series.
-
-Missingness is not only a technical quality metric. It changes which public
-questions the dataset can answer.
+The report therefore needs to show expected and available coverage, outages,
+provisional or validated status, refresh time and breaks in the series. A gap
+changes which questions the remaining measurements can answer.
 
 ## Comparison turns values into context
 
-A measurement in isolation is difficult to interpret.
-
-Comparison can provide several kinds of context:
-
-- the same station over time;
-- nearby stations during the same period;
-- a neighbourhood closer to the industrial site and one farther away;
-- weekdays and weekends;
-- wind directions and speeds;
-- the full distribution rather than only the mean.
+A measurement in isolation is difficult to interpret. I wanted people to be
+able to compare the same station over time, nearby stations during the same
+period, neighbourhoods at different distances from the industrial site,
+weekdays and weekends, wind direction and speed, and the full distribution
+instead of seeing only one mean.
 
 The
 [PM10 comparison between Tamburi and Talsano across 2017–June 2025](https://x.com/toniopoggi/status/1946655197259870594)
@@ -193,27 +172,22 @@ Its
 explains the practical benefit: citizens no longer had to download repeated
 files and construct complex spreadsheets before comparing hourly information.
 
-That is what “usable” means here. The technical work happens once and remains
-open enough for many people to explore.
+That classroom use was a better test of usability than page traffic. I had
+done the ingestion and preparation once, and the students could begin with
+their questions.
 
-## From a reference library to a living instrument
+## From historical files to automatic alerts
 
 The first report was mainly a way to explore validated historical files.
 
-The project later acquired:
+I later added automated refresh, hourly benzene monitoring, threshold
+detection, report screenshots and public alerts with direct links back to the
+interactive reports. Longer-term multi-station comparisons and reproducible
+historical analysis grew from the same project.
 
-- automated refresh;
-- hourly benzene monitoring;
-- threshold detection;
-- screenshots and public alerts;
-- direct links back to interactive reports;
-- longer-term multi-station comparisons;
-- reproducible historical analysis.
-
-This changed the role of the system.
-
-A static open-data portal waits for somebody to search. A living analytical
-instrument can notice a defined condition and bring it into public attention.
+The report could now detect a defined condition and bring it to public
+attention, instead of waiting for somebody to download another file and start
+the analysis again.
 
 The
 [Aria Taranto report](https://omniscope.app/Air+Pollution/Italy/Taranto.iox/r/Aria+Taranto/)
@@ -238,13 +212,10 @@ The analysis—and an important later discrepancy between its February snapshot
 and ARPA’s final 2023 reporting—is documented separately in
 [What I learned from analysing 80,000 hourly benzene measurements]({{ '/writing/analysing-80000-hourly-benzene-measurements/' | relative_url }}).
 
-The civic value did not come from software acting alone.
-
-Automation supplied timely, repeatable analysis. People in Taranto supplied
-local observation, interpretation, communication and persistence. Institutions
-retained their scientific and legal responsibilities.
-
-The system helped those parts meet around evidence.
+The project worked because automation and people did different jobs.
+Omniscope supplied timely, repeatable analysis; people in Taranto contributed
+local observation, interpretation, communication and persistence.
+Institutions retained their scientific and legal responsibilities.
 
 ## A practical definition of usable public evidence
 
@@ -266,24 +237,8 @@ understanding.
 
 ## Make the path shorter
 
-Software does not remove pollution. It does not make policy, replace
-regulatory monitoring or settle scientific attribution.
-
-It can shorten the path:
-
-```text
-institutional measurement
-  → understandable comparison
-  → citizen question
-  → public evidence
-  → informed scrutiny
-```
-
-In 2019, my contribution was to turn published files into something people
-could use directly.
-
-That remains the core idea.
-
-Do not stop at making data downloadable.
-
-Make the evidence explorable.
+Software cannot remove pollution, make policy, replace regulatory monitoring
+or settle scientific attribution. My contribution in 2019 was more modest: I
+turned published measurements into comparisons that people could use directly,
+ask questions about and take into public discussion. That is still what I want
+the report to do.

@@ -2,7 +2,7 @@
 title: "What Is Verifiable AI Analytics?"
 subtitle: "A useful AI answer should leave behind the data, operations and assumptions a person needs to check it."
 date: 2026-07-27 00:01:00 +0100
-last_modified_at: 2026-07-27 21:25:00 +0100
+last_modified_at: 2026-07-28 12:11:00 +0100
 eyebrow: "AI analytics · Verification"
 series: "Verifiable and private AI analytics"
 cluster: ai
@@ -22,133 +22,115 @@ tags:
   - analytics lineage
   - Omniscope
 takeaways:
-  - "Verifiable AI analytics leaves an inspectable analytical artefact, not only a plausible sentence."
-  - "The model can interpret and plan; governed tools should execute joins, filters, calculations and queries."
-  - "Visible logic makes an answer reviewable and repeatable, but it does not make bad data or a bad assumption automatically correct."
+  - "Verifiable AI analytics means being able to open the data, joins, calculations and assumptions behind an answer."
+  - "The model can interpret the question and plan the work, while the analytics platform turns that plan into visible operations."
+  - "A person still has to decide whether those operations and the underlying data are good enough for the decision."
 next_url: /writing/why-an-llm-should-not-be-your-analytics-engine/
 next_label: "Next in the series"
 next_title: "Why an LLM should not be your analytics engine"
 ---
 
-In [one Omniscope experiment](https://www.linkedin.com/posts/antoniopoggi_ai-dataanalytics-humanintheloop-activity-7381657189771382784-kHJ1),
-I gave a person and an AI the same apparently simple question:
+In October 2025 I ran a small experiment in Omniscope. I gave a person and an
+AI the same apparently simple question:
 
 > Which vendors exclusively supply pencils?
 
-The data was spread across five normalised tables. Answering correctly meant
-finding the right relationships, joining at the right grain, filtering the
-right products and checking that “exclusively” had not quietly become “also”.
+The data was spread across five normalised tables. To answer correctly, both
+had to find the relationships, join at the right grain, identify the pencil
+products and make sure "exclusively" had not quietly become "also".
 
 The human analysis took about five minutes. The AI produced a result in roughly
-30 seconds. Then came the important part: a person spent about three minutes
-checking the joins, transformations and conclusion.
+30 seconds. I expected the AI to be faster. What I wanted to measure was the
+whole task, so the experiment carried on: checking the joins, transformations
+and conclusion took another three and a half minutes. The
+[original comparison](https://www.linkedin.com/posts/antoniopoggi_ai-dataanalytics-humanintheloop-activity-7381657189771382784-kHJ1)
+includes both times.
 
-That review was not an unfortunate tax on the AI result. It was the thing that
-made the result usable.
-
-This is what I mean by **verifiable AI analytics**:
+That is what I mean by **verifiable AI analytics**:
 
 > AI-assisted analysis in which the data, definitions, operations, assumptions
 > and resulting evidence remain visible enough for a person to inspect, rerun
 > and challenge.
 
-It is not a promise that the answer is automatically true. It is an
-architecture that makes the route to the answer available for examination.
+It does not promise that the answer is true. It gives you something better than
+a confident sentence: the route to the answer, in a form you can examine.
 
-## A plausible answer is not evidence
+## What the answer needs to show
 
-Language models are exceptionally good at producing coherent explanations.
-That strength creates a particular risk in analytics: a fluent answer can feel
-more certain than the work underneath it deserves.
+Language models are very good at producing coherent explanations. That is
+useful, but in analytics it can also disguise a weak method. A polished
+percentage may have been built with the wrong date field, a many-to-many join,
+a calculation at the wrong grain or a filter applied in the wrong place.
+Missing rows can become zeros. An assumption can appear as if it came from the
+data.
 
-A response may contain a perfectly formatted percentage while concealing any
-number of problems:
+The pencil question is a good example. A fluent explanation of which vendors
+"only" sell pencils tells me nothing about whether the query also included
+vendors selling pens. I need to see the product filter, the joins and the
+records behind the final set.
 
-- the wrong date field;
-- an accidental many-to-many join;
-- a total calculated at the wrong grain;
-- a filter applied after rather than before an aggregation;
-- a business term interpreted differently from the organisation’s definition;
-- missing rows silently treated as zeros;
-- an assumption presented as if it came from the source data.
-
-Adding a paragraph that says “here is my reasoning” does not solve this. Model
-reasoning is another generated text. The executed query, the source fields and
-the actual calculation are the evidence.
+Asking the model to explain its reasoning does not fix this on its own. That is
+more generated language. The executed query, source fields, calculation and
+intermediate data are what I can actually check.
 
 This distinction sits at the centre of our work on
 [Omniscope as a verification layer](https://visokio.com/2026/04/08/trust-in-ai-analytics-omniscope-as-verification-layer/).
 
-## Three jobs, not one magic box
+## Who does what
 
-The cleanest way I have found to think about the system is to separate three
-jobs.
+The experiment becomes easier to understand if you separate what the model
+did, what Omniscope did and what the person checking the result did.
 
 ### The model interprets and plans
 
-The model is useful where language and ambiguity are unavoidable. It can:
-
-- interpret the question;
-- identify likely measures and dimensions;
-- propose filters, joins and calculations;
-- decide which analytical tools are needed;
-- explain the result in language appropriate to the audience.
-
-This is probabilistic work. There may be several sensible plans, and some will
-be better than others.
+The model interpreted the question, inspected the available schema and planned
+the filters, joins and calculations it needed. This is exactly the sort of work
+LLMs are good at: moving from human language to a possible analytical method.
+It is also probabilistic. Another run or model may choose a different method,
+and "possible" is not the same as correct.
 
 ### The platform executes
 
-The analytical platform performs the concrete operations against the data:
-
-- typed filters;
-- joins with declared keys;
-- grouped aggregations;
-- calculated fields;
-- statistical or machine-learning operations;
-- chart construction;
-- data-quality checks.
-
-These operations should be represented as real queries or workflow steps,
-rather than existing only inside the model’s response.
+Omniscope performed the real work against the data: typed filters, joins with
+declared keys, groupings, calculated fields and the resulting view. Those
+operations existed as query or workflow steps, not only as prose inside the
+model response. I could open them and see what had actually run.
 
 ### A person verifies
 
-The person does not need to repeat every click from scratch. They do need to be
-able to answer practical questions:
+The reviewer did not have to rebuild the analysis from scratch. They did need
+to check which records were included, whether the joins multiplied rows and
+whether the result matched the meaning of the question.
 
-- Which source did this value come from?
-- What does the metric mean here?
-- Which records were included and excluded?
-- At what grain was the calculation performed?
-- Did the join multiply any rows?
-- Which parts came from data and which were assumptions?
-- Would I be comfortable defending this method to somebody else?
+The test I use is simple: could I explain and defend this method to somebody
+else? If not, the answer is not ready just because it looks reasonable.
 
-That final question is a useful one. It changes the standard from “does the
-answer look reasonable?” to “can I stand behind how it was produced?”
+## What I want to inspect
 
-## What must be inspectable?
-
-Verification becomes practical when the system preserves more than a source
-link.
+Verification needs more than a source link or a paragraph about the model's
+reasoning. It needs the pieces a reviewer would actually use.
 
 ### The analytical lineage
 
-The reviewer should see the path from the source tables to the final result:
-which data was selected, how tables were connected, where fields were derived
-and in what order the operations ran.
+I want to see the path from the five source tables to the final vendor list:
+which data was selected, how the tables were connected, where fields were
+derived and in what order the operations ran. The same principle applies to a
+much larger workflow.
 
 ### Metric definitions
 
-“Revenue”, “active customer” and “conversion” are not self-defining. A
-verifiable system needs the organisation’s definitions, including windows,
-denominators, exclusions, currency treatment and restatement rules.
+"Exclusively" was the dangerous word in the pencil test. In another analysis it
+might be "revenue", "active customer" or "conversion". These terms are not
+self-defining. The workflow needs the relevant definition, including time
+windows, denominators, exclusions or currency treatment, rather than letting
+the model quietly choose one.
 
 ### Calculations and input values
 
-If a response says that growth was 17.4%, the user should be able to open the
-calculation and see the two values, formula and time periods behind it.
+If an answer says growth was 17.4%, I should be able to open that number and
+see the two values, formula and time periods behind it. This sounds obvious,
+but an early tester caught us presenting calculations in prose without enough
+visible provenance. The objection was right, and we changed the product.
 
 <figure>
   <img src="{{ '/assets/images/articles/inspectable-calculations.png' | relative_url }}" alt="Insight Explorer highlighting calculations that can be opened and verified" width="1885" height="1287" loading="lazy">
@@ -157,45 +139,27 @@ calculation and see the two values, formula and time periods behind it.
 
 ### Assumptions and limitations
 
-Some questions cannot be answered from the available data without an
-assumption. That is not necessarily a failure. Hiding the assumption is.
-
-A useful result distinguishes:
-
-- values taken directly from data;
-- values calculated from data;
-- parameters supplied by the user;
-- assumptions introduced to make the analysis possible;
-- limitations that remain unresolved.
+Some questions need an assumption because the required information is not in
+the data. Fine, but say so. A reviewer should be able to distinguish a source
+value from a calculation, a user-supplied parameter and an assumption the
+model introduced. Unresolved limitations should remain visible too.
 
 ### The produced artefact
 
-The strongest output is not a transient chat message. It is a query, chart,
-workflow or report that a person can open, edit and run again.
-
-In Omniscope Insight Explorer, the route from answer to evidence can include
-the query lineage, chart configuration, selected data, formulae and input
-origins. A useful query or chart can then be promoted into the report rather
-than disappearing when the conversation ends. The
+In Omniscope Insight Explorer, the answer can leave behind query lineage,
+selected data, formulae, input origins and the chart configuration. I can open
+that work, edit it, rerun it and, if it is worth keeping, add the query or chart
+to a report. It does not have to disappear with the conversation. The
 [Insight Explorer documentation](https://help.visokio.com/support/solutions/articles/42000116042-insight-explorer-natural-language-data-q-a-from-answer-to-verifiable-and-reusable-artefacts-)
 describes that answer-to-artefact path in detail.
 
-## Reproducible does not mean correct
+## Reproduction and analytical judgement
 
-This qualification matters.
-
-A deterministic platform can reproduce the same wrong join very efficiently.
-A visible workflow can expose a calculation based on a poor definition. A
-carefully logged process can run against incomplete data.
-
-Verification therefore has two layers:
-
-1. **mechanical verification** — what actually ran, against which data, with
-   which settings;
-2. **analytical verification** — whether that method was appropriate for the
-   question and the decision.
-
-The first makes the second possible. It does not replace it.
+A visible workflow can reproduce the same wrong join very efficiently. It can
+also expose a perfectly repeatable calculation based on a poor definition or
+incomplete data. I still need to know what ran, against which data and with
+which settings, but then somebody has to judge whether that method was
+appropriate for the question.
 
 The answer may also legitimately change. New rows can arrive. A metric
 definition can be revised. A source system can restate history. A software
@@ -204,36 +168,29 @@ inputs and versions are identified.
 
 ## A practical verification test
 
-Before trusting AI-generated analysis in a consequential process, I would ask:
+For analysis that will affect a real decision, these are the checks I care
+about:
 
-1. Can we identify the exact source data and its refresh time?
-2. Are the business terms in the question mapped to explicit definitions?
-3. Can we inspect filters, joins, groupings and calculations?
-4. Are assumptions separated from data-derived findings?
-5. Can another person rerun the work?
-6. Can the result be compared with a known case or independent method?
-7. Are access permissions applied to the execution, not only the chat screen?
-8. Can a useful result become a governed report or workflow?
-9. Will changes to logic, data or software be visible?
-10. Is a named person still accountable for deciding whether the answer is fit
-    to use?
+1. Can I identify the source data, its refresh time and the permissions used?
+2. Can I see how the business terms were defined?
+3. Can I inspect the filters, joins, groupings and calculations that ran?
+4. Are assumptions and limitations separate from findings derived from data?
+5. Can another person rerun the work and compare it with a known case or
+   independent method?
+6. Is somebody still responsible for deciding that the result is fit to use?
 
-If the only evidence is the confidence of the prose, the system is not
-verifiable.
+Version history and a saved report or workflow help because they preserve what
+changed and give useful work somewhere to live. If the only supporting evidence
+is confident prose, I would not use the answer in a consequential process.
 
-## Why this matters more as AI improves
+## As model quality improves
 
-Better models will produce more useful plans and fewer obvious errors. That is
-welcome. It does not remove the need for verification; it makes unverified
-answers easier to accept.
+Better models are producing better plans and fewer obvious errors. Great. They
+are also making an unchecked result easier to accept because it looks so
+finished.
 
-The useful destination is not slower AI surrounded by bureaucracy. It is
-faster analytical work with a shorter, clearer path to inspection.
-
-The model can remove much of the mechanical labour. The platform can preserve
-the analytical operations. The person can spend more time on definitions,
-assumptions and consequences.
-
-Getting an answer is impressive.
-
-Knowing what produced it is what turns the answer into work.
+In the pencil experiment, 30 seconds for the first answer plus three and a half
+minutes of inspection was a good result. The mechanical work became much
+faster, and the person could spend the remaining time on the meaning of the
+question and the joins that supported it. That is the trade I want. A
+30-second answer I cannot inspect would be much less useful.
