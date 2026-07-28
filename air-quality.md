@@ -9,7 +9,7 @@ image: /assets/images/x-2025-benzene-peak-42-54.jpg
   <div class="shell page-intro-grid">
     <div>
       <p class="eyebrow">Air quality · Citizen science</p>
-      <h1>From ARPA data and alerts to an open sensor I control.</h1>
+      <h1>Making air-quality data more accessible, from public records to open sensors.</h1>
       <p class="lead">This is the work I have been doing around Taranto since 2019: turning public monitoring data into reports and alerts people can inspect, and now connecting an open sensor directly to my own Omniscope workflow.</p>
     </div>
     <aside class="intro-aside">
