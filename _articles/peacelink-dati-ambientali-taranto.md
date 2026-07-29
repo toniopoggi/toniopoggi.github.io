@@ -2,7 +2,7 @@
 title: "Il lavoro con PeaceLink sui dati ambientali di Taranto"
 subtitle: "Dalle prime verifiche sui dati pubblici ai report automatici, agli avvisi sul benzene e alle analisi portate nelle sedi istituzionali."
 date: 2026-07-28 00:20:00 +0100
-last_modified_at: 2026-07-28 17:45:42 +0100
+last_modified_at: 2026-07-29 12:40:04 +0100
 lang: it
 locale: it_IT
 permalink: /it/scritti/peacelink-dati-ambientali-taranto/
@@ -52,10 +52,18 @@ strumenti sia l'esperienza per preparare quei dati e renderli esplorabili.
 
 PeaceLink lavorava sugli stessi temi da molto prima di me, con una conoscenza
 del territorio, delle persone e delle istituzioni che nessun dataset può
-sostituire. Il confronto operativo si è sviluppato soprattutto con Alessandro
-Marescotti. Non c'erano un piano, un incarico o un progetto finanziato. I primi
-contatti risalgono al 2019; dal 2021 il rapporto è diventato molto più operativo
-e continuativo.
+sostituire.
+
+La storia, però, è cominciata in modo molto semplice: davanti a due caffè. Uno
+al bar L'Orchidea di Taranto con Alessandro Marescotti; l'altro in un caffè di
+Hammersmith, a Londra, dove incontrai Francesco Iannuzzelli. La stessa scintilla
+e la stessa voglia di fare hanno trasformato quei due incontri in una
+collaborazione capace, passo dopo passo, di costruire molto più di quanto
+avremmo immaginato.
+
+Non c'era un piano, un incarico o un progetto finanziato. I primi contatti
+risalgono al 2019; dal 2021 il rapporto è diventato molto più operativo e
+continuativo.
 
 Non ho mai rappresentato formalmente PeaceLink. Il mio contributo è rimasto
 quello che conosco meglio: controllare i dati, costruire analisi e
