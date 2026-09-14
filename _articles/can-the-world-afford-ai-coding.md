@@ -2,7 +2,7 @@
 title: "Can the world afford AI coding at this pace?"
 subtitle: "One measured coding-agent session, 315 million context tokens and a question about the economics behind flat subscriptions and slower frontier development."
 date: 2026-09-14 16:00:00 +0100
-last_modified_at: 2026-09-14 16:00:00 +0100
+last_modified_at: 2026-09-14 20:03:36 +0100
 eyebrow: "AI economics · Agentic coding"
 series: "Building in the AI age"
 cluster: ai-business
@@ -24,9 +24,9 @@ tags:
   - frontier AI
   - AI company economics
 takeaways:
-  - "The $298 figure is a list-price equivalent reconstructed from local transcripts, not a bill or provider cost."
-  - "In this one session, agent fan-out and old contexts dominated token use."
-  - "The recent calls to pace frontier development deserve to be read beside safety, infrastructure and public-market economics, without pretending one motive explains the others."
+  - "This article starts with one Saturday morning: four coding agents processed 315.1 million context tokens in 3 hours and 20 minutes, equivalent to $298 at published API prices—not a bill."
+  - "It follows the expensive patterns—agent fan-out, old contexts and repeated re-reading—then deliberately scales them to test the pressure on chips, electricity and subscription economics."
+  - "That is the backdrop for the labs’ sudden calls to pace frontier development, arriving as Anthropic and OpenAI face extraordinary capital needs and possible IPOs."
 next_url: /writing/
 next_label: "All writing"
 next_title: "Browse all four article series"
