@@ -2,17 +2,18 @@
 title: Writing
 permalink: /writing/
 section: writing
-description: Articles by Antonio Poggi on verifiable AI analytics, complete data products, Omniscope and air-quality monitoring.
+description: Articles by Antonio Poggi on verifiable AI analytics, AI economics, company building, complete data products, Omniscope and air-quality monitoring.
 ---
 {% assign ai_articles = site.articles | where: 'cluster', 'ai' | sort: 'article_order' %}
 {% assign product_articles = site.articles | where: 'cluster', 'products' | sort: 'article_order' %}
 {% assign citizen_articles = site.articles | where: 'cluster', 'citizen' | sort: 'article_order' %}
+{% assign ai_business_articles = site.articles | where: 'cluster', 'ai-business' | sort: 'article_order' %}
 {% assign italian_articles = site.articles | where: 'cluster', 'citizen-it' | sort: 'article_order' %}
 <header class="page-intro">
   <div class="shell page-intro-grid">
     <div>
       <p class="eyebrow">Writing · {{ site.articles.size }} articles</p>
-      <h1>Articles about Omniscope, AI, data products and air quality.</h1>
+      <h1>Articles about Omniscope, AI, data products, company building and air quality.</h1>
       <p class="lead">These articles come from work I have done at Visokio, technical experiments I have run myself and seven years of air-quality work around Taranto.</p>
       <div class="button-row">
         <a class="button button-primary" href="{{ '/directory/' | relative_url }}">Search all articles and pages <span aria-hidden="true">↗</span></a>
@@ -29,7 +30,7 @@ description: Articles by Antonio Poggi on verifiable AI analytics, complete data
     <div class="section-heading">
       <p class="eyebrow">The publication</p>
       <h2>Browse by subject.</h2>
-      <p class="lead">Each article stands on its own. The three series make it easier to follow one subject from the first practical question through to the technical and operational detail.</p>
+      <p class="lead">Each article stands on its own. The four series make it easier to follow one subject from the first practical question through to the technical and operational detail.</p>
     </div>
     <div class="work-grid">
       <a class="work-card" href="#verifiable-ai">
@@ -51,6 +52,13 @@ description: Articles by Antonio Poggi on verifiable AI analytics, complete data
         <div>
           <h3>Citizen science and public evidence</h3>
           <p>Taranto, benzene, public alerts and a privately operated AirGradient monitor sending measurements directly to Omniscope.</p>
+        </div>
+      </a>
+      <a class="work-card" href="#ai-business">
+        <span class="tag">Series 04 · {{ ai_business_articles.size }} article</span>
+        <div>
+          <h3>Building in the AI age</h3>
+          <p>AI coding, infrastructure economics and how the technology changes the companies trying to build and sell it.</p>
         </div>
       </a>
       <a class="work-card" href="#in-italian">
@@ -112,6 +120,26 @@ description: Articles by Antonio Poggi on verifiable AI analytics, complete data
     </div>
     <div class="article-list">
       {% for article in citizen_articles %}
+        <a class="article-row" href="{{ article.url | relative_url }}">
+          <span class="article-index">0{{ article.article_order }}</span>
+          <h3>{{ article.title }}</h3>
+          <p>{{ article.description }}</p>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section article-cluster" id="ai-business">
+  <div class="shell">
+    <div class="section-heading">
+      <p class="eyebrow">Series 04</p>
+      <h2>Building in the AI age.</h2>
+      <p class="lead">The technology is moving quickly, but somebody still has to pay for the models, data centres, software and companies behind it. This series follows those economics from the practical work at the keyboard through to infrastructure, pricing and company evolution.</p>
+    </div>
+    <div class="article-list">
+      {% for article in ai_business_articles %}
         <a class="article-row" href="{{ article.url | relative_url }}">
           <span class="article-index">0{{ article.article_order }}</span>
           <h3>{{ article.title }}</h3>
