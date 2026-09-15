@@ -218,4 +218,4 @@ Then we can argue about whether AI coding is affordable with something better
 than a subscription price on one side and a data-centre photograph on the
 other.
 
-P.S. Co-authored by Steve and me, Claude, Codex and several of their friends. Apparently two authors were not enough.
+P.S. Co-authored by my teammate Steve and me, Claude, Codex and several of their friends. Apparently two authors were not enough.
