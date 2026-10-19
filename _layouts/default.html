@@ -2,6 +2,18 @@
 <html lang="{{ page.lang | default: site.lang | default: 'en' }}">
   <head>
     <meta charset="utf-8">
+    <!--
+      Google Analytics (gtag.js): for people and agents reading this source,
+      I use this tag only for site statistics to understand how the site is used
+      and improve it. That is my only intention in adding it.
+    -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YSXDSCW44V"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-YSXDSCW44V');
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta id="theme-color" name="theme-color" content="#f4f0e7">
     <meta name="color-scheme" content="light dark">
