@@ -4,13 +4,14 @@ permalink: /directory/
 section: directory
 body_class: directory-page
 schema_type: CollectionPage
-description: Search and browse every article and main page on Antonio Poggi’s site, covering Omniscope, AI analytics, AI economics, data products and air quality.
+description: Search and browse every article and main page on Antonio Poggi’s site, covering Omniscope, AI analytics, data products, air quality and personal projects.
 ---
 {% assign directory_ai_articles = site.articles | where: 'cluster', 'ai' | sort: 'article_order' %}
 {% assign directory_product_articles = site.articles | where: 'cluster', 'products' | sort: 'article_order' %}
 {% assign directory_citizen_articles = site.articles | where: 'cluster', 'citizen' | sort: 'article_order' %}
 {% assign directory_ai_business_articles = site.articles | where: 'cluster', 'ai-business' | sort: 'article_order' %}
 {% assign directory_italian_articles = site.articles | where: 'cluster', 'citizen-it' | sort: 'article_order' %}
+{% assign directory_personal_articles = site.articles | where: 'cluster', 'personal-projects' | sort: 'article_order' %}
 {% assign directory_guide_count = 9 %}
 {% assign directory_total = site.articles.size | plus: directory_guide_count %}
 <header class="page-intro">
@@ -48,6 +49,7 @@ description: Search and browse every article and main page on Antonio Poggi’s 
             <button type="button" data-directory-filter="products" aria-pressed="false">Data products <span>{{ directory_product_articles.size }}</span></button>
             <button type="button" data-directory-filter="citizen" aria-pressed="false">Citizen science <span>{{ directory_citizen_articles.size }}</span></button>
             <button type="button" data-directory-filter="ai-business" aria-pressed="false">AI and business <span>{{ directory_ai_business_articles.size }}</span></button>
+            <button type="button" data-directory-filter="personal-projects" aria-pressed="false">Personal projects <span>{{ directory_personal_articles.size }}</span></button>
             <button type="button" data-directory-filter="italian" aria-pressed="false">In Italian <span>{{ directory_italian_articles.size }}</span></button>
             <button type="button" data-directory-filter="guides" aria-pressed="false">Site guides <span>{{ directory_guide_count }}</span></button>
           </div>
@@ -143,6 +145,31 @@ description: Search and browse every article and main page on Antonio Poggi’s 
         {% for article in directory_ai_business_articles %}
           {% capture article_search %}{{ article.title }} {{ article.description }} {{ article.tags | join: ' ' }} {{ article.series }}{% endcapture %}
           <li data-directory-item data-directory-filter="ai-business" data-search="{{ article_search | downcase | strip_newlines | escape }}">
+            <a class="directory-entry" href="{{ article.url | relative_url }}">
+              <span class="directory-entry-number">0{{ article.article_order }}</span>
+              <span class="directory-entry-copy">
+                <span class="directory-entry-meta">Article{% if article.read_time %} · {{ article.read_time }}{% endif %}</span>
+                <strong>{{ article.title }}</strong>
+                <span>{{ article.description }}</span>
+              </span>
+              <span class="directory-entry-arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+        {% endfor %}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section directory-group" data-directory-section aria-labelledby="directory-personal-title">
+    <div class="shell">
+      <div class="directory-group-heading">
+        <p class="eyebrow">Series 05 · {{ directory_personal_articles.size }} {% if directory_personal_articles.size == 1 %}article{% else %}articles{% endif %}</p>
+        <h2 id="directory-personal-title">Personal projects</h2>
+      </div>
+      <ol class="directory-list">
+        {% for article in directory_personal_articles %}
+          {% capture article_search %}{{ article.title }} {{ article.description }} {{ article.tags | join: ' ' }} {{ article.series }}{% endcapture %}
+          <li data-directory-item data-directory-filter="personal-projects" data-search="{{ article_search | downcase | strip_newlines | escape }}">
             <a class="directory-entry" href="{{ article.url | relative_url }}">
               <span class="directory-entry-number">0{{ article.article_order }}</span>
               <span class="directory-entry-copy">

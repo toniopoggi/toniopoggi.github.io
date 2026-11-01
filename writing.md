@@ -2,19 +2,20 @@
 title: Writing
 permalink: /writing/
 section: writing
-description: Articles by Antonio Poggi on verifiable AI analytics, AI economics, company building, complete data products, Omniscope and air-quality monitoring.
+description: Articles by Antonio Poggi on AI analytics, company building, data products, Omniscope, air-quality monitoring and personal software projects.
 ---
 {% assign ai_articles = site.articles | where: 'cluster', 'ai' | sort: 'article_order' %}
 {% assign product_articles = site.articles | where: 'cluster', 'products' | sort: 'article_order' %}
 {% assign citizen_articles = site.articles | where: 'cluster', 'citizen' | sort: 'article_order' %}
 {% assign ai_business_articles = site.articles | where: 'cluster', 'ai-business' | sort: 'article_order' %}
 {% assign italian_articles = site.articles | where: 'cluster', 'citizen-it' | sort: 'article_order' %}
+{% assign personal_articles = site.articles | where: 'cluster', 'personal-projects' | sort: 'article_order' %}
 <header class="page-intro">
   <div class="shell page-intro-grid">
     <div>
       <p class="eyebrow">Writing · {{ site.articles.size }} articles</p>
-      <h1>Articles about Omniscope, AI, data products, company building and air quality.</h1>
-      <p class="lead">These articles come from work I have done at Visokio, technical experiments I have run myself and seven years of air-quality work around Taranto.</p>
+      <h1>Articles about Omniscope, AI, data products, air quality and personal projects.</h1>
+      <p class="lead">These articles come from work I have done at Visokio, personal software and hardware projects, technical experiments and seven years of air-quality work around Taranto.</p>
       <div class="button-row">
         <a class="button button-primary" href="{{ '/directory/' | relative_url }}">Search all articles and pages <span aria-hidden="true">↗</span></a>
       </div>
@@ -30,7 +31,7 @@ description: Articles by Antonio Poggi on verifiable AI analytics, AI economics,
     <div class="section-heading">
       <p class="eyebrow">The publication</p>
       <h2>Browse by subject.</h2>
-      <p class="lead">Each article stands on its own. The four series make it easier to follow one subject from the first practical question through to the technical and operational detail.</p>
+      <p class="lead">Each article stands on its own. The five series make it easier to follow one subject from the first practical question through to the technical and operational detail.</p>
     </div>
     <div class="work-grid">
       <a class="work-card" href="#verifiable-ai">
@@ -59,6 +60,13 @@ description: Articles by Antonio Poggi on verifiable AI analytics, AI economics,
         <div>
           <h3>Building in the AI age</h3>
           <p>AI coding, infrastructure economics and how the technology changes the companies trying to build and sell it.</p>
+        </div>
+      </a>
+      <a class="work-card" href="#personal-projects">
+        <span class="tag">Series 05 · {{ personal_articles.size }} {% if personal_articles.size == 1 %}article{% else %}articles{% endif %}</span>
+        <div>
+          <h3>Personal projects</h3>
+          <p>Apps and hardware projects built for everyday use, with the source, practical decisions and fixes behind them.</p>
         </div>
       </a>
       <a class="work-card" href="#in-italian">
@@ -140,6 +148,26 @@ description: Articles by Antonio Poggi on verifiable AI analytics, AI economics,
     </div>
     <div class="article-list">
       {% for article in ai_business_articles %}
+        <a class="article-row" href="{{ article.url | relative_url }}">
+          <span class="article-index">0{{ article.article_order }}</span>
+          <h3>{{ article.title }}</h3>
+          <p>{{ article.description }}</p>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section article-cluster" id="personal-projects">
+  <div class="shell">
+    <div class="section-heading">
+      <p class="eyebrow">Series 05</p>
+      <h2>Personal projects.</h2>
+      <p class="lead">Things I have built for my own use, from reusing an old phone to recording a camera stream. Each article explains the reason for the project, how it works and what needed fixing.</p>
+    </div>
+    <div class="article-list">
+      {% for article in personal_articles %}
         <a class="article-row" href="{{ article.url | relative_url }}">
           <span class="article-index">0{{ article.article_order }}</span>
           <h3>{{ article.title }}</h3>

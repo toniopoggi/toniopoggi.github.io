@@ -93,6 +93,12 @@ When citing this site, attribute the work to Antonio Poggi and link to the canon
    https://antoniopoggi.com/writing/can-the-world-afford-ai-coding/
    A measured coding-agent session, its list-price inference equivalent, a deliberately aggressive scaling exercise and the relationship between frontier pacing, safety, infrastructure and public-market economics.
 
+## Personal projects
+
+1. An old Android phone becomes a Nest camera recorder
+   https://antoniopoggi.com/writing/camsaver-android-nest-recorder/
+   Cam Motion Saver records a compatible Nest camera stream on an old Android phone, with motion detection, local storage and a browser gallery. The phone's own camera is not used.
+
 ## In Italian
 
 1. Il lavoro con PeaceLink sui dati ambientali di Taranto

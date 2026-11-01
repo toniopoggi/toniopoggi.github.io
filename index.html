@@ -74,6 +74,7 @@ body_class: home
       {% assign product_articles = site.articles | where: 'cluster', 'products' | sort: 'article_order' %}
       {% assign citizen_articles = site.articles | where: 'cluster', 'citizen' | sort: 'article_order' %}
       {% assign ai_business_articles = site.articles | where: 'cluster', 'ai-business' | sort: 'article_order' %}
+      {% assign personal_articles = site.articles | where: 'cluster', 'personal-projects' | sort: 'article_order' %}
       {% assign article = ai_articles | first %}
       <a class="article-row" href="{{ article.url | relative_url }}">
         <span class="article-index">01</span>
@@ -102,6 +103,15 @@ body_class: home
         <p>{{ article.description }}</p>
         <span class="arrow" aria-hidden="true">↗</span>
       </a>
+      {% assign article = personal_articles | first %}
+      {% if article %}
+      <a class="article-row" href="{{ article.url | relative_url }}">
+        <span class="article-index">05</span>
+        <h3>{{ article.title }}</h3>
+        <p>{{ article.description }}</p>
+        <span class="arrow" aria-hidden="true">↗</span>
+      </a>
+      {% endif %}
     </div>
     <div class="button-row">
       <a class="button" href="{{ '/writing/' | relative_url }}">All writing</a>
