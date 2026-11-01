@@ -8,6 +8,11 @@ cluster_label: "Personal projects"
 series: "Personal projects"
 article_order: 1
 read_time: "9 min"
+social_image: /assets/images/chela-di-granchio.png
+social_image_alt: "Chela di Granchio, the juvenile black redstart Antonio looks after, beside the food bowl."
+social_image_width: 1288
+social_image_height: 1221
+social_image_type: image/png
 description: "Reuse an old Android phone to record a Nest camera stream, store motion clips and serve a local gallery. The phone's own camera is not used; estimated electricity costs are £8 a year."
 tags: [Cam Motion Saver, Android, Google Nest, local recording, hardware reuse]
 next_url: /writing/airgradient-directly-to-omniscope/
