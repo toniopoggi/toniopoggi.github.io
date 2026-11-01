@@ -117,6 +117,23 @@ There is some Google developer configuration to complete, and compatibility depe
 
 The project started with a subscription change and ended with an old phone doing a useful job for roughly £8 a year in electricity.
 
-Some wild birds visit outside my window. I feed them, care about them and wanted to watch their visits, including the few seconds before they land.
+The camera is watching a family of black redstarts outside my window. I feed them and look after them: Gino, the black male, Gina, the brown female, and their youngster.
 
-That's what all this was for.
+The juvenile's nickname is **Chela di Granchio**, Italian for “crab claw”, because the little one looks like a breaded crab claw. Gino and Gina got fairly normal names. Their child wasn't so lucky.
+
+<div class="bird-family-gallery">
+  <figure>
+    <img src="{{ '/assets/images/gino.png' | relative_url }}" alt="Gino, the black male black redstart, standing on the window ledge" width="924" height="845" loading="lazy">
+    <figcaption>Gino, the father.</figcaption>
+  </figure>
+  <figure>
+    <img src="{{ '/assets/images/gina.png' | relative_url }}" alt="Gina, the brown female black redstart, beside the food bowl on the window ledge" width="924" height="845" loading="lazy">
+    <figcaption>Gina, the mother.</figcaption>
+  </figure>
+  <figure class="bird-family-youngster">
+    <img src="{{ '/assets/images/chela-di-granchio.png' | relative_url }}" alt="Chela di Granchio, the fluffy juvenile black redstart, perched on the edge of the food bowl" width="1288" height="1221" loading="lazy">
+    <figcaption>Chela di Granchio. The resemblance to a breaded crab claw earned the nickname.</figcaption>
+  </figure>
+</div>
+
+That's the family I'm looking after. I wanted to watch their visits and keep a few clips, including the seconds before they land. The phone takes care of the recordings; I take care of the food.
