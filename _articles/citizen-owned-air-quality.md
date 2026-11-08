@@ -243,4 +243,4 @@ turned published measurements into comparisons that people could use directly,
 ask questions about and take into public discussion. That is still what I want
 the report to do.
 
-For the full chronological record of public signals and evidence in this archive, see the [Taranto air-quality timeline]({{ "/air-quality/timeline/" | relative_url }}).
+For the full chronological record of public signals and evidence in this archive, see the [Taranto air-quality timeline]({{ "/air-quality/timeline-airquality-taranto/" | relative_url }}).

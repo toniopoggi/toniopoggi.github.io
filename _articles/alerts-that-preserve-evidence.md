@@ -286,4 +286,4 @@ I apply the same practical test to each alert: it should explain the
 measurement when published and leave enough state for me to trace and correct
 it later.
 
-For the full chronological record of public signals and evidence in this archive, see the [Taranto air-quality timeline]({{ "/air-quality/timeline/" | relative_url }}).
+For the full chronological record of public signals and evidence in this archive, see the [Taranto air-quality timeline]({{ "/air-quality/timeline-airquality-taranto/" | relative_url }}).

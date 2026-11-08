@@ -1,14 +1,16 @@
 ---
 layout: air-quality-timeline
-title: "Democratizzazione dei dati sull’inquinamento a Taranto – Timeline delle evidenze (2018–2026)"
-permalink: /it/scritti/timeline-dati-ambientali-taranto/
+title: "Dati sulla qualità dell’aria a Taranto: Timeline delle evidenze (2018–2026)"
+heading: "Dati sulla qualità dell’aria a Taranto"
+subtitle: "Timeline delle evidenze (2018–2026)"
+permalink: /it/scritti/timeline-airquality-taranto/
 section: air-quality
 timeline: true
 lang: it
 locale: it_IT
 description: "Segnalazioni, grafici e post pubblici sul lavoro di Antonio Poggi per rendere accessibili i dati sulla qualità dell’aria a Taranto, dal 2018 al 2026."
 eyebrow: "Qualità dell’aria · Evidenze pubbliche"
-alternate_url: /air-quality/timeline/
+alternate_url: /air-quality/timeline-airquality-taranto/
 alternate_lang: en
 alternate_label: "Read in English"
 search_label: "Filtra i post per testo"

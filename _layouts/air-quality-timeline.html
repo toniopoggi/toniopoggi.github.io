@@ -4,7 +4,7 @@ layout: default
 <header class="page-intro">
   <div class="shell">
     <p class="eyebrow">{{ page.eyebrow }}</p>
-    <h1>{{ page.title }}</h1>
+    <h1 class="aq-heading"><span>{{ page.heading | escape }}</span> <span class="aq-heading-subtitle">{{ page.subtitle | escape }}</span></h1>
     <p><a href="{{ page.alternate_url | relative_url }}" lang="{{ page.alternate_lang }}" hreflang="{{ page.alternate_lang }}">{{ page.alternate_label }} ↗</a></p>
     <div class="aq-introduction">{{ content }}</div>
   </div>

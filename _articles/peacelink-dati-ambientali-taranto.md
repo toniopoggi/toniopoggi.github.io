@@ -333,4 +333,4 @@ essere completi, comprensibili, tempestivi e realmente accessibili. È da questa
 esigenza che è nato il mio supporto a PeaceLink, ed è la ragione per cui
 continua.
 
-L’archivio delle segnalazioni e dei grafici pubblicati nel tempo è disponibile nella [timeline storica dei dati ambientali a Taranto]({{ "/it/scritti/timeline-dati-ambientali-taranto/" | relative_url }}).
+L’archivio delle segnalazioni e dei grafici pubblicati nel tempo è disponibile nella [timeline storica dei dati ambientali a Taranto]({{ "/it/scritti/timeline-airquality-taranto/" | relative_url }}).

@@ -1,14 +1,16 @@
 ---
 layout: air-quality-timeline
-title: "Democratizing Air-Quality Data in Taranto – A Timeline of Public Evidence (2018–2026)"
-permalink: /air-quality/timeline/
+title: "Air-quality data in Taranto: A timeline of public evidence (2018–2026)"
+heading: "Air-quality data in Taranto"
+subtitle: "A timeline of public evidence (2018–2026)"
+permalink: /air-quality/timeline-airquality-taranto/
 section: air-quality
 timeline: true
 lang: en
 locale: en_GB
 description: "Public alerts, graphs and posts documenting Antonio Poggi’s work to make air-quality data in Taranto accessible, from 2018 to 2026."
 eyebrow: "Air quality · Public evidence"
-alternate_url: /it/scritti/timeline-dati-ambientali-taranto/
+alternate_url: /it/scritti/timeline-airquality-taranto/
 alternate_lang: it
 alternate_label: "Leggi in italiano"
 search_label: "Filter posts by text"

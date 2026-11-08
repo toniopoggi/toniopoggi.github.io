@@ -1,3 +1,6 @@
+.page-intro .aq-heading { max-width: none; font-size: clamp(1.8rem, 3.5vw, 2.8rem); }
+.aq-heading > span { display: block; }
+.aq-heading .aq-heading-subtitle { margin-top: .35em; font-size: .75em; line-height: 1.2; letter-spacing: -.025em; }
 .aq-introduction { max-width: 860px; color: var(--soft-ink); }
 .aq-introduction p { line-height: 1.75; }
 .aq-archive { padding-bottom: 4rem; }

@@ -231,4 +231,4 @@ improve while significant episodes continue.
 That is less tidy than one permanent headline, but it is an honest account of
 what the data can support.
 
-This analysis is part of a longer public monitoring effort documented in the [Taranto air-quality timeline]({{ "/air-quality/timeline/" | relative_url }}).
+This analysis is part of a longer public monitoring effort documented in the [Taranto air-quality timeline]({{ "/air-quality/timeline-airquality-taranto/" | relative_url }}).
