@@ -18,6 +18,32 @@ image: /assets/images/x-2025-benzene-peak-42-54.jpg
   </div>
 </header>
 
+<section class="section" aria-labelledby="public-evidence-title">
+  <div class="shell">
+    <div class="section-heading">
+      <p class="eyebrow">Public evidence · 2018–2026</p>
+      <h2 id="public-evidence-title">Taranto air-quality timeline</h2>
+    </div>
+    <p class="lead">Browse 168 public posts with pollution alerts, graphs and links to the original sources, from 2018 to 2026. Choose an English or Italian introduction; posts keep their original wording.</p>
+    <div class="work-grid">
+      <a class="work-card" href="{{ '/air-quality/timeline-airquality-taranto/' | relative_url }}" hreflang="en">
+        <span class="tag">Timeline · English</span>
+        <div>
+          <h3>Air-quality data in Taranto</h3>
+          <p>A timeline of public evidence from 2018 to 2026. Explore the archive in English ↗</p>
+        </div>
+      </a>
+      <a class="work-card" href="{{ '/it/scritti/timeline-airquality-taranto/' | relative_url }}" lang="it" hreflang="it">
+        <span class="tag">Timeline · Italiano</span>
+        <div>
+          <h3>Dati sulla qualità dell’aria a Taranto</h3>
+          <p>Timeline delle evidenze dal 2018 al 2026. Esplora l’archivio in italiano ↗</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
 <section class="section">
   <div class="shell">
     <div class="timeline">
@@ -78,9 +104,6 @@ image: /assets/images/x-2025-benzene-peak-42-54.jpg
         </div>
       </div>
     </div>
-    <aside class="intro-aside">
-      <p>The public record of alerts, graphs and posts from 2018 to 2026 is now available as a chronological timeline: <a href="{{ '/air-quality/timeline-airquality-taranto/' | relative_url }}">Democratizing Air-Quality Data in Taranto ↗</a>.</p>
-    </aside>
   </div>
 </section>
 
