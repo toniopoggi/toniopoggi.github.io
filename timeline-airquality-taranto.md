@@ -9,6 +9,11 @@ timeline: true
 lang: en
 locale: en_GB
 description: "Public alerts, graphs and posts documenting Antonio Poggi’s work to make air-quality data in Taranto accessible, from 2018 to 2026."
+image: /assets/images/benzene-ilva-taranto.png
+image_alt: "Omniscope benzene trends and a map of monitoring stations around the ILVA industrial site and Tamburi neighbourhood in Taranto"
+image_width: 1112
+image_height: 781
+image_type: image/png
 eyebrow: "Air quality · Public evidence"
 alternate_url: /it/scritti/timeline-airquality-taranto/
 alternate_lang: it
