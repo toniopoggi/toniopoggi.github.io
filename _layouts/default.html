@@ -226,6 +226,12 @@
     </script>
 
     <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+    {% if page.timeline %}
+    <link rel="alternate" hreflang="{{ page.lang }}" href="{{ page.url | absolute_url }}">
+    <link rel="alternate" hreflang="{{ page.alternate_lang }}" href="{{ page.alternate_url | absolute_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/air-quality-timeline.css' | relative_url }}">
+    <script src="{{ '/assets/js/air-quality-timeline.js' | relative_url }}" defer></script>
+    {% endif %}
     <script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>
   </head>
   <body class="{{ page.body_class | default: 'page' }}">

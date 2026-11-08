@@ -1,0 +1,50 @@
+---
+layout: default
+---
+<header class="page-intro">
+  <div class="shell">
+    <p class="eyebrow">{{ page.eyebrow }}</p>
+    <h1>{{ page.title }}</h1>
+    <p><a href="{{ page.alternate_url | relative_url }}" lang="{{ page.alternate_lang }}" hreflang="{{ page.alternate_lang }}">{{ page.alternate_label }} ↗</a></p>
+    <div class="aq-introduction">{{ content }}</div>
+  </div>
+</header>
+
+<section class="shell aq-archive" aria-label="{{ page.eyebrow | escape }}">
+  <div class="aq-toolbar" hidden>
+    <label for="aq-search">{{ page.search_label }}</label>
+    <div class="aq-controls">
+      <input type="search" id="aq-search" placeholder="{{ page.search_placeholder | escape }}" aria-controls="aq-timeline" autocomplete="off">
+      <output id="aq-counter" for="aq-search" aria-live="polite" aria-atomic="true">{{ site.data.air_quality_timeline.size }} / {{ site.data.air_quality_timeline.size }} {{ page.count_label }}</output>
+      <span id="aq-current-period" aria-hidden="true"></span>
+    </div>
+  </div>
+  <p id="aq-empty" hidden>{{ page.empty_label }}</p>
+  <div id="aq-timeline" class="aq-timeline" data-count-label="{{ page.count_label }}">
+    {% assign previous_month = '' %}
+    {% assign months_en = 'January,February,March,April,May,June,July,August,September,October,November,December' | split: ',' %}
+    {% assign months_it = 'Gennaio,Febbraio,Marzo,Aprile,Maggio,Giugno,Luglio,Agosto,Settembre,Ottobre,Novembre,Dicembre' | split: ',' %}
+    {% for post in site.data.air_quality_timeline %}
+      {% assign month_key = post.date | slice: 0, 7 %}
+      {% if month_key != previous_month %}
+        {% assign month_index = post.date | slice: 5, 2 | plus: 0 | minus: 1 %}
+        <h2 class="aq-month" data-month="{{ month_key }}"><span>{% if page.lang == 'it' %}{{ months_it[month_index] }}{% else %}{{ months_en[month_index] }}{% endif %} {{ post.date | slice: 0, 4 }}</span></h2>
+        {% assign previous_month = month_key %}
+      {% endif %}
+      <article class="aq-event {% cycle 'aq-left', 'aq-right' %}" data-month="{{ month_key }}">
+        <div class="aq-card">
+          <time class="aq-date" datetime="{{ post.date | replace: ' ', 'T' }}">{{ post.date }}</time>
+          <p class="aq-text">{{ post.text | escape | newline_to_br }}</p>
+          <p class="aq-source"><a href="{{ post.url | escape }}" target="_blank" rel="noopener noreferrer">{{ page.open_label }} ↗</a></p>
+          {% if post.media.size > 0 %}
+          <div class="aq-media">
+            {% for media in post.media %}
+            <a href="{{ media | escape }}" target="_blank" rel="noopener noreferrer"><img src="{{ media | escape }}" loading="lazy" decoding="async" alt="{{ page.image_label | escape }} {{ post.date }} ({{ forloop.index }})"></a>
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+</section>

@@ -11,6 +11,8 @@ layout: null
   <url><loc>{{ '/visokio/data-apps/' | absolute_url }}</loc></url>
   <url><loc>{{ '/visokio/verifiable-ai/' | absolute_url }}</loc></url>
   <url><loc>{{ '/air-quality/' | absolute_url }}</loc></url>
+  <url><loc>{{ '/air-quality/timeline/' | absolute_url }}</loc></url>
+  <url><loc>{{ '/it/scritti/timeline-dati-ambientali-taranto/' | absolute_url }}</loc></url>
   <url><loc>{{ '/writing/' | absolute_url }}</loc></url>
   <url><loc>{{ '/directory/' | absolute_url }}</loc></url>
   <url><loc>{{ '/about/' | absolute_url }}</loc></url>

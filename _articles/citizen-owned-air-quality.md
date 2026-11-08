@@ -2,7 +2,7 @@
 title: "Making Institutional Air-Quality Data Usable by Citizens"
 subtitle: "Publishing a file is not the same as giving people an instrument for comparison, investigation and public evidence."
 date: 2026-07-27 00:13:00 +0100
-last_modified_at: 2026-07-28 12:11:00 +0100
+last_modified_at: 2026-11-08 00:00:00 +0000
 eyebrow: "Citizen science · Public data"
 series: "Citizen science and public evidence"
 cluster: citizen
@@ -242,3 +242,5 @@ or settle scientific attribution. My contribution in 2019 was more modest: I
 turned published measurements into comparisons that people could use directly,
 ask questions about and take into public discussion. That is still what I want
 the report to do.
+
+For the full chronological record of public signals and evidence in this archive, see the [Taranto air-quality timeline]({{ "/air-quality/timeline/" | relative_url }}).

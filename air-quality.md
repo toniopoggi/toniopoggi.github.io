@@ -78,6 +78,9 @@ image: /assets/images/x-2025-benzene-peak-42-54.jpg
         </div>
       </div>
     </div>
+    <aside class="intro-aside">
+      <p>The public record of alerts, graphs and posts from 2018 to 2026 is now available as a chronological timeline: <a href="{{ '/air-quality/timeline/' | relative_url }}">Democratizing Air-Quality Data in Taranto ↗</a>.</p>
+    </aside>
   </div>
 </section>
 

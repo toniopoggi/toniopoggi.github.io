@@ -2,7 +2,7 @@
 title: "What I Learned from Analysing 80,000 Hourly Benzene Measurements"
 subtitle: "Grain, missingness, reference levels and dataset versions matter as much as the chart—especially when evidence enters public debate."
 date: 2026-07-27 00:12:00 +0100
-last_modified_at: 2026-07-28 12:11:00 +0100
+last_modified_at: 2026-11-08 00:00:00 +0000
 eyebrow: "Citizen science · Evidence"
 series: "Citizen science and public evidence"
 cluster: citizen
@@ -230,3 +230,5 @@ improve while significant episodes continue.
 
 That is less tidy than one permanent headline, but it is an honest account of
 what the data can support.
+
+This analysis is part of a longer public monitoring effort documented in the [Taranto air-quality timeline]({{ "/air-quality/timeline/" | relative_url }}).

@@ -2,7 +2,7 @@
 title: "Il lavoro con PeaceLink sui dati ambientali di Taranto"
 subtitle: "Dalle prime verifiche sui dati pubblici ai report automatici, agli avvisi sul benzene e alle analisi portate nelle sedi istituzionali."
 date: 2026-07-28 00:20:00 +0100
-last_modified_at: 2026-07-29 12:40:04 +0100
+last_modified_at: 2026-11-08 00:00:00 +0000
 lang: it
 locale: it_IT
 permalink: /it/scritti/peacelink-dati-ambientali-taranto/
@@ -332,3 +332,5 @@ I dati ambientali riguardano direttamente la vita delle persone. Dovrebbero
 essere completi, comprensibili, tempestivi e realmente accessibili. È da questa
 esigenza che è nato il mio supporto a PeaceLink, ed è la ragione per cui
 continua.
+
+L’archivio delle segnalazioni e dei grafici pubblicati nel tempo è disponibile nella [timeline storica dei dati ambientali a Taranto]({{ "/it/scritti/timeline-dati-ambientali-taranto/" | relative_url }}).

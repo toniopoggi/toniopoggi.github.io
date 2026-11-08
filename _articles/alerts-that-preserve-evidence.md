@@ -2,7 +2,7 @@
 title: "Designing Alerts That Preserve the Evidence Behind the Claim"
 subtitle: "The social post should attract attention without becoming the only surviving record of the measurement, method and context."
 date: 2026-07-27 00:14:00 +0100
-last_modified_at: 2026-07-28 12:11:00 +0100
+last_modified_at: 2026-11-08 00:00:00 +0000
 eyebrow: "Public alerts · Provenance"
 series: "Citizen science and public evidence"
 cluster: citizen
@@ -285,3 +285,5 @@ defined reference.
 I apply the same practical test to each alert: it should explain the
 measurement when published and leave enough state for me to trace and correct
 it later.
+
+For the full chronological record of public signals and evidence in this archive, see the [Taranto air-quality timeline]({{ "/air-quality/timeline/" | relative_url }}).
